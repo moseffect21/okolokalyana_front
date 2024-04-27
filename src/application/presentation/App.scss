@@ -1,5 +1,82 @@
+@import url('../../fonts/Montserrat/stylesheet.css');
+
+html {
+  font-size: 62.5%;
+}
+
+html,
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  position: relative;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-size: 62.5%;
+}
+input,
+button,
+textarea {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  &::placeholder {
+    color: #787878;
+  }
+}
+p {
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+a {
+  color: #7ca7c8;
+  &:hover {
+    color: #5a90ba;
+  }
+}
+
+body {
+  background-color: #000000;
+  color: #ffffff;
+  &.modal_opened {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+@media (max-width: 1200px) {
+  html,
+  body {
+    font-size: 53.5%;
+  }
+}
+@media (max-width: 1000px) {
+  html,
+  body {
+    font-size: 43.5%;
+  }
+}
+
+@media (max-width: 768px) {
+  html,
+  body {
+    font-size: 53.5%;
+    // font-size: 62.5%;
+  }
+}
+
 #nprogress .bar {
-  background: #ffd828 !important;
+  background: #ffffff !important;
   height: 4px !important;
 }
 #nprogress .peg {

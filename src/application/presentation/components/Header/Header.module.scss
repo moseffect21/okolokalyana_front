@@ -1,0 +1,13 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 6rem;
+}
+.logo {
+  svg {
+    display: block;
+    width: 20rem;
+    height: auto;
+  }
+}
