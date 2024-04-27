@@ -1,13 +1,19 @@
 import React from 'react'
 import LogoSvg from 'images/logo.svg'
 import s from './Header.module.scss'
+import NavBar from '../NavBar'
 
-export default function Header() {
+const Header = () => {
   return (
-    <div className={s.header}>
-      <div className={s.logo}>
-        <LogoSvg />
+    <>
+      <NavBar />
+      <div className={s.header}>
+        <div className={s.logo}>
+          <LogoSvg />
+        </div>
       </div>
-    </div>
+    </>
   )
 }
+
+export default Header
