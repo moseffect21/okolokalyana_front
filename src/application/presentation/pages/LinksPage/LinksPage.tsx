@@ -8,6 +8,12 @@ import PartnerItem from './components/PartnerItem'
 import Link from 'next/link'
 import { MetaData } from 'application/presentation/meta/MetaContent'
 
+export async function getLinksStaticProps() {
+  return {
+    props: {},
+  }
+}
+
 export default function LinksPage() {
   return (
     <>
