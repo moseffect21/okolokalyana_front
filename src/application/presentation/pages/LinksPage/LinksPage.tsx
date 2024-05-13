@@ -17,7 +17,11 @@ export async function getLinksStaticProps() {
 export default function LinksPage() {
   return (
     <>
-      <MetaData title={'Околокальяна - ссылки'} desc="" />
+      <MetaData
+        title={'Все медиа площадки Влада Носачёва «ОКОЛОКАЛЬЯНА»'}
+        desc="Тут вы найдёте все блоги, страницы, соц сети Влада Носачёва и проекта ОКОЛОКАЛЬЯНА."
+        keywords="влад носачёв, околокальяна, соц сети, сайт, инстаграм, телеграм, ютуб, лайв, вконтакте, тик ток, твич, донат, вайлберис, озон, стрим, прямой эфир, онлайн, написать, связаться, контакты, инста, instagram, тг, telegram, телега, youtube, ютюб, вк, vkontakte, страница, группа, паблик, tik tok, тт, twitch, donations, вб, wildberries, ozon, менеджер, связь"
+      />
       <div className={s.container}>
         <div className={s.content}>
           <div className={s.img_container}>
