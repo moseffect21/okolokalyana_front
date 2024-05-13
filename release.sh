@@ -5,8 +5,8 @@ START_TIME=$(date +%s)
 source ~/.nvm/nvm.sh
 nvm -v
 node -v
-nvm install 18
-node -v
+# nvm install 18.20.2
+# node -v
 yarn
 yarn build
 pm2 delete "okolokalyana"
