@@ -9,6 +9,7 @@ const MetaAppContent = () => {
         {/* TODO: после развертки нового фронта изменить урл до фавикона */}
         <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="theme-color" content="black" />
       </Head>
     </>
   )
