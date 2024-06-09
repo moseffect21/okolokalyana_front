@@ -57,6 +57,7 @@ export default function SearchMW({ opened, setOpened }: SearchMWProps) {
     return () => {
       Router.events.off('routeChangeComplete', handleRouteDone)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
