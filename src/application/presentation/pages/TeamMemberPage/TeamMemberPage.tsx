@@ -1,4 +1,3 @@
-import { fetchTeamMember } from 'application/data/api/team'
 import { TeamMember } from 'application/domain/entities/team/TeamMember'
 import { GetServerSideDefaultProps } from 'application/domain/types/ServerSideProps'
 import PageLayout from 'application/presentation/components/Layouts/PageLayout'
@@ -13,6 +12,7 @@ import InstSvg from 'images/icons/inst.svg'
 import YoutubeSvg from 'images/icons/youtube.svg'
 import TgSvg from 'images/icons/tg.svg'
 import { MetaTeamMemberPage } from 'application/presentation/meta/MetaContent'
+import { fetchTeamMember } from 'application/domain/useCases/team/getTeam'
 
 export const getTeamMemberPageServerSideProps = async ({ params }: GetServerSideDefaultProps) => {
   try {

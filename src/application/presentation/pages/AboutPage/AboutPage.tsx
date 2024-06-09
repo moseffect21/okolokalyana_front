@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { fetchTeam } from 'application/data/api/team'
 import { GetServerSideDefaultProps } from 'application/domain/types/ServerSideProps'
 import PageLayout from 'application/presentation/components/Layouts/PageLayout'
 import { MetaAboutPage } from 'application/presentation/meta/MetaContent'
@@ -7,6 +6,7 @@ import TeamMember from './components/TeamMember'
 import s from './AboutPage.module.scss'
 import { Team } from 'application/domain/entities/team/Team'
 import minifyObject from 'application/domain/utils/minifyObject'
+import { fetchTeam } from 'application/domain/useCases/team/getTeam'
 
 export const getAboutPageServerSideProps = async ({}: GetServerSideDefaultProps) => {
   try {
