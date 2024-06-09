@@ -1,0 +1,20 @@
+.container {
+  margin-top: 6rem;
+  height: calc(100vh - 28rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.title {
+  font-size: 6.4rem;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+}
+.subtitle {
+  font-size: 3.4rem;
+  color: #fff;
+  text-align: center;
+  margin-top: 2rem;
+}

@@ -60,4 +60,12 @@ export const MetaTeamMemberPage = ({ name, desc }: { name: string; desc: string 
   />
 )
 
+export const MetaErrorPage = ({ code }: { code: string }) => (
+  <MetaData
+    title={`${code} - Околокальяна`}
+    desc={''}
+    keywords="блогер, кальян, табак, чаша, чашка, смесь, кальянщик, россия, рф, ру, околокальяна, около кальяна, туториал, обучение, забить, забивка, купить, заказать, обзор"
+  />
+)
+
 export default MetaAppContent
