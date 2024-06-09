@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+.crumb {
+  display: flex;
+  align-items: center;
+}
+.arrow {
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  svg {
+    width: 1.5rem;
+    height: auto;
+  }
+}
+.link {
+  font-size: 1.4rem;
+  line-height: 130%;
+  color: #4c4c4c;
+  text-decoration: none;
+  &.disabled {
+    pointer-events: none;
+  }
+  &:hover {
+    color: #fff;
+  }
+}

@@ -104,3 +104,61 @@ body {
 #nprogress .spinner {
   display: none !important;
 }
+
+.ReactModalPortal {
+  position: relative;
+  z-index: 100;
+}
+.ReactModal__Overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 300ms ease-in-out;
+  opacity: 0;
+  padding: 3rem 0;
+  overflow: auto;
+  .ReactModal__Content {
+    transform: scale(0.6);
+    transition: transform 300ms ease-in-out;
+    margin: auto;
+  }
+}
+.ReactModal__Body--open {
+  overflow: hidden !important;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+  .ReactModal__Content {
+    transform: scale(1);
+  }
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+  .ReactModal__Content {
+    transform: scale(0.6);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ReactModal__Overlay {
+    .ReactModal__Content {
+      transform: scale(1);
+      transition: transform 300ms ease-in-out;
+    }
+  }
+  .ReactModal__Overlay--after-open {
+    opacity: 1;
+    .ReactModal__Content {
+      transform: scale(1);
+    }
+  }
+
+  .ReactModal__Overlay--before-close {
+    opacity: 0;
+    .ReactModal__Content {
+      transform: scale(1);
+    }
+  }
+}

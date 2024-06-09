@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  > a {
+    margin-top: 4.8rem;
+    &:nth-child(2n) {
+      margin-left: 4.8rem;
+    }
+  }
+}
