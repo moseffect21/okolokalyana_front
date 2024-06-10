@@ -51,28 +51,12 @@
   align-items: center;
   flex-wrap: wrap;
   margin-top: 1.5rem;
+  justify-content: center;
   > a {
-    width: calc(100% / 3 - 1rem);
-    margin-right: 1.5rem;
+    width: calc(100% / 3);
     margin-top: 1.5rem;
     &:nth-child(3n) {
       margin-right: 0;
     }
-  }
-}
-.manager_link {
-  text-decoration: none;
-  display: block;
-  width: fit-content;
-  margin: 5rem auto 0;
-  text-align: center;
-  color: #fff;
-  font-size: 1.3rem;
-  line-height: 130%;
-  span {
-    padding-top: 0.4rem;
-    font-size: 2rem;
-    font-weight: 700;
-    display: block;
   }
 }

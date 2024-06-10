@@ -1,13 +1,10 @@
 import { Links } from 'application/domain/entities/links/Link'
 import cocolocoPng from 'images/brandsLogo/cocoloco.png'
-import fakePng from 'images/brandsLogo/fake.png'
 import musthavePng from 'images/brandsLogo/musthave.png'
-import jamPng from 'images/brandsLogo/jam.png'
 import koressPng from 'images/brandsLogo/koress.png'
-import splitPng from 'images/brandsLogo/split.png'
 import burnPng from 'images/brandsLogo/burn.png'
 
-export const linksData: { all: Links; personal: Links; support: Links } = {
+export const linksData: { all: Links; personal: Links; support: Links; connect: Links } = {
   all: [
     {
       id: 1,
@@ -104,6 +101,20 @@ export const linksData: { all: Links; personal: Links; support: Links } = {
       type: 'ozon',
     },
   ],
+  connect: [
+    {
+      id: 1,
+      name: 'Менеджер',
+      url: 'https://t.me/okolomanager',
+      type: 'telegram',
+    },
+    {
+      id: 2,
+      name: 'Влад',
+      url: 'https://t.me/nosachev_vs',
+      type: 'telegram',
+    },
+  ],
 }
 
 export const partnersData = [
@@ -120,18 +131,6 @@ export const partnersData = [
     url: 'https://cocoloco.cc/',
   },
   {
-    id: 3,
-    name: 'fake',
-    image: fakePng,
-    url: 'https://t.me/faketobacco',
-  },
-  {
-    id: 4,
-    name: 'jam',
-    image: jamPng,
-    url: 'https://www.instagram.com/jamm_hookah/',
-  },
-  {
     id: 5,
     name: 'koress',
     image: koressPng,
@@ -142,11 +141,5 @@ export const partnersData = [
     name: 'musthave',
     image: musthavePng,
     url: 'https://musthave.ru/',
-  },
-  {
-    id: 7,
-    name: 'split',
-    image: splitPng,
-    url: 'https://www.instagram.com/splithookah',
   },
 ]

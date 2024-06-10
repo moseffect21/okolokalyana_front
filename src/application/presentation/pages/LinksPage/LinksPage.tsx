@@ -43,19 +43,17 @@ export default function LinksPage() {
           />
           <div className={s.separator}></div>
 
+          <LinksContainer title="Связь" data={linksData.connect} />
+          <div className={s.separator}></div>
+
           <div className={s.partners_block}>
-            <div className={s.title}>ТОП бренды индустрии, респект за поддержку.</div>
+            <div className={s.title}>Партнеры проекта</div>
             <div className={s.partners_container}>
               {partnersData.map(item => (
                 <PartnerItem key={`partner_${item.id}`} data={item} />
               ))}
             </div>
           </div>
-          <Link href="https://t.me/okolomanager" className={s.manager_link}>
-            Менеджер по всем вопросам
-            <br />
-            <span>@okolomanager</span>
-          </Link>
         </div>
       </div>
     </>
