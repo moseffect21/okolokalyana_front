@@ -1,3 +1,5 @@
+import { Authors } from '../author/Author'
+
 export type Article = {
   id: number
   created_at: string
@@ -20,5 +22,7 @@ export type Article = {
   seo_title: string
   seo_description: string
   seo_keywords: string
+  authors?: Authors
+  time: string
 }
 export type Articles = Article[]

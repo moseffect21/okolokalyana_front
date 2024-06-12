@@ -1,6 +1,6 @@
 import React from 'react'
 
-import s from './ArticlesBlock.module.scss'
+import s from './PartnerArticles.module.scss'
 
 import { Article, Articles } from 'application/domain/entities/article/Article'
 import Link from 'next/link'
@@ -23,12 +23,12 @@ const ArticleItem = ({ article }: ArticleItemProps) => {
   )
 }
 
-type ArticlesBlockProps = {
+type PartnerArticlesProps = {
   articles: Articles
   type: 'articles' | 'videos'
 }
 
-const ArticlesBlock = ({ articles, type }: ArticlesBlockProps) => {
+const PartnerArticles = ({ articles, type }: PartnerArticlesProps) => {
   return (
     <div className={s.container}>
       <div className={s.title}>{type === 'videos' ? 'Видео' : 'Статьи'}</div>
@@ -41,4 +41,4 @@ const ArticlesBlock = ({ articles, type }: ArticlesBlockProps) => {
   )
 }
 
-export default ArticlesBlock
+export default PartnerArticles

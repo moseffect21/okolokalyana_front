@@ -10,9 +10,7 @@ type SearchItemProps = {
 
 export default function SearchItem({ data }: SearchItemProps) {
   const type = data.type === 'video' ? 'Видео' : 'Статья'
-  const href = `/blog/${
-    data.type === 'video' ? 'videos' : data.type === 'article' ? 'articles' : 'contests'
-  }/${data.slug || data.id}`
+  const href = `/blog/${data.type}/${data.slug || data.id}`
 
   return (
     <Link className={s.container} href={href}>

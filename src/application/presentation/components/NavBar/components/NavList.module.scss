@@ -8,6 +8,9 @@
   color: #fff;
   text-decoration: none;
   padding: 2rem 0;
+  &.active {
+    font-weight: bold;
+  }
   &:hover {
     color: #fff;
     opacity: 0.7;

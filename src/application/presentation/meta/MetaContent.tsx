@@ -1,6 +1,8 @@
 import React from 'react'
 import Head from 'next/head'
 import { Partner } from 'application/domain/entities/partners/Partner'
+import { ArticleCategory } from 'application/domain/entities/article/ArticleCategory'
+import { Article } from 'application/domain/entities/article/Article'
 
 const MetaAppContent = () => {
   return (
@@ -74,6 +76,35 @@ export const MetaPartnerPage = ({ partner }: { partner: Partner }) => (
     title={`${partner.name} - Околокальяна`}
     desc={`${partner.short_desc} ${partner.description}`}
     keywords="бренд, производитель, табак, чаша, чашка, смесь, чай, уголь, кальян, купить, россия, рф, ру, околокальяна, около кальяна, туториал, обучение, забить, забивка, купить, заказать, обзор"
+  />
+)
+
+export const MetaArticleCategoryPage = ({
+  articleCategory,
+}: {
+  articleCategory: ArticleCategory
+}) => (
+  <MetaData
+    title={articleCategory.seo_title || `${articleCategory.name} - Околокальяна`}
+    desc={
+      articleCategory.seo_description ||
+      `${articleCategory.name} - Околокальяна. Это комьюнити ценителей кальяна, которое станет твоим проводником в околокальянный мир, в целую культуру, которая намного шире и богаче, чем просто «попускать дымок».`
+    }
+    keywords={
+      articleCategory.seo_keywords ||
+      'бренд, производитель, табак, чаша, чашка, смесь, чай, уголь, кальян, купить, россия, рф, ру, околокальяна, около кальяна, туториал, обучение, забить, забивка, купить, заказать, обзор'
+    }
+  />
+)
+
+export const MetaArticlePage = ({ article }: { article: Article }) => (
+  <MetaData
+    title={article.seo_title || `${article.title} - Околокальяна`}
+    desc={article.seo_description || `${article.preview_text} ${article.description}`}
+    keywords={
+      article.seo_keywords ||
+      'бренд, производитель, табак, чаша, чашка, смесь, чай, уголь, кальян, купить, россия, рф, ру, околокальяна, около кальяна, туториал, обучение, забить, забивка, купить, заказать, обзор'
+    }
   />
 )
 

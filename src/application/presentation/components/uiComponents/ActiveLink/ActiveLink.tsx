@@ -15,7 +15,7 @@ const ActiveLink: React.FC<ActiveLinkProps> = ({
 }) => {
   const { asPath } = useRouter()
   const linkClass =
-    asPath === props.href || asPath === props.as
+    asPath.indexOf(props.href as string) !== -1 || asPath === props.as
       ? `${className} ${activeClassName}`.trim()
       : className
 

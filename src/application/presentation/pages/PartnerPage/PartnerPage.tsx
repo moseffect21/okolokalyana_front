@@ -6,7 +6,7 @@ import { MetaPartnerPage } from 'application/presentation/meta/MetaContent'
 import React from 'react'
 import s from './PartnerPage.module.scss'
 import StoredImage from 'application/presentation/components/uiComponents/StoredImage'
-import ArticlesBlock from './components/ArticlesBlock'
+import PartnerArticles from './components/PartnerArticles'
 
 export const getPartnerPageServerSideProps = async ({ params }: GetServerSideDefaultProps) => {
   try {
@@ -50,10 +50,10 @@ export default function PartnerPage({ partner }: PartnersPageProps) {
           <div className={s.text} dangerouslySetInnerHTML={{ __html: partner.description || '' }} />
           <div className={s.articles_container}>
             {partner.articles && partner.articles.length && (
-              <ArticlesBlock articles={partner.articles} type="articles" />
+              <PartnerArticles articles={partner.articles} type="articles" />
             )}
             {partner.videos && partner.videos.length && (
-              <ArticlesBlock articles={partner.videos} type="videos" />
+              <PartnerArticles articles={partner.videos} type="videos" />
             )}
           </div>
         </div>
