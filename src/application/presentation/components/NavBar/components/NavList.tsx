@@ -7,10 +7,10 @@ const links = [
   { id: 2, name: 'Видео', link: '/blog/video' },
   { id: 3, name: 'Большой ЗАБИВОЧНЫЙ ЦЕХ', link: '/mixes' },
   { id: 4, name: 'Шоурум', link: '/showroom' },
-  { id: 2, name: 'Taplink', link: '/links' },
-  { id: 5, name: 'О нас', link: '/about' },
-  { id: 6, name: 'Партнеры', link: '/partners' },
-  { id: 7, name: 'Новости', link: '/news' },
+  { id: 6, name: 'Taplink', link: '/links' },
+  { id: 7, name: 'О нас', link: '/about' },
+  { id: 8, name: 'Партнеры', link: '/partners' },
+  { id: 9, name: 'Новости', link: '/news' },
 ]
 
 export default function NavList() {
