@@ -21,3 +21,4 @@ export type Article = {
   seo_description: string
   seo_keywords: string
 }
+export type Articles = Article[]

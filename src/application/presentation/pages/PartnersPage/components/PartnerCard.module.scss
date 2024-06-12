@@ -1,0 +1,17 @@
+.card {
+  width: calc(100% / 3);
+  margin-top: 5rem;
+  height: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    opacity: 0.7;
+  }
+
+  img {
+    width: 80%;
+    max-height: 15rem;
+    object-fit: contain;
+  }
+}

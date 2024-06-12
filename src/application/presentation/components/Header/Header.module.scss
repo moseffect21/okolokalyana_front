@@ -5,6 +5,10 @@
   height: 6rem;
 }
 .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
   svg {
     display: block;
     width: 20rem;

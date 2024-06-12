@@ -19,6 +19,9 @@
   padding: 1rem 0;
   margin-top: 4rem;
   cursor: pointer;
+  &:hover {
+    opacity: 0.7;
+  }
   svg {
     width: 3rem;
     height: auto;
