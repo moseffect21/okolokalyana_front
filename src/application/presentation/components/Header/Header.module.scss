@@ -1,17 +1,24 @@
 .header {
   display: flex;
+  position: relative;
   align-items: center;
-  justify-content: center;
-  height: 6rem;
+  justify-content: space-between;
+  padding: 1.6rem 3.5rem 0.9rem  3.5rem;
 }
 .logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
   svg {
     display: block;
     width: 20rem;
     height: auto;
   }
+}
+.loginBtn {
+  svg {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+}
+.headerLeft, .btnContainer {
+  width: 14rem;
+  flex-shrink: 0;
 }

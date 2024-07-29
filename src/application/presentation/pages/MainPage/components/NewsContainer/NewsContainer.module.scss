@@ -1,0 +1,39 @@
+.newsContainer {
+  padding: 7rem 0 12rem 26.4rem;
+}
+.newsInner {
+  padding-left: 13.2rem;
+}
+.titleContainer {
+  margin-bottom: 3rem;
+  h1 {
+    font-size: 3.2rem;
+    line-height: 39.01px;
+  }
+}
+.newsBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  .newItem {
+    display: flex;
+    gap: 1rem;
+    .newsItemDate {
+      font-size: 1.6rem;
+      font-weight: 400;
+    }
+    .newsItemDescription {
+      width: 100%;
+      max-width: 75rem;
+      h4 {
+        font-size: 2rem;
+        margin: 0;
+        font-weight: 700;
+      }
+      p {
+        font-size: 1.6rem;
+        font-weight: 400;
+      }
+    }
+  }
+}
