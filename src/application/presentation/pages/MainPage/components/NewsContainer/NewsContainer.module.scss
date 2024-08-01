@@ -8,32 +8,11 @@
   margin-bottom: 3rem;
   h1 {
     font-size: 3.2rem;
-    line-height: 39.01px;
+    line-height: 130%;
   }
 }
 .newsBlock {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  .newItem {
-    display: flex;
-    gap: 1rem;
-    .newsItemDate {
-      font-size: 1.6rem;
-      font-weight: 400;
-    }
-    .newsItemDescription {
-      width: 100%;
-      max-width: 75rem;
-      h4 {
-        font-size: 2rem;
-        margin: 0;
-        font-weight: 700;
-      }
-      p {
-        font-size: 1.6rem;
-        font-weight: 400;
-      }
-    }
-  }
 }

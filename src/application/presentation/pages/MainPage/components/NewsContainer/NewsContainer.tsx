@@ -1,5 +1,7 @@
 import React from 'react'
 import s from './NewsContainer.module.scss'
+import { newsTestData } from 'application/presentation/components/NewsCard/newsTestData'
+import NewsCard from 'application/presentation/components/NewsCard'
 
 export default function NewsContainer() {
   return (
@@ -13,76 +15,16 @@ export default function NewsContainer() {
           </h1>
         </div>
         <div className={s.newsBlock}>
-          <div className={s.newItem}>
-            <div className={s.newsItemDate}>
-              <span>26.03.2024</span>
-            </div>
-            <div className={s.newsItemDescription}>
-              <h4>Получили на прокур новый premium табак </h4>
-              <p>
-                Обычная нормальная банка, но открывать очень неудобно. Одну задолбался открывать,
-                выломать пришлось.
-              </p>
-            </div>
-          </div>
-          <div className={s.newItem}>
-            <div className={s.newsItemDate}>
-              <span>26.03.2024</span>
-            </div>
-            <div className={s.newsItemDescription}>
-              <h4>Обновили статью</h4>
-              <p>
-                Заходи, <a href="#">читай</a>, оставляй комментарии.
-              </p>
-            </div>
-          </div>
-          <div className={s.newItem}>
-            <div className={s.newsItemDate}>
-              <span>26.03.2024</span>
-            </div>
-            <div className={s.newsItemDescription}>
-              <h4>Обновили статью</h4>
-              <p>
-                Обычная нормальная банка, но открывать очень неудобно. Одну задолбался открывать,
-                выломать пришлось.
-              </p>
-            </div>
-          </div>
-          <div className={s.newItem}>
-            <div className={s.newsItemDate}>
-              <span>26.03.2024</span>
-            </div>
-            <div className={s.newsItemDescription}>
-              <h4>Обновили статью</h4>
-              <p>
-                Заходи, <a href="#">читай</a>, оставляй комментарии.
-              </p>
-            </div>
-          </div>
-          <div className={s.newItem}>
-            <div className={s.newsItemDate}>
-              <span>26.03.2024</span>
-            </div>
-            <div className={s.newsItemDescription}>
-              <h4>Получили на прокур новый premium табак </h4>
-              <p>
-                Обычная нормальная банка, но открывать очень неудобно. Одну задолбался открывать,
-                выломать пришлось.
-              </p>
-            </div>
-          </div>
-          <div className={s.newItem}>
-            <div className={s.newsItemDate}>
-              <span>26.03.2024</span>
-            </div>
-            <div className={s.newsItemDescription}>
-              <h4>Получили на прокур новый premium табак </h4>
-              <p>
-                Обычная нормальная банка, но открывать очень неудобно. Одну задолбался открывать,
-                выломать пришлось.
-              </p>
-            </div>
-          </div>
+          {
+            newsTestData.map((item) => (
+              <NewsCard
+                key={item.id}
+                date={item.date}
+                title={item.title}
+                content={item.content}
+              />
+            ))
+          }
         </div>
       </div>
     </section>
