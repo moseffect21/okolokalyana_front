@@ -1,18 +1,25 @@
 import React from 'react'
 import LogoSvg from 'images/logo.svg'
+import Login from 'images/icons/login.svg'
 import s from './Header.module.scss'
 import NavBar from '../NavBar'
 import Link from 'next/link'
+import Button from '../uiComponents/Button'
 
 const Header = () => {
   return (
     <>
       <NavBar />
-      <div className={s.header}>
+      <header className={s.header}>
+        <div className={s.headerLeft}></div>
         <Link className={s.logo} href="/">
           <LogoSvg />
         </Link>
-      </div>
+        <Button className={s.loginBtn} containerClassName={s.btnContainer}>
+          <Login />
+          Войти
+        </Button>
+      </header>
     </>
   )
 }

@@ -1,0 +1,18 @@
+.newsContainer {
+  padding: 7rem 0 12rem 26.4rem;
+}
+.newsInner {
+  padding-left: 13.2rem;
+}
+.titleContainer {
+  margin-bottom: 3rem;
+  h1 {
+    font-size: 3.2rem;
+    line-height: 130%;
+  }
+}
+.newsBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
