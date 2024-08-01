@@ -1,23 +1,23 @@
 import React from 'react'
 import s from './NewsCard.module.scss'
+import Link from 'next/link'
+import type { News } from 'application/domain/entities/news/News'
 
 type NewsCardProps = {
-  date: string
-  title: string
-  content: string
+  item: News
 }
 
-const NewsCard = ({ date, title, content }: NewsCardProps) => {
+const NewsCard = ({ item }: NewsCardProps) => {
   return (
-    <div className={s.newCard}>
+    <Link href={`/news/${item.id}`} className={s.newCard}>
       <div className={s.newCardDate}>
-        <span>{date}</span>
+        <span>{item.created_at}</span>
       </div>
       <div className={s.newCardDescription}>
-        <h4>{title}</h4>
-        <p>{content}</p>
+        <h4>{item.title}</h4>
+        <p>{item.content}</p>
       </div>
-    </div>
+    </Link>
   )
 }
 

@@ -1,6 +1,6 @@
 type newsTestDataType = {
     id: number
-    date: string
+    created_at: string
     title: string
     content: string
 }
@@ -8,19 +8,19 @@ type newsTestDataType = {
 export const newsTestData: newsTestDataType[] = [
     {
        id: 1,
-       date: '26.03.2024',
+       created_at: '26.03.2024',
        title: 'Получили на прокур новый premium табак',
        content: 'Обычная нормальная банка, но открывать очень неудобно. Одну задолбался открывать,выломать пришлось.'
     },
     {
         id: 2,
-        date: '26.03.2024',
+        created_at: '26.03.2024',
         title: 'Получили на прокур новый premium табак',
         content: 'Обычная нормальная банка, но открывать очень неудобно. Одну задолбался открывать,выломать пришлось.'
      },
      {
         id: 3,
-        date: '26.03.2024',
+        created_at: '26.03.2024',
         title: 'Получили на прокур новый premium табак',
         content: 'Обычная нормальная банка, но открывать очень неудобно. Одну задолбался открывать,выломать пришлось.'
      },

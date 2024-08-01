@@ -17,12 +17,7 @@ export default function NewsContainer() {
         <div className={s.newsBlock}>
           {
             newsTestData.map((item) => (
-              <NewsCard
-                key={item.id}
-                date={item.date}
-                title={item.title}
-                content={item.content}
-              />
+              <NewsCard key={item.id} item={item}/>
             ))
           }
         </div>
