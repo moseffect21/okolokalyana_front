@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-import { env } from './.env'
+const { env } = require('./.env')
 const nextConfig = {
   images: {
     remotePatterns: [
