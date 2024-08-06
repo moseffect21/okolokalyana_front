@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+const { env } = require('./.env')
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -6,8 +7,13 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'okolokalyana.ru',
       },
+      {
+        protocol: 'https',
+        hostname: 'staging2.okolokalyana.ru',
+      },
     ],
   },
+  env,
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
