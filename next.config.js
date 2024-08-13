@@ -11,6 +11,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'staging2.okolokalyana.ru',
       },
+      {
+        protocol: 'https',
+        hostname: 'staging.okolokalyana.ru',
+      },
     ],
   },
   env,

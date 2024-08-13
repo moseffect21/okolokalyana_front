@@ -10,7 +10,8 @@ type ArticlesContainerProps = {
 
 const ArticlesContainer = ({ articleCategory }: ArticlesContainerProps) => {
   const category = articleCategory.slug
-  const sortedArticles = sortArticles(articleCategory.articles)
+  const articles = articleCategory.articles.data
+  const sortedArticles = sortArticles(articles)
 
   return (
     <div className={s.article_container}>

@@ -10,7 +10,8 @@ type VideosContainerProps = {
 
 const VideosContainer = ({ articleCategory }: VideosContainerProps) => {
   const category = articleCategory.slug
-  const sortedArticles = sortVideos(articleCategory.articles)
+  const articles = articleCategory.articles.data
+  const sortedArticles = sortVideos(articles)
   return (
     <div className={s.video_container}>
       {sortedArticles.map((item, index: number) => {

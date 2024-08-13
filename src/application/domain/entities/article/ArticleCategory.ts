@@ -1,3 +1,4 @@
+import { Pagination } from 'application/domain/types/Pagination'
 import { Articles } from './Article'
 
 export type ArticleCategory = {
@@ -11,5 +12,5 @@ export type ArticleCategory = {
   slug: string
   updated_at: string | null
   visible: boolean
-  articles: Articles
+  articles: Pagination<Articles>
 }
