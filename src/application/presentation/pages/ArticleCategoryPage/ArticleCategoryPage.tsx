@@ -10,6 +10,7 @@ import dayjs from 'dayjs'
 import VideosContainer from './components/VideosContainer'
 import getCategoryName from 'application/domain/useCases/category/getCategoryName'
 import Pagination from 'application/presentation/components/uiComponents/Pagination'
+import checkPageNumber from 'application/domain/utils/checkPageNumber'
 
 dayjs.locale('ru')
 
@@ -26,7 +27,7 @@ export const getArticleCategoryPageServerSideProps = async ({
     const page = query.page ? parseInt(query.page as string, 10) : 1
     const articleCategory = await fetchArticleCategory(params.category as string, page)
     const { current_page, last_page, total } = articleCategory.articles
-    if (current_page > last_page || current_page <= 0) {
+    if (!checkPageNumber(current_page, last_page)) {
       return {
         notFound: true,
       }

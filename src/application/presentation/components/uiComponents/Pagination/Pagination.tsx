@@ -14,17 +14,20 @@ const Pagination = ({ page, total, perPage = 15 }: PaginationProps) => {
   const pagesCount = Math.ceil(total / perPage)
   const pages = useMemo(() => {
     let links = []
-    if (page > 1) {
-      links.push({ id: 'prev', url: `${pathname}?page=${page - 1}`, name: '<' })
-    }
-    for (let i = 1; i <= pagesCount; i++) {
-      if (i <= page + 2 && i >= page - 2) {
-        links.push({ id: `link_${i}`, url: `${pathname}?page=${i}`, name: `${i}` })
+    if (pagesCount > 1) {
+      if (page > 1) {
+        links.push({ id: 'prev', url: `${pathname}?page=${page - 1}`, name: '<' })
+      }
+      for (let i = 1; i <= pagesCount; i++) {
+        if (i <= page + 2 && i >= page - 2) {
+          links.push({ id: `link_${i}`, url: `${pathname}?page=${i}`, name: `${i}` })
+        }
+      }
+      if (page !== pagesCount) {
+        links.push({ id: 'next', url: `${pathname}?page=${page + 1}`, name: '>' })
       }
     }
-    if (page !== pagesCount) {
-      links.push({ id: 'next', url: `${pathname}?page=${page + 1}`, name: '>' })
-    }
+
     return links
   }, [page, pagesCount, pathname])
 
