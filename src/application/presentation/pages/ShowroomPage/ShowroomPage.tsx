@@ -7,6 +7,7 @@ import Pagination from 'application/presentation/components/uiComponents/Paginat
 import React from 'react'
 import s from './ShowroomPage.module.scss'
 import ProductCard from 'application/presentation/components/ProductCard'
+import Chips from 'application/presentation/components/uiComponents/Chips'
 
 export const getShowroomPageServerSideProps = async ({ query }: GetServerSideDefaultProps) => {
   try {
@@ -40,6 +41,10 @@ type ShowroomPageProps = {
 }
 
 export default function ShowroomPage({ products, page, total }: ShowroomPageProps) {
+  const categories = [
+    { id: 1, name: 'Все', href: '/showroom' },
+    { id: 2, name: 'Уголь', href: '/showroom/coals' },
+  ]
   return (
     <PageLayout
       title="Шоурум"
@@ -48,7 +53,11 @@ export default function ShowroomPage({ products, page, total }: ShowroomPageProp
         { id: 2, name: 'Все' },
       ]}
     >
-      <Pagination page={page} total={total} />
+      <div className={s.nav_container}>
+        <Chips data={categories} />
+        <Pagination page={page} total={total} />
+      </div>
+
       <div className={s.container}>
         {products.map(product => (
           <ProductCard key={`product_${product.id}`} product={product} className={s.product} />

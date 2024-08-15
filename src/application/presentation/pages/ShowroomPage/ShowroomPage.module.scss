@@ -4,12 +4,17 @@
   margin-top: 3rem;
 
   .product {
-    width: calc(100% / 3 - 0.8rem);
+    width: calc(100% / 4 - 0.8rem);
     margin-right: 1rem;
     height: 0;
-    padding-bottom: calc(100% / 3 - 0.8rem);
-    &:nth-child(3n) {
+    padding-bottom: calc(100% / 4 - 0.8rem);
+    &:nth-child(4n) {
       margin-right: 0;
     }
   }
+}
+.nav_container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
 }

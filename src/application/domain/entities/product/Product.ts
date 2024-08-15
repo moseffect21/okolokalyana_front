@@ -19,4 +19,5 @@ export type Product = {
   wb_link: string | null
   wb_price: string | null
   youtube_link: string | null
+  content: string | null
 }
