@@ -21,3 +21,12 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .container {
+    justify-content: center;
+  }
+  .item {
+    margin: 0 1rem;
+  }
+}

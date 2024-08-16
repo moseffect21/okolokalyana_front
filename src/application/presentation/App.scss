@@ -15,6 +15,11 @@ body {
   width: 100%;
   font-size: 62.5%;
 }
+.modal_opened {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
 input,
 button,
 textarea {
@@ -32,7 +37,7 @@ p {
   margin-bottom: 1.2rem;
 }
 a {
-  color: #9747FF;
+  color: #9747ff;
   text-decoration: none;
   &:hover {
     color: #a766fd;

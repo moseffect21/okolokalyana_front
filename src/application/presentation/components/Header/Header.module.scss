@@ -20,7 +20,55 @@
     height: 1.8rem;
   }
 }
-.headerLeft, .btnContainer {
+.headerLeft,
+.btnContainer {
   width: 14rem;
   flex-shrink: 0;
+}
+
+.mobileMenu {
+  position: absolute;
+  left: 0;
+  top: 6rem;
+  width: 100%;
+  height: calc(100% - 6rem);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  background-color: #000;
+  z-index: 10;
+  &.opened {
+    transform: translateX(0);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 0 0 0 0;
+  }
+  .headerLeft,
+  .headerRight {
+    width: 7rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .headerLeft svg {
+    width: 2.5rem;
+    height: 2rem;
+    path {
+      fill: #fff;
+    }
+  }
+  .headerRight svg {
+    width: 2rem;
+    height: 2rem;
+  }
+  .logo {
+    svg {
+      width: 18rem;
+    }
+  }
 }
