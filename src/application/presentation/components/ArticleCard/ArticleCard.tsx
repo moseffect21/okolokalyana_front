@@ -6,6 +6,7 @@ import StoredImage from '../uiComponents/StoredImage'
 import dayjs from 'dayjs'
 import { Article } from 'application/domain/entities/article/Article'
 import PlaySvg from 'images/icons/play_button.svg'
+import cn from 'classnames'
 
 type Props = {
   item: Article
@@ -17,9 +18,12 @@ const ArticleCard = ({ item, type, categSlug }: Props) => {
   return (
     <Link
       href={`/blog/${categSlug}/${item.slug}`}
-      className={`${s.card} ${type === 'long' ? s.long : ''} ${type === 'short' ? s.short : ''} ${
-        type === 'high' ? s.high : ''
-      } ${categSlug === 'video' && s.video}`}
+      className={cn(s.card, {
+        [s.long]: type === 'long',
+        [s.short]: type === 'short',
+        [s.high]: type === 'high',
+        [s.video]: categSlug === 'video',
+      })}
     >
       <StoredImage src={item.preview_img} width={600} height={300} className={s.back_img} alt="" />
       <div className={s.gradient} />

@@ -1,8 +1,9 @@
 import { Product } from 'application/domain/entities/product/Product'
-import React, { useMemo } from 'react'
+import React from 'react'
 import s from './ProductCard.module.scss'
 import StoredImage from '../uiComponents/StoredImage'
 import Link from 'next/link'
+import cn from 'classnames'
 
 type ProductCardProps = {
   product: Product
@@ -12,7 +13,7 @@ type ProductCardProps = {
 const ProductCard = ({ product, className }: ProductCardProps) => {
   const image = product.images ? JSON.parse(product.images)[0] : ''
   return (
-    <Link className={`${s.card} ${className || ''}`} href={`/showroom/${product.slug}`}>
+    <Link className={cn(s.card, className || '')} href={`/showroom/${product.slug}`}>
       <StoredImage src={image} width={600} height={300} className={s.back_img} alt="" />
       <div className={s.gradient} />
       <div className={s.shadow} />

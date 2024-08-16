@@ -7,6 +7,7 @@ import { MetaArticlePage } from 'application/presentation/meta/MetaContent'
 import React from 'react'
 import s from './ArticlePage.module.scss'
 import StoredImage from 'application/presentation/components/uiComponents/StoredImage'
+import cn from 'classnames'
 
 export const getArticlePageServerSideProps = async ({ params }: GetServerSideDefaultProps) => {
   if (!params?.slug) {
@@ -48,7 +49,7 @@ export default function ArticlePage({ article, category }: ArticlePageProps) {
         ]}
       >
         <div className={s.container}>
-          <div className={`${s.preview} ${article.type === 'video' ? s.video : ''}`}>
+          <div className={cn(s.preview, { [s.video]: article.type === 'video' })}>
             {article.type === 'video' ? (
               <iframe
                 width="560"

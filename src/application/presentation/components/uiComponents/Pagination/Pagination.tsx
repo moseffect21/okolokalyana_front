@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 import s from './Pagination.module.scss'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import cn from 'classnames'
 
 type PaginationProps = {
   page: number
@@ -39,7 +40,7 @@ const Pagination = ({ page, total, perPage = 15 }: PaginationProps) => {
           <Link
             key={`link_item_${link.id}`}
             href={link.url}
-            className={`${s.link} ${isActive && s.active}`}
+            className={cn(s.link, { [s.active]: isActive })}
           >
             {link.name}
           </Link>

@@ -2,6 +2,7 @@ import React from 'react'
 import s from './Chips.module.scss'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import cn from 'classnames'
 
 export type ChipsItem = {
   id: number | string
@@ -18,7 +19,7 @@ type ChipsProps = {
 const Chips = ({ className, data, onItemClick }: ChipsProps) => {
   const pathname = usePathname()
   return (
-    <div className={`${s.container} ${className || ''}`}>
+    <div className={cn(s.container, className || '')}>
       {data.map(item => {
         const Wrapper = item.href ? Link : 'div'
         const onClickHandler = () => (onItemClick ? onItemClick(item) : {})
@@ -28,7 +29,7 @@ const Chips = ({ className, data, onItemClick }: ChipsProps) => {
             key={`chip_item_${item.id}`}
             href={item.href || ''}
             onClick={onClickHandler}
-            className={`${s.chip} ${isActive && s.active}`}
+            className={cn(s.chip, { [s.active]: isActive })}
           >
             {item.name}
           </Wrapper>

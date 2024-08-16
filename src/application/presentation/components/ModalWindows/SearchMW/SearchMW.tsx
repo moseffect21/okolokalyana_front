@@ -6,6 +6,7 @@ import Loader from '../../uiComponents/Loader'
 import SearchItem from './components/SearchItem'
 import { Article } from 'application/domain/entities/article/Article'
 import { Router } from 'next/router'
+import cn from 'classnames'
 
 type SearchMWProps = {
   opened: boolean
@@ -61,7 +62,7 @@ export default function SearchMW({ opened, setOpened }: SearchMWProps) {
   }, [])
 
   return (
-    <div className={`${s.container} ${opened && s.opened}`}>
+    <div className={cn(s.container, { [s.opened]: opened })}>
       <button className={s.close_btn} onClick={closeMW}>
         <CloseSvg />
       </button>

@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactModal from 'react-modal'
 import CloseSvg from 'images/icons/close_icon.svg'
+import cn from 'classnames'
 import s from './ModalWindow.module.scss'
 
 type ModalWindowProps = {
@@ -27,7 +28,7 @@ const ModalWindow = ({
       isOpen={opened}
       onRequestClose={onRequestClose}
       overlayClassName={s.overlay}
-      className={`${s.modal_window} ${notFull && s.not_full}`}
+      className={cn(s.modal_window, { [s.not_full]: notFull })}
     >
       <>
         {!withoutCloseBtn && (

@@ -1,6 +1,7 @@
 import Link from 'next/link'
-import React, { useMemo } from 'react'
+import React from 'react'
 import s from './Button.module.scss'
+import cn from 'classnames'
 
 type ButtonProps = {
   children: React.ReactNode
@@ -13,8 +14,8 @@ type ButtonProps = {
 const Button = ({ children, href, containerClassName, className, onClick }: ButtonProps) => {
   const Wrapper = href ? Link : 'button'
   return (
-    <div className={`${s.container} ${containerClassName || ''}`}>
-      <Wrapper href={href || '#'} className={`${s.btn} ${className || ''}`} onClick={onClick}>
+    <div className={cn(s.container, containerClassName || '')}>
+      <Wrapper href={href || '#'} className={cn(s.btn, className || '')} onClick={onClick}>
         {children}
       </Wrapper>
     </div>
