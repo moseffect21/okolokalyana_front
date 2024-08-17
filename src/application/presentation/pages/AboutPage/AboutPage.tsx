@@ -5,16 +5,15 @@ import { MetaAboutPage } from 'application/presentation/meta/MetaContent'
 import TeamMember from './components/TeamMember'
 import s from './AboutPage.module.scss'
 import { Team } from 'application/domain/entities/team/Team'
-import minifyObject from 'application/domain/utils/minifyObject'
 import { fetchTeam } from 'application/domain/useCases/team/getTeam'
+import pickParamsFromObject from 'application/domain/utils/pickParamsFromObject'
 
 export const getAboutPageServerSideProps = async ({}: GetServerSideDefaultProps) => {
   try {
     const team = await fetchTeam()
-    const keys = ['id', 'photo', 'name']
     return {
       props: {
-        team: team?.map(item => minifyObject(item, keys)),
+        team: team?.map(item => pickParamsFromObject(item, ['id', 'photo', 'name'])),
       },
     }
   } catch (e) {

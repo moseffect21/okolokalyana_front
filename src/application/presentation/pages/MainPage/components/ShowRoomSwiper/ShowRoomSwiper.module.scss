@@ -1,0 +1,64 @@
+.container {
+  padding: 7rem 0 5rem 0;
+  background-color: #fff;
+
+  .showRoomSwiperInner {
+    .black_text {
+      font-size: 6.4rem;
+      line-height: 7.8rem;
+      color: #000000;
+      font-weight: 700;
+      margin-left: 26.4rem;
+      margin-bottom: 4rem;
+    }
+
+    .swiper_container {
+      position: relative;
+
+      .swiperSlide {
+        width: 24rem;
+        img {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+        }
+      }
+
+      .sliderController {
+        display: flex;
+        justify-content: space-between;
+
+        .prevBtn,
+        .nextBtn {
+          width: 4.5rem;
+          height: 4.5rem;
+          cursor: pointer;
+        }
+      }
+    }
+    .link_container {
+      height: calc(50% - 1rem);
+      margin-top: 9rem;
+      position: relative;
+
+      .show_all {
+        display: flex;
+        align-items: center;
+        width: fit-content;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        font-size: 1.6rem;
+        line-height: 1.7rem;
+        color: #000000;
+
+        svg {
+          margin-left: 1rem;
+          width: 2.2rem;
+          height: 2.2rem;
+          display: block;
+        }
+      }
+    }
+  }
+}

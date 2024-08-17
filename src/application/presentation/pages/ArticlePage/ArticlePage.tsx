@@ -36,6 +36,7 @@ type ArticlePageProps = {
 
 export default function ArticlePage({ article, category }: ArticlePageProps) {
   const categoryTitle = getCategoryName(category)
+
   return (
     <>
       <MetaArticlePage article={article} />
@@ -43,7 +44,7 @@ export default function ArticlePage({ article, category }: ArticlePageProps) {
         title={article.title}
         withBackButton
         breadCrumbs={[
-          { id: 1, name: categoryTitle, link: `/${category}` },
+          { id: 1, name: categoryTitle, link: `/blog/${category}` },
           { id: 2, name: article.title },
         ]}
       >
