@@ -69,3 +69,10 @@
     height: 100%;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: calc(50% - 0.5rem);
+    padding-bottom: calc(50% - 0.5rem);
+  }
+}

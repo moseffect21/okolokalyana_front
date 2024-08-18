@@ -33,3 +33,20 @@
     object-fit: cover;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
+  .thumbs {
+    width: 9.4rem;
+    flex-shrink: 0;
+    .thumb {
+      width: 8.6rem;
+      height: 8.6rem;
+    }
+  }
+  .photo {
+    width: 100%;
+  }
+}

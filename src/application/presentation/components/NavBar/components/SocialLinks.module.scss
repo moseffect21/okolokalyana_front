@@ -25,6 +25,8 @@
 @media screen and (max-width: 768px) {
   .container {
     justify-content: center;
+    left: 0;
+    width: 100%;
   }
   .item {
     margin: 0 1rem;

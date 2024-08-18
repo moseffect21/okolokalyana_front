@@ -79,3 +79,11 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .card {
+    .title {
+      font-size: 1.8rem;
+    }
+  }
+}

@@ -9,13 +9,28 @@ import Link from 'next/link'
 import Button from '../uiComponents/Button'
 import { DesktopContainer, MobileContainer } from '../uiComponents/AdaptiveContainers'
 import cn from 'classnames'
+import Router from 'next/router'
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState<boolean>()
   const burgerClickHandler = () => setShowMenu(prev => !prev)
+
   useEffect(() => {
     document.body.className = showMenu ? 'modal_opened' : ''
   }, [showMenu])
+
+  useEffect(() => {
+    const handleRouteDone = () => setShowMenu(false)
+
+    Router.events.on('routeChangeComplete', handleRouteDone)
+    Router.events.on('routeChangeError', handleRouteDone)
+
+    return () => {
+      Router.events.off('routeChangeComplete', handleRouteDone)
+      Router.events.off('routeChangeError', handleRouteDone)
+    }
+  }, [])
+
   return (
     <>
       <DesktopContainer>
