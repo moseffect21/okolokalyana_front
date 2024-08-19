@@ -8,14 +8,12 @@ type StoredImageProps = ImageProps & {
 }
 
 const StoredImage: React.FC<StoredImageProps> = ({ src, alt, className, ...props }) => {
-  return (
-    <Image
-      {...props}
-      src={`${apiClient.defaults.baseURL}storage/${src}`}
-      alt={alt || ''}
-      className={className}
-    />
-  )
+  const { baseURL } = apiClient.defaults
+  const imageUrl = baseURL?.endsWith('/')
+    ? `${apiClient.defaults.baseURL}storage/${src}`
+    : `${apiClient.defaults.baseURL}/storage/${src}`
+
+  return <Image {...props} src={imageUrl} alt={alt || ''} className={className} />
 }
 
 export default StoredImage

@@ -1,5 +1,6 @@
 import React from 'react'
 import { RotatingLines } from 'react-loader-spinner'
+import cn from 'classnames'
 
 import s from './Loader.module.scss'
 
@@ -13,9 +14,11 @@ type Props = {
 const Loader = ({ color, size, containerClassName, withoutMargin }: Props) => {
   return (
     <div
-      className={`${s.loader_container} ${withoutMargin ? s.without_margin : ''} ${
-        containerClassName || ''
-      }`}
+      className={cn(
+        s.loader_container,
+        { [s.without_margin]: withoutMargin },
+        containerClassName || '',
+      )}
     >
       <RotatingLines
         strokeColor={color || '#ffffff'}

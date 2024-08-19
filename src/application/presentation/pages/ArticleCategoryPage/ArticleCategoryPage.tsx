@@ -9,11 +9,14 @@ import 'dayjs/locale/ru'
 import dayjs from 'dayjs'
 import VideosContainer from './components/VideosContainer'
 import getCategoryName from 'application/domain/useCases/category/getCategoryName'
+import Pagination from 'application/presentation/components/uiComponents/Pagination'
+import checkPageNumber from 'application/domain/utils/checkPageNumber'
 
 dayjs.locale('ru')
 
 export const getArticleCategoryPageServerSideProps = async ({
   params,
+  query,
 }: GetServerSideDefaultProps) => {
   if (!params?.category) {
     return {
@@ -21,11 +24,20 @@ export const getArticleCategoryPageServerSideProps = async ({
     }
   }
   try {
-    const articleCategory = await fetchArticleCategory(params.category as string)
+    const page = query.page ? parseInt(query.page as string, 10) : 1
+    const articleCategory = await fetchArticleCategory(params.category as string, page)
+    const { current_page, last_page, total } = articleCategory.articles
+    if (!checkPageNumber(current_page, last_page)) {
+      return {
+        notFound: true,
+      }
+    }
     return {
       props: {
         category: params.category,
         articleCategory,
+        page: current_page,
+        total,
       },
     }
   } catch (e) {
@@ -38,17 +50,22 @@ export const getArticleCategoryPageServerSideProps = async ({
 type ArticleCategoryPageProps = {
   category: string
   articleCategory: ArticleCategory
+  page: number
+  total: number
 }
 
 export default function ArticleCategoryPage({
   category,
   articleCategory,
+  page,
+  total,
 }: ArticleCategoryPageProps) {
   const title = getCategoryName(category)
   return (
     <>
       <MetaArticleCategoryPage articleCategory={articleCategory} />
       <PageLayout title={title} breadCrumbs={[{ id: 1, name: title }]}>
+        <Pagination page={page} total={total} />
         {category === 'video' ? (
           <VideosContainer articleCategory={articleCategory} />
         ) : (

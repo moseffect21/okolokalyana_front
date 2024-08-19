@@ -1,0 +1,15 @@
+.desk_container {
+  display: block;
+}
+.mobile_container {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .desk_container {
+    display: none !important;
+  }
+  .mobile_container {
+    display: block !important;
+  }
+}

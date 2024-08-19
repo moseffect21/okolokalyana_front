@@ -3,6 +3,7 @@ import React from 'react'
 import ArrowSvg from 'images/icons/gray_right_arrow.svg'
 import s from './BreadCrumbs.module.scss'
 import Link from 'next/link'
+import cn from 'classnames'
 
 type BreadCrumbsProps = {
   data: BreadCrumb[]
@@ -11,7 +12,7 @@ type BreadCrumbsProps = {
 
 const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ data, containerClassName }) => {
   return (
-    <div className={`${s.container} ${containerClassName || ''}`}>
+    <div className={cn(s.container, containerClassName || '')}>
       {data.map((item, index) => (
         <div className={s.crumb} key={`bread_crumb_${item.id}`}>
           {index !== 0 && (
@@ -21,7 +22,7 @@ const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ data, containerClassName }) =
           )}
           <Link
             href={item.link || '#'}
-            className={`${s.link} ${index === data.length - 1 && s.disabled}`}
+            className={cn(s.link, { [s.disabled]: index === data.length - 1 })}
           >
             {item.name}
           </Link>

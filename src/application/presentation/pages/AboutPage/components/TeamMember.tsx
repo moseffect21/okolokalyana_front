@@ -5,6 +5,7 @@ import BlogerSvg from 'images/BLOGER.svg'
 import EditorSvg from 'images/editor.svg'
 import Link from 'next/link'
 import StoredImage from 'application/presentation/components/uiComponents/StoredImage'
+import cn from 'classnames'
 
 type TeamMemberProps = {
   data: TeamMemberType
@@ -16,7 +17,7 @@ const TeamMember: React.FC<TeamMemberProps> = ({ data, hovered, setHovered }) =>
   const roleIcon = data.id === 4 ? <BlogerSvg /> : <EditorSvg />
   return (
     <Link
-      className={`${s.container} ${hovered && s.hovered}`}
+      className={cn(s.container, { [s.hovered]: hovered })}
       href={`/about/${data.id}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
