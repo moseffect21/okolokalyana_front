@@ -15,12 +15,13 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/effect-coverflow'
 import Link from 'next/link'
+import ShowMoreLink from 'application/presentation/components/uiComponents/ShowMoreLink'
 
 const imgData = [slide1, slide2, slide3, slide4, slide5]
 
 const ShowRoomSwiper = () => {
   return (
-    <div className={s.container}>
+    <section className={s.container}>
       <div className={s.showRoomSwiperInner}>
         <div className={s.black_text}>Шоурум</div>
         <Swiper
@@ -37,20 +38,20 @@ const ShowRoomSwiper = () => {
             slideShadows: false,
           }}
           navigation={{
-            nextEl: `.${s.nextBtn}`,
-            prevEl: `.${s.prevBtn}`,
-            // nextEl: '.swiper-button-next',
-            // prevEl: '.swiper-button-prev',
+            // nextEl: `.${s.nextBtn}`,
+            // prevEl: `.${s.prevBtn}`,
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
           }}
           modules={[EffectCoverflow, Navigation]}
           className={s.swiper_container}
         >
           {imgData.map((item, index) => (
-            <Link key={index} href="#">
-              <SwiperSlide className={s.swiperSlide}>
+            <SwiperSlide key={index} className={s.swiperSlide}>
+              <Link key={index} href="#">
                 <Image src={item} alt="" />
-              </SwiperSlide>
-            </Link>
+              </Link>
+            </SwiperSlide>
           ))}
           {/* <div className={s.sliderController}>
             <div className={s.prevBtn}>
@@ -65,13 +66,9 @@ const ShowRoomSwiper = () => {
             <div className="swiper-button-next slider-arrow"></div>
           </div>
         </Swiper>
-        <div className={s.link_container}>
-          <Link href="#" className={s.show_all}>
-            <span>Смотреть все</span> <BackArrow />
-          </Link>
-        </div>
+        <ShowMoreLink color='black' href='/showroom' />
       </div>
-    </div>
+    </section>
   )
 }
 

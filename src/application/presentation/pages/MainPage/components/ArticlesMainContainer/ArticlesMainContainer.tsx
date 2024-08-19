@@ -16,7 +16,7 @@ export default function ArticlesMainContainer({ articles }: ArticlesMainProps) {
   return (
     <section className={s.articlesContainer}>
       <div className={s.articlesInner}>
-        <div className={s.back_text}>Статьи</div>
+        <div className={s.titleText}>Статьи</div>
 
         <div className={s.article_container}>
           {sortedArticles.map((item: any, i: number) => {

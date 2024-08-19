@@ -3,9 +3,9 @@ import s from './HookahContainer.module.scss'
 
 const HookahContainer = () => {
   return (
-    <div className={s.container}>
-        <div className={s.text}>Прокурочный цех</div>
-    </div>
+    <section className={s.container}>
+        <div className={s.titleText}>Прокурочный цех</div>
+    </section>
   )
 }
 

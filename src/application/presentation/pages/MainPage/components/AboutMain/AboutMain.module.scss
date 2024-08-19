@@ -1,0 +1,21 @@
+.container {
+  padding: 7rem 0 6.6rem 26.4rem;
+  background: #000000b2;
+  .aboutInner {
+    padding-left: 13.2rem;
+    padding-right: 13.2rem;
+    .titleText {
+      font-size: 6.4rem;
+      line-height: 7.8rem;
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+    }
+    .aboutContainer {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  }
+}

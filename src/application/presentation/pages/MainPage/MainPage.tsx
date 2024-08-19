@@ -4,32 +4,21 @@ import MainContainer from './components/MainContainer/MainContainer'
 import VideoSwiper from './components/VideoSwiper/VideoSwiper'
 import NewsContainer from './components/NewsContainer'
 import ArticlesMainContainer from './components/ArticlesMainContainer/ArticlesMainContainer'
-import { Articles } from 'application/domain/entities/article/Article'
 import { fetchMainRequest } from 'application/data/api/main'
-import pickParamsFromObject from 'application/domain/utils/pickParamsFromObject'
 import ShowroomSwiper from './components/ShowRoomSwiper'
 import HookahContainer from './components/HookahContainer'
+import { MainData } from 'application/domain/entities/main/MainData'
+import MainPageBlockWithBackground from './components/MainPageBlockWithBackground/MainPageBlockWithBackground'
+import Footer from 'application/presentation/components/Footer'
+import AboutMain from './components/AboutMain'
+import PartnersMain from './components/PartnersMain'
 
 export const getMainPageServerSideProps = async () => {
   try {
     const mainData = await fetchMainRequest()
-    const articles = mainData.articles
-      .slice(0, 4)
-      .map(item =>
-        pickParamsFromObject(item, [
-          'id',
-          'preview_img',
-          'slug',
-          'title',
-          'preview_text',
-          'time',
-          'created_at',
-        ]),
-      )
-
     return {
       props: {
-        articles,
+        ...mainData,
       },
     }
   } catch (e) {
@@ -39,22 +28,22 @@ export const getMainPageServerSideProps = async () => {
   }
 }
 
-type MainPageProps = {
-  articles: Articles
-}
+type MainPageProps = MainData
 
-export default function MainPage({ articles }: MainPageProps) {
+export default function MainPage({ articles, team, partners }: MainPageProps) {
   return (
     <>
       <MetaMainPage />
-      <main>
-        <MainContainer />
-        <NewsContainer />
-        <VideoSwiper />
-        <ArticlesMainContainer articles={articles} />
-        <HookahContainer />
-        <ShowroomSwiper/>
-      </main>
+      <MainContainer />
+      <NewsContainer />
+      <VideoSwiper />
+      <ArticlesMainContainer articles={articles} />
+      <MainPageBlockWithBackground />
+      <HookahContainer />
+      <ShowroomSwiper />
+      <AboutMain team={team} />
+      <PartnersMain partners={partners}/>
+      <Footer />
     </>
   )
 }
