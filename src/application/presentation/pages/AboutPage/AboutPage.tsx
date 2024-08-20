@@ -11,7 +11,7 @@ import { fetchTeam } from 'application/domain/useCases/team/getTeam'
 export const getAboutPageServerSideProps = async ({}: GetServerSideDefaultProps) => {
   try {
     const team = await fetchTeam()
-    const keys = ['id', 'photo', 'name']
+    const keys = ['id', 'photo', 'name', 'little_role']
     return {
       props: {
         team: team?.map(item => minifyObject(item, keys)),

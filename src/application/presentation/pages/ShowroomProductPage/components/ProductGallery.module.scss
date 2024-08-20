@@ -29,7 +29,7 @@
   height: 30rem;
   img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
   }
 }
@@ -37,9 +37,15 @@
 @media screen and (max-width: 768px) {
   .container {
     width: 100%;
+    flex-direction: column-reverse;
   }
   .thumbs {
-    width: 9.4rem;
+    padding: 1rem 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    overflow: auto;
     flex-shrink: 0;
     .thumb {
       width: 8.6rem;
@@ -48,5 +54,6 @@
   }
   .photo {
     width: 100%;
+    height: auto;
   }
 }

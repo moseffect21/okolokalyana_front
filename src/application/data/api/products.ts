@@ -29,9 +29,15 @@ export const fetchProductCategories = async (): Promise<ProductCategory[]> => {
 }
 
 export const fetchProductCategory = async (
-  id: number,
+  slug: string | number,
   page = 1,
+  options?: { resource: 'short' | 'long' },
 ): Promise<ProductCategoryWithProducts> => {
-  const { data } = await apiClient.get(`/api/v1/shop/categories/${id}?page=${page}`)
+  const { data } = await apiClient.get(`/api/v1/shop/categories/${slug}`, {
+    params: {
+      page,
+      ...options,
+    },
+  })
   return data
 }
