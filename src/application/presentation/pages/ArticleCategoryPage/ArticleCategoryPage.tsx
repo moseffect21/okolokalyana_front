@@ -2,7 +2,10 @@ import { GetServerSideDefaultProps } from 'application/domain/types/ServerSidePr
 import PageLayout from 'application/presentation/components/Layouts/PageLayout'
 import React from 'react'
 import { ArticleCategory } from 'application/domain/entities/article/ArticleCategory'
-import { fetchArticleCategory } from 'application/domain/useCases/article/getArticle'
+import {
+  fetchArticleCategory,
+  getArticleCategorySubcategories,
+} from 'application/domain/useCases/article/getArticle'
 import { MetaArticleCategoryPage } from 'application/presentation/meta/MetaContent'
 import ArticlesContainer from './components/ArticlesContainer'
 import 'dayjs/locale/ru'
@@ -11,6 +14,10 @@ import VideosContainer from './components/VideosContainer'
 import getCategoryName from 'application/domain/useCases/category/getCategoryName'
 import Pagination from 'application/presentation/components/uiComponents/Pagination'
 import checkPageNumber from 'application/domain/utils/checkPageNumber'
+import s from './ArticleCategoryPage.module.scss'
+import Chips from 'application/presentation/components/uiComponents/Chips'
+import Selector from 'application/presentation/components/uiComponents/InputComponents/Selector'
+import { usePathname, useRouter } from 'next/navigation'
 
 dayjs.locale('ru')
 
@@ -24,8 +31,10 @@ export const getArticleCategoryPageServerSideProps = async ({
     }
   }
   try {
+    const categories = await getArticleCategorySubcategories(params.category as string)
     const page = query.page ? parseInt(query.page as string, 10) : 1
-    const articleCategory = await fetchArticleCategory(params.category as string, page)
+    const sort = query.sort ? (query.sort as string) : null
+    const articleCategory = await fetchArticleCategory(params.category as string, page, { sort })
     const { current_page, last_page, total } = articleCategory.articles
     if (!checkPageNumber(current_page, last_page)) {
       return {
@@ -38,6 +47,7 @@ export const getArticleCategoryPageServerSideProps = async ({
         articleCategory,
         page: current_page,
         total,
+        categories,
       },
     }
   } catch (e) {
@@ -47,11 +57,19 @@ export const getArticleCategoryPageServerSideProps = async ({
   }
 }
 
+const sortOptions = [
+  { label: 'По рейтингу', value: 'view_count' },
+  { label: 'По обновлению', value: 'updated_at' },
+  { label: 'По дате публикации', value: 'created_at' },
+  { label: 'По названию', value: 'title' },
+]
+
 type ArticleCategoryPageProps = {
   category: string
   articleCategory: ArticleCategory
   page: number
   total: number
+  categories: ArticleCategory[]
 }
 
 export default function ArticleCategoryPage({
@@ -59,13 +77,34 @@ export default function ArticleCategoryPage({
   articleCategory,
   page,
   total,
+  categories,
 }: ArticleCategoryPageProps) {
+  const router = useRouter()
+  const pathname = usePathname()
   const title = getCategoryName(category)
+  const chips =
+    categories?.map(item => ({
+      id: item.id,
+      name: item.name,
+      href: `/blog/${item.slug}`,
+    })) || []
+
+  const onSortChange = (value: string) => {
+    router.replace(`${pathname}?sort=${value}&page=1`)
+  }
+
   return (
     <>
       <MetaArticleCategoryPage articleCategory={articleCategory} />
-      <PageLayout title={title} breadCrumbs={[{ id: 1, name: title }]}>
-        <Pagination page={page} total={total} />
+      <PageLayout
+        title={title}
+        breadCrumbs={[{ id: 1, name: title }]}
+        rightComponent={<Selector options={sortOptions} onChange={onSortChange} />}
+      >
+        <div className={s.nav_container}>
+          <Chips data={chips} />
+          <Pagination page={page} total={total} />
+        </div>
         {category === 'video' ? (
           <VideosContainer articleCategory={articleCategory} />
         ) : (

@@ -5,11 +5,25 @@
 .breadCrumbs {
   padding-bottom: 0.6rem;
 }
+.title_container {
+  display: flex;
+  justify-content: space-between;
+}
+.right_container {
+  padding-top: 2.3rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 3rem;
+  display: flex;
+  justify-content: flex-end;
+}
 .title {
   font-size: 6.4rem;
   line-height: 130%;
   color: #fff;
   margin: 0;
+  flex-shrink: 0;
+  width: auto;
 }
 .back_btn {
   display: block;
@@ -35,5 +49,12 @@
   }
   .title {
     font-size: 4rem;
+  }
+  .title_container {
+    flex-direction: column;
+  }
+  .right_container {
+    justify-content: flex-start;
+    padding-left: 0;
   }
 }

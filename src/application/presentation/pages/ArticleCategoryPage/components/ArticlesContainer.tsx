@@ -20,7 +20,7 @@ const ArticlesContainer = ({ articleCategory }: ArticlesContainerProps) => {
         const isReverse = index % 2 === 1
         return (
           <div
-            className={cn(s.row_containerm, { [s.reverse]: isReverse })}
+            className={cn(s.row_container, { [s.reverse]: isReverse })}
             key={`articles_row_${item[0]?.id || index}`}
           >
             <div className={s.row}>

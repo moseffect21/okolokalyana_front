@@ -13,4 +13,5 @@ export type ArticleCategory = {
   updated_at: string | null
   visible: boolean
   articles: Pagination<Articles>
+  subcategories: ArticleCategory[]
 }

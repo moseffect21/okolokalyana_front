@@ -10,7 +10,18 @@ export const fetchArticleRequest = async (idOrSlug: string): Promise<GetArticleR
 export const fetchArticleCategoryRequest = async (
   category: string,
   page = 1,
+  options: { per_page?: number | null; sort?: string | null } | undefined = undefined,
 ): Promise<ArticleCategory> => {
-  const { data } = await apiClient.get(`/api/v1/category/${category}?page=${page}`)
+  const { data } = await apiClient.get(`/api/v1/category/${category}`, {
+    params: {
+      page,
+      ...options,
+    },
+  })
+  return data
+}
+
+export const fetchArticleCategoriesRequest = async (): Promise<ArticleCategory[]> => {
+  const { data } = await apiClient.get('/api/v1/categories')
   return data
 }
