@@ -59,11 +59,18 @@
 }
 .role {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  height: 100%;
+  right: -37%;
+  bottom: -11%;
   padding: 1.5rem;
   box-sizing: border-box;
+  width: 100%;
+  .role_txt {
+    font-size: 4vw;
+    font-weight: bold;
+    color: #ffffff1a;
+    transform: rotate(-90deg) translateX(50%);
+    width: 100%;
+  }
   svg {
     width: auto;
     height: 100%;
@@ -74,5 +81,10 @@
   .container {
     width: calc(50% - 0.5rem);
     padding-bottom: calc(50% - 0.5rem);
+  }
+  .role {
+    .role_txt {
+      font-size: 7.5vw;
+    }
   }
 }
