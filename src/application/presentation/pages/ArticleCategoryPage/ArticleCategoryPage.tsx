@@ -18,6 +18,7 @@ import s from './ArticleCategoryPage.module.scss'
 import Chips from 'application/presentation/components/uiComponents/Chips'
 import Selector from 'application/presentation/components/uiComponents/InputComponents/Selector'
 import { usePathname, useRouter } from 'next/navigation'
+import EmptyNotice from 'application/presentation/components/uiComponents/EmptyNotice'
 
 dayjs.locale('ru')
 
@@ -58,10 +59,10 @@ export const getArticleCategoryPageServerSideProps = async ({
 }
 
 const sortOptions = [
-  { label: 'По рейтингу', value: 'view_count' },
-  { label: 'По обновлению', value: 'updated_at' },
-  { label: 'По дате публикации', value: 'created_at' },
-  { label: 'По названию', value: 'title' },
+  { label: 'По рейтингу', value: 'sort=view_count' },
+  { label: 'По обновлению', value: 'sort=updated_at' },
+  { label: 'По дате публикации', value: 'sort=created_at' },
+  { label: 'По названию', value: 'sort=title&sort_direction=asc' },
 ]
 
 type ArticleCategoryPageProps = {
@@ -90,7 +91,7 @@ export default function ArticleCategoryPage({
     })) || []
 
   const onSortChange = (value: string) => {
-    router.replace(`${pathname}?sort=${value}&page=1`)
+    router.replace(`${pathname}?${value}&page=1`)
   }
 
   return (
@@ -99,16 +100,24 @@ export default function ArticleCategoryPage({
       <PageLayout
         title={title}
         breadCrumbs={[{ id: 1, name: title }]}
-        rightComponent={<Selector options={sortOptions} onChange={onSortChange} />}
+        rightComponent={
+          <Selector options={sortOptions} onChange={onSortChange} placeholder="Сортировка" />
+        }
       >
         <div className={s.nav_container}>
           <Chips data={chips} />
           <Pagination page={page} total={total} />
         </div>
-        {category === 'video' ? (
-          <VideosContainer articleCategory={articleCategory} />
+        {total === 0 ? (
+          <EmptyNotice text="По вашему запросу ничего не найдено" />
         ) : (
-          <ArticlesContainer articleCategory={articleCategory} />
+          <>
+            {category === 'video' ? (
+              <VideosContainer articleCategory={articleCategory} />
+            ) : (
+              <ArticlesContainer articleCategory={articleCategory} />
+            )}
+          </>
         )}
       </PageLayout>
     </>

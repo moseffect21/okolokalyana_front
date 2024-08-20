@@ -5,9 +5,9 @@ import getCategoryName from 'application/domain/useCases/category/getCategoryNam
 import PageLayout from 'application/presentation/components/Layouts/PageLayout'
 import { MetaArticlePage } from 'application/presentation/meta/MetaContent'
 import React from 'react'
-import s from './ArticlePage.module.scss'
 import StoredImage from 'application/presentation/components/uiComponents/StoredImage'
 import cn from 'classnames'
+import s from './ArticlePage.module.scss'
 
 export const getArticlePageServerSideProps = async ({ params }: GetServerSideDefaultProps) => {
   if (!params?.slug) {
