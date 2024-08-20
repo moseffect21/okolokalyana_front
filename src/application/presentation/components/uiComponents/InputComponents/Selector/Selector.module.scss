@@ -1,0 +1,13 @@
+.container {
+  width: 100%;
+  max-width: 23rem;
+  > div {
+    font-size: 1.6rem !important;
+  }
+}
+.title {
+  font-size: 1.3rem;
+  color: #fff;
+  line-height: 130%;
+  margin-bottom: 0.7rem;
+}

@@ -19,6 +19,7 @@ import Chips from 'application/presentation/components/uiComponents/Chips'
 import Selector from 'application/presentation/components/uiComponents/InputComponents/Selector'
 import { usePathname, useRouter } from 'next/navigation'
 import EmptyNotice from 'application/presentation/components/uiComponents/EmptyNotice'
+import { SelectOption } from 'application/presentation/components/uiComponents/InputComponents/Selector/Selector'
 
 dayjs.locale('ru')
 
@@ -90,8 +91,8 @@ export default function ArticleCategoryPage({
       href: `/blog/${item.slug}`,
     })) || []
 
-  const onSortChange = (value: string) => {
-    router.replace(`${pathname}?${value}&page=1`)
+  const onSortChange = (value: SelectOption) => {
+    router.replace(`${pathname}?${value.value}&page=1`)
   }
 
   return (
