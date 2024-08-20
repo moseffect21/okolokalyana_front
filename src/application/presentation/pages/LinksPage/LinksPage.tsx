@@ -3,18 +3,42 @@ import s from './LinksPage.module.scss'
 import Image from 'next/image'
 import vladPng from 'images/Vlad.png'
 import LinksContainer from './components/LinksContainer'
-import { linksData, partnersData } from './linksPageData'
 import PartnerItem from './components/PartnerItem'
-import Link from 'next/link'
 import { MetaData } from 'application/presentation/meta/MetaContent'
+import PageLayout from 'application/presentation/components/Layouts/PageLayout'
+import { fetchLinks } from 'application/data/api/links'
+import { LinksCategory } from 'application/domain/entities/links/LinksCategory'
+import { fetchPartners } from 'application/domain/useCases/partners/getPartners'
+import { Partner } from 'application/domain/entities/partners/Partner'
+import minifyObject from 'application/domain/utils/minifyObject'
 
-export async function getLinksStaticProps() {
-  return {
-    props: {},
+export async function getLinksPageServerSideProps() {
+  try {
+    const linksResponse = await fetchLinks()
+    const partnersResponse = await fetchPartners()
+
+    const links = Object.values(linksResponse)
+    const partners = partnersResponse.map(partner => minifyObject(partner, ['id', 'name', 'photo']))
+
+    return {
+      props: {
+        links,
+        partners,
+      },
+    }
+  } catch (e) {
+    return {
+      notFound: true,
+    }
   }
 }
 
-export default function LinksPage() {
+type LinksPageProps = {
+  links: LinksCategory[]
+  partners: Partner[]
+}
+
+export default function LinksPage({ links, partners }: LinksPageProps) {
   return (
     <>
       <MetaData
@@ -22,40 +46,38 @@ export default function LinksPage() {
         desc="Тут вы найдёте все блоги, страницы, соц сети Влада Носачёва и проекта ОКОЛОКАЛЬЯНА."
         keywords="влад носачёв, околокальяна, соц сети, сайт, инстаграм, телеграм, ютуб, лайв, вконтакте, тик ток, твич, донат, вайлберис, озон, стрим, прямой эфир, онлайн, написать, связаться, контакты, инста, instagram, тг, telegram, телега, youtube, ютюб, вк, vkontakte, страница, группа, паблик, tik tok, тт, twitch, donations, вб, wildberries, ozon, менеджер, связь"
       />
-      <div className={s.container}>
-        <div className={s.content}>
-          <div className={s.img_container}>
-            <Image src={vladPng} alt="" />
+      <PageLayout>
+        <div className={s.container}>
+          <div className={s.heading}>
+            <div className={s.img_container}>
+              <Image src={vladPng} alt="" />
+            </div>
+            <div className={s.info}>
+              <div className={s.title}>Влад Носачев</div>
+              <div className={s.subtitle}>ОКОЛОКАЛЬЯНА</div>
+            </div>
           </div>
-          <div className={s.title}>Влад Носачев</div>
-          <div className={s.subtitle}>ОКОЛОКАЛЬЯНА</div>
           <div className={s.separator}></div>
 
-          <LinksContainer title="ОКОЛОКАЛЬЯНА везде" data={linksData.all} />
-          <div className={s.separator}></div>
-
-          <LinksContainer title="Личные проекты автора" data={linksData.personal} />
-          <div className={s.separator}></div>
-
-          <LinksContainer
-            title="Вы всегда можете поддержать автора и проект"
-            data={linksData.support}
-          />
-          <div className={s.separator}></div>
-
-          <LinksContainer title="Связь" data={linksData.connect} />
-          <div className={s.separator}></div>
+          <div className={s.links_container}>
+            {links.map(linkCategory => (
+              <React.Fragment key={`link_category_${linkCategory.id}`}>
+                <LinksContainer title={linkCategory.name} data={linkCategory.links} />
+                <div className={s.separator}></div>
+              </React.Fragment>
+            ))}
+          </div>
 
           <div className={s.partners_block}>
             <div className={s.title}>Партнеры проекта</div>
             <div className={s.partners_container}>
-              {partnersData.map(item => (
-                <PartnerItem key={`partner_${item.id}`} data={item} />
+              {partners.map(partner => (
+                <PartnerItem key={`partner_${partner.id}`} partner={partner} />
               ))}
             </div>
           </div>
         </div>
-      </div>
+      </PageLayout>
     </>
   )
 }

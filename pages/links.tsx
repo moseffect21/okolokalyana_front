@@ -1,6 +1,6 @@
 import LinksPage from 'application/presentation/pages/LinksPage'
-import { getLinksStaticProps } from 'application/presentation/pages/LinksPage/LinksPage'
+import { getLinksPageServerSideProps } from 'application/presentation/pages/LinksPage/LinksPage'
 
-export const getStaticProps = getLinksStaticProps
+export const getServerSideProps = getLinksPageServerSideProps
 
 export default LinksPage

@@ -1,6 +1,6 @@
 // Функция для удаление не используемых полей объекта
-function minifyObject<T extends { [key: string]: number | string | null }>(obj: T, keys: string[]) {
-  let newObj: { [key: string]: number | string | null } = {}
+function minifyObject<T extends { [key: string]: any }>(obj: T, keys: string[]) {
+  let newObj: { [key: string]: any } = {}
   keys.map(item => {
     newObj[`${item}`] = obj[`${item}`]
   })
