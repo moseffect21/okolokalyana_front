@@ -47,7 +47,7 @@ const VideosContainer = ({ articleCategory }: VideosContainerProps) => {
         </div>
       </DesktopContainer>
       <MobileContainer>
-        {articles.map((item, index: number) => {
+        {articles.map(item => {
           return (
             <ArticleCard
               key={`video_item_${item.id}`}
