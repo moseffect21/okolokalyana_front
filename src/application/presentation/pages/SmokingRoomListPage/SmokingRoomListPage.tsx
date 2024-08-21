@@ -1,21 +1,51 @@
 import { GetServerSideDefaultProps } from 'application/domain/types/ServerSideProps'
-import { fetchSmokingRoomFilters } from 'application/domain/useCases/smokingroom/getSmokingRoom'
+import {
+  fetchSmokingRoom,
+  fetchSmokingRoomFilters,
+} from 'application/domain/useCases/smokingroom/getSmokingRoom'
 import PageLayout from 'application/presentation/components/Layouts/PageLayout'
 import { MetaSmokingRoomPage } from 'application/presentation/meta/MetaContent'
 import React, { useState } from 'react'
-import s from './SmokingRoomPage.module.scss'
+import s from './SmokingRoomListPage.module.scss'
 import Selector from 'application/presentation/components/uiComponents/InputComponents/Selector'
 import Button from 'application/presentation/components/uiComponents/Button'
 import { SelectOption } from 'application/presentation/components/uiComponents/InputComponents/Selector/Selector'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { TobaccoFiller } from 'application/domain/entities/tobaccoFiller/TobaccoFiller'
+import EmptyNotice from 'application/presentation/components/uiComponents/EmptyNotice'
+import checkPageNumber from 'application/domain/utils/checkPageNumber'
 import {
   FilterStateType,
   getFilterOptions,
   getInitFilterState,
 } from 'application/domain/useCases/smokingroom/smokingRoomFilterUtils'
+import TobaccoFillerCard from 'application/presentation/components/TobaccoFillerCard'
+import Pagination from 'application/presentation/components/uiComponents/Pagination'
 
-export const getSmokingRoomPageServerSideProps = async ({ query }: GetServerSideDefaultProps) => {
+export const getSmokingRoomListPageServerSideProps = async ({
+  query,
+}: GetServerSideDefaultProps) => {
   try {
+    const page = query.page ? parseInt(query.page as string, 10) : 1
+
+    const smokingRoomResponse = await fetchSmokingRoom({
+      bowl: query.bowl as string,
+      tobacco: query.tobacco as string,
+      hookah_block: query.hookahBlock as string,
+      subjective_rating: query.subjective_rating as string,
+      objective_rating: query.objective_rating as string,
+      smoker: query.smoker as string,
+      page,
+    })
+
+    const { current_page, last_page, total, data } = smokingRoomResponse
+
+    if (!checkPageNumber(current_page, last_page)) {
+      return {
+        notFound: true,
+      }
+    }
+
     const filters = await fetchSmokingRoomFilters()
 
     const {
@@ -35,6 +65,9 @@ export const getSmokingRoomPageServerSideProps = async ({ query }: GetServerSide
         subjectiveRateOptions,
         objectiveRateOptions,
         smokersOptions,
+        data,
+        page: current_page,
+        total,
       },
     }
   } catch (e) {
@@ -51,15 +84,21 @@ type SmokingRoomPageProps = {
   subjectiveRateOptions: SelectOption[]
   objectiveRateOptions: SelectOption[]
   smokersOptions: SelectOption[]
+  data: TobaccoFiller[]
+  page: number
+  total: number
 }
 
-export default function SmokingRoomPage({
+export default function SmokingRoomListPage({
   bowlOptions,
   tobaccoOptions,
   hookahBlockOptions,
   subjectiveRateOptions,
   objectiveRateOptions,
   smokersOptions,
+  data,
+  page,
+  total,
 }: SmokingRoomPageProps) {
   const router = useRouter()
   const params = useSearchParams()
@@ -155,15 +194,19 @@ export default function SmokingRoomPage({
             Поиск
           </Button>
         </div>
-        {/* {data.length ? (
-          <div className={s.container}>
-            {data.map(filler => (
-              <TobaccoFillerCard key={`filler_${filler.id}`} tobaccoFiller={filler} />
-            ))}
+        <div className={s.container}>
+          <div className={s.title_container}>
+            <div className={s.title}>Результаты поиска</div>
+            <Pagination page={page} total={total} />
           </div>
-        ) : (
-          <EmptyNotice text={'По вашему запросу ничего не найдено'} />
-        )} */}
+          {data.length ? (
+            data.map(filler => (
+              <TobaccoFillerCard key={`filler_${filler.id}`} tobaccoFiller={filler} />
+            ))
+          ) : (
+            <EmptyNotice text={'По вашему запросу ничего не найдено'} />
+          )}
+        </div>
       </PageLayout>
     </>
   )

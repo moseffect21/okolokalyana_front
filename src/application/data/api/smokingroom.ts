@@ -1,6 +1,7 @@
 import { SmokingRoomFilters } from 'application/domain/entities/smokingRoom/SmokingRoomFilters'
 import apiClient from '../apiClient'
 import { TobaccoFiller } from 'application/domain/entities/tobaccoFiller/TobaccoFiller'
+import { Pagination } from 'application/domain/types/Pagination'
 
 export const fetchSmokingRoomFiltersRequest = async (): Promise<SmokingRoomFilters> => {
   const { data } = await apiClient.get('/api/v1/tobacco_fillers/get_filters')
@@ -20,11 +21,27 @@ export const fetchSmokingRoomRequest = async (params: {
   coal?: string
   page?: number
   per_page?: string
-}): Promise<TobaccoFiller[]> => {
+}): Promise<Pagination<TobaccoFiller[]>> => {
+  const page = params?.page || 1
   const { data } = await apiClient.get('/api/v1/tobacco_fillers', {
     params: {
       ...params,
+      page,
     },
   })
+  return data
+}
+
+export const fetchTobaccoFillerRequest = async (id: string | number): Promise<TobaccoFiller> => {
+  const { data } = await apiClient.get(`/api/v1/tobacco_fillers/${id}`)
+  return data
+}
+
+export const rateTobaccoFillerRequest = async (sendData: {
+  tobacco_filler: number
+  rate: number
+  user?: number
+}) => {
+  const { data } = await apiClient.post(`/api/v1/tobacco_fillers/rate`, sendData)
   return data
 }

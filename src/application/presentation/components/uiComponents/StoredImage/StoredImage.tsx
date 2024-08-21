@@ -5,6 +5,8 @@ import apiClient from 'application/data/apiClient'
 type StoredImageProps = ImageProps & {
   src: string
   className?: string
+  width: number
+  height: number
 }
 
 const StoredImage: React.FC<StoredImageProps> = ({ src, alt, className, ...props }) => {

@@ -1,9 +1,12 @@
 import { Bowl } from '../bowl/Bowl'
+import { Brand } from '../brand/Brand'
+import { Coal } from '../coal/Coal'
+import { CoalPlacement } from '../coal/CoalPlacement'
+import { Hookah } from '../hookah/Hookah'
 import { HookahBlock } from '../hookah/HookahBlock'
 import { Tobacco } from '../tobacco/Tobacco'
 import { User } from '../user/User'
 
-// TODO: Дозаполнить модель
 export type TobaccoFiller = {
   id: number
   created_at: string
@@ -29,12 +32,12 @@ export type TobaccoFiller = {
   video_url: string | null
   smoker_id: number
   tobacco_id: number
-  brand: null
+  brand: Brand
   bowl: Bowl | null
   hookah_block: HookahBlock | null
-  coal_placement: null
-  coal: null
-  hookah: null
+  coal_placement: CoalPlacement | null
+  coal: Coal | null
+  hookah: Hookah | null
   smoker: User | null
   tobacco: Tobacco | null
 }

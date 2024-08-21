@@ -1,4 +1,4 @@
-export type HookahBlock = {
+export type Brand = {
   id: number
   created_at: string
   updated_at: string
@@ -7,5 +7,4 @@ export type HookahBlock = {
   description: string | null
   content: string | null
   video_url: string | null
-  brand_id: number
 }

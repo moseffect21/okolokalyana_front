@@ -1,4 +1,4 @@
-export type HookahBlock = {
+export type Coal = {
   id: number
   created_at: string
   updated_at: string
