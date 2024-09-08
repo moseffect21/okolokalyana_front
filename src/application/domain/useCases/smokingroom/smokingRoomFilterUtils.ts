@@ -16,17 +16,17 @@ export const getFilterOptions = (filters: SmokingRoomFilters): GetFilterOptionsT
   const bowlOptions =
     filters.bowls?.map(bowl => ({
       label: bowl.name,
-      value: `${bowl.id}`,
+      value: `${bowl.slug || bowl.id}`,
     })) || []
   const tobaccoOptions =
     filters.tobaccos?.map(tobacco => ({
       label: tobacco.name,
-      value: `${tobacco.id}`,
+      value: `${tobacco.slug || tobacco.id}`,
     })) || []
   const hookahBlockOptions =
     filters.hookah_block?.map(block => ({
       label: block.name,
-      value: `${block.id}`,
+      value: `${block.slug || block.id}`,
     })) || []
   const subjectiveRateOptions =
     filters.subjective_rating?.map(item => ({

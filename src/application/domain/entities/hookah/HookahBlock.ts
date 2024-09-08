@@ -8,4 +8,5 @@ export type HookahBlock = {
   content: string | null
   video_url: string | null
   brand_id: number
+  slug: string
 }

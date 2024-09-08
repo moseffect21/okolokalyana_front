@@ -9,6 +9,7 @@ import { User } from '../user/User'
 
 export type TobaccoFiller = {
   id: number
+  slug: string
   created_at: string
   updated_at: string
   brand_id: number

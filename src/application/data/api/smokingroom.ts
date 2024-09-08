@@ -32,8 +32,8 @@ export const fetchSmokingRoomRequest = async (params: {
   return data
 }
 
-export const fetchTobaccoFillerRequest = async (id: string | number): Promise<TobaccoFiller> => {
-  const { data } = await apiClient.get(`/api/v1/tobacco_fillers/${id}`)
+export const fetchTobaccoFillerRequest = async (slug: string): Promise<TobaccoFiller> => {
+  const { data } = await apiClient.get(`/api/v1/tobacco_fillers/${slug}`)
   return data
 }
 

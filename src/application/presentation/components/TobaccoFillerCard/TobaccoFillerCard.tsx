@@ -14,6 +14,7 @@ type TobaccoFillerCardProps = {
 const TobaccoFillerCard = ({ tobaccoFiller }: TobaccoFillerCardProps) => {
   const {
     id,
+    slug,
     bowl,
     brand,
     tobacco,
@@ -36,7 +37,7 @@ const TobaccoFillerCard = ({ tobaccoFiller }: TobaccoFillerCardProps) => {
   } = tobaccoFiller
 
   return (
-    <Link className={s.container} href={`/smokingroom/${id}`}>
+    <Link className={s.container} href={`/smokingroom/${slug || id}`}>
       {!!name && <div className={s.title}>{name}</div>}
 
       <div className={s.inner}>
