@@ -3,6 +3,7 @@
   padding: 5.5rem;
   border-radius: 0.4rem;
   position: relative;
+  box-sizing: border-box;
   &.full_open {
     width: 100%;
     max-width: 100%;
@@ -54,11 +55,15 @@
   .modal_window {
     height: 100%;
     border-radius: 0;
+    padding: 4rem 2rem;
     &.not_full {
       width: calc(100% - 8rem);
       padding: 2rem;
       border-radius: 1rem;
       height: auto;
     }
+  }
+  .overlay {
+    padding: 0;
   }
 }
