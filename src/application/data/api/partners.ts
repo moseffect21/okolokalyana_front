@@ -6,7 +6,7 @@ export const fetchPartnersRequest = async (): Promise<Partners> => {
   return data
 }
 
-export const fetchPartnerRequest = async (id: number): Promise<Partner> => {
-  const { data } = await apiClient.get(`/api/v1/partners/${id}`)
+export const fetchPartnerRequest = async (slug: string): Promise<Partner> => {
+  const { data } = await apiClient.get(`/api/v1/partners/${slug}`)
   return data
 }

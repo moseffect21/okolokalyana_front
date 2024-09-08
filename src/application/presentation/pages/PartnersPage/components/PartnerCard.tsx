@@ -9,10 +9,10 @@ type PartnerCardProps = {
 }
 
 const PartnerCard = ({ partner }: PartnerCardProps) => {
-  const { id, photo, name } = partner
+  const { id, photo, name, slug } = partner
 
   return (
-    <Link href={`/partners/${id}`} className={s.card}>
+    <Link href={`/partners/${slug || id}`} className={s.card}>
       <StoredImage src={photo || ''} alt={name} width={600} height={300} />
     </Link>
   )
