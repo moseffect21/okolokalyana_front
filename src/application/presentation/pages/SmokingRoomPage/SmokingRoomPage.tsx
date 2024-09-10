@@ -13,48 +13,21 @@ import {
   getFilterOptions,
   getInitFilterState,
 } from 'application/domain/useCases/smokingroom/smokingRoomFilterUtils'
-import { Bowl } from 'application/domain/entities/bowl/Bowl'
-import { HookahBlock } from 'application/domain/entities/hookah/HookahBlock'
-import { Tobacco } from 'application/domain/entities/tobacco/Tobacco'
 import TobaccosContainer from './components/TobaccosContainer'
 import BowlsContainer from './components/BowlsContainer'
-import HookahBlocksContainer from './components/TobaccoBlocksContainer'
+import HookahBlocksContainer from './components/HookahBlocksContainer'
+import HookahBlockListMW from 'application/presentation/components/ModalWindows/HookahBlockListMW'
+import TobaccoListMW from 'application/presentation/components/ModalWindows/TobaccoListMW'
+import BowlsListMW from 'application/presentation/components/ModalWindows/BowlsListMW'
+import { SmokingRoomFilters } from 'application/domain/entities/smokingRoom/SmokingRoomFilters'
 
 export const getSmokingRoomPageServerSideProps = async ({ query }: GetServerSideDefaultProps) => {
   try {
     const filters = await fetchSmokingRoomFilters()
-    const {
-      top_bowls,
-      top_hookah_blocks,
-      top_tobaccos,
-      bowls_count,
-      hookah_blocks_count,
-      tobaccos_count,
-    } = filters
-
-    const {
-      bowlOptions,
-      tobaccoOptions,
-      hookahBlockOptions,
-      subjectiveRateOptions,
-      smokersOptions,
-      objectiveRateOptions,
-    } = getFilterOptions(filters)
 
     return {
       props: {
-        bowlOptions,
-        tobaccoOptions,
-        hookahBlockOptions,
-        subjectiveRateOptions,
-        objectiveRateOptions,
-        smokersOptions,
-        top_bowls,
-        top_hookah_blocks,
-        top_tobaccos,
-        bowls_count,
-        hookah_blocks_count,
-        tobaccos_count,
+        filters,
       },
     }
   } catch (e) {
@@ -65,36 +38,33 @@ export const getSmokingRoomPageServerSideProps = async ({ query }: GetServerSide
 }
 
 type SmokingRoomPageProps = {
-  bowlOptions: SelectOption[]
-  tobaccoOptions: SelectOption[]
-  hookahBlockOptions: SelectOption[]
-  subjectiveRateOptions: SelectOption[]
-  objectiveRateOptions: SelectOption[]
-  smokersOptions: SelectOption[]
-  top_bowls: Bowl[]
-  top_hookah_blocks: HookahBlock[]
-  top_tobaccos: Tobacco[]
-  bowls_count: number
-  hookah_blocks_count: number
-  tobaccos_count: number
+  filters: SmokingRoomFilters
 }
 
-export default function SmokingRoomPage({
-  bowlOptions,
-  tobaccoOptions,
-  hookahBlockOptions,
-  subjectiveRateOptions,
-  objectiveRateOptions,
-  smokersOptions,
-  top_bowls,
-  top_hookah_blocks,
-  top_tobaccos,
-  bowls_count,
-  hookah_blocks_count,
-  tobaccos_count,
-}: SmokingRoomPageProps) {
+export default function SmokingRoomPage({ filters }: SmokingRoomPageProps) {
   const router = useRouter()
   const params = useSearchParams()
+
+  const {
+    top_bowls,
+    top_hookah_blocks,
+    top_tobaccos,
+    bowls_count,
+    hookah_blocks_count,
+    tobaccos_count,
+    bowls,
+    hookah_blocks,
+    tobaccos,
+  } = filters
+
+  const {
+    bowlOptions,
+    tobaccoOptions,
+    hookahBlockOptions,
+    subjectiveRateOptions,
+    smokersOptions,
+    objectiveRateOptions,
+  } = getFilterOptions(filters)
 
   const [filterState, setFilterState] = useState<FilterStateType>(
     getInitFilterState(params, {
@@ -102,8 +72,8 @@ export default function SmokingRoomPage({
       tobaccoOptions,
       hookahBlockOptions,
       subjectiveRateOptions,
-      objectiveRateOptions,
       smokersOptions,
+      objectiveRateOptions,
     }),
   )
 
@@ -197,6 +167,9 @@ export default function SmokingRoomPage({
           )}
         </div>
       </PageLayout>
+      <HookahBlockListMW hookahBlocks={hookah_blocks} />
+      <TobaccoListMW tobaccos={tobaccos} />
+      <BowlsListMW bowls={bowls} />
     </>
   )
 }
