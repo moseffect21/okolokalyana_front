@@ -1,7 +1,6 @@
 import React from 'react'
 import s from './NavList.module.scss'
 import ActiveLink from '../../uiComponents/ActiveLink'
-import cn from 'classnames'
 
 const links = [
   { id: 1, name: 'Статьи', link: '/blog/articles' },
@@ -14,29 +13,9 @@ const links = [
   { id: 9, name: 'Новости', link: '/news' },
 ]
 
-type NavListProps = {
-  direction?: 'horizontal' | 'vertical'
-  className?: string
-  padding?: string
-  fontSize?: string
-  color?: string
-}
-
-export default function NavList({
-  direction = 'vertical',
-  className,
-  padding,
-  fontSize,
-  color,
-}: NavListProps) {
-  const style = {
-    '--padding': padding,
-    '--font-size': fontSize,
-    '--color': color,
-  } as React.CSSProperties
-
+export default function NavList() {
   return (
-    <div className={cn(s.container, s[direction], className)} style={style}>
+    <div className={s.container}>
       {links.map(item => (
         <ActiveLink
           key={`navlink_${item.id}`}

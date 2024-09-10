@@ -5,6 +5,7 @@ import TgSvg from 'images/icons/tg.svg'
 import YoutubeSvg from 'images/icons/youtube.svg'
 import s from './SocialLinks.module.scss'
 import Link from 'next/link'
+import cn from 'classnames'
 
 const links = [
   { id: 1, icon: <VkSvg />, link: 'https://vk.com/blog_hookah' },
@@ -13,9 +14,13 @@ const links = [
   { id: 4, icon: <YoutubeSvg />, link: 'https://www.youtube.com/@okolokalyana' },
 ]
 
-export default function SocialLinks() {
+type SocialLinksProps = {
+  className?: string
+}
+
+export default function SocialLinks({ className }: SocialLinksProps) {
   return (
-    <div className={s.container}>
+    <div className={cn(s.container, className)}>
       {links.map(item => (
         <Link key={`social_link_${item.id}`} href={item.link} className={s.item}>
           {item.icon}

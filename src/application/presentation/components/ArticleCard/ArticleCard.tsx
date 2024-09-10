@@ -4,9 +4,12 @@ import s from './ArticleCard.module.scss'
 import Link from 'next/link'
 import StoredImage from '../uiComponents/StoredImage'
 import dayjs from 'dayjs'
+import 'dayjs/locale/ru'
 import { Article } from 'application/domain/entities/article/Article'
 import PlaySvg from 'images/icons/play_button.svg'
 import cn from 'classnames'
+
+dayjs.locale('ru')
 
 type Props = {
   item: Article

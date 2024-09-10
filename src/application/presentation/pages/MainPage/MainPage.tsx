@@ -9,7 +9,6 @@ import ShowroomSwiper from './components/ShowRoomSwiper'
 import HookahContainer from './components/HookahContainer'
 import { MainData } from 'application/domain/entities/main/MainData'
 import MainPageBlockWithBackground from './components/MainPageBlockWithBackground/MainPageBlockWithBackground'
-import Footer from 'application/presentation/components/Footer'
 import AboutMain from './components/AboutMain'
 import PartnersMain from './components/PartnersMain'
 
@@ -42,8 +41,7 @@ export default function MainPage({ articles, team, partners }: MainPageProps) {
       <HookahContainer />
       <ShowroomSwiper />
       <AboutMain team={team} />
-      <PartnersMain partners={partners}/>
-      <Footer />
+      <PartnersMain partners={partners} />
     </>
   )
 }

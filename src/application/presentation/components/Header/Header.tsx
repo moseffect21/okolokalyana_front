@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import LogoSvg from 'images/logo.svg'
-import Login from 'images/icons/login.svg'
 import Burger from 'images/icons/burger_icon.svg'
 import Close from 'images/icons/close_icon.svg'
 import s from './Header.module.scss'
 import NavBar from '../NavBar'
 import Link from 'next/link'
-import Button from '../uiComponents/Button'
 import { DesktopContainer, MobileContainer } from '../uiComponents/AdaptiveContainers'
 import cn from 'classnames'
 import Router from 'next/router'
@@ -40,10 +38,7 @@ const Header = () => {
           <Link className={s.logo} href="/">
             <LogoSvg />
           </Link>
-          <Button className={s.loginBtn} containerClassName={s.btnContainer}>
-            <Login />
-            Войти
-          </Button>
+          <div className={s.btnContainer}></div>
         </header>
       </DesktopContainer>
       <MobileContainer>
@@ -54,9 +49,7 @@ const Header = () => {
           <Link className={s.logo} href="/">
             <LogoSvg />
           </Link>
-          <div className={s.headerRight}>
-            <Login />
-          </div>
+          <div className={s.headerRight}></div>
         </header>
         <div className={cn(s.mobileMenu, { [s.opened]: showMenu })}>
           <NavBar />
