@@ -11,7 +11,7 @@ import Chips from 'application/presentation/components/uiComponents/Chips'
 import { MetaShowroomPage } from 'application/presentation/meta/MetaContent'
 import { ProductCategory } from 'application/domain/entities/product/ProductCategory'
 import { fetchProductCategory } from 'application/data/api/products'
-import minifyObject from 'application/domain/utils/minifyObject'
+import pickParamsFromObject from 'application/domain/utils/pickParamsFromObject'
 
 export const getShowroomPageServerSideProps = async ({
   query,
@@ -22,7 +22,7 @@ export const getShowroomPageServerSideProps = async ({
     try {
       const categories = await getProductCategories()
       const category = await fetchProductCategory(params.category as string, page)
-      const categoryWithoutProducts = minifyObject(category, ['id', 'name'])
+      const categoryWithoutProducts = pickParamsFromObject(category, ['id', 'name'])
 
       const { current_page, last_page, data, total } = category.products
       if (!checkPageNumber(current_page, last_page)) {
