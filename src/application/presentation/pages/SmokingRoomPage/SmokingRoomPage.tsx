@@ -13,10 +13,24 @@ import {
   getFilterOptions,
   getInitFilterState,
 } from 'application/domain/useCases/smokingroom/smokingRoomFilterUtils'
+import { Bowl } from 'application/domain/entities/bowl/Bowl'
+import { HookahBlock } from 'application/domain/entities/hookah/HookahBlock'
+import { Tobacco } from 'application/domain/entities/tobacco/Tobacco'
+import TobaccosContainer from './components/TobaccosContainer'
+import BowlsContainer from './components/BowlsContainer'
+import HookahBlocksContainer from './components/TobaccoBlocksContainer'
 
 export const getSmokingRoomPageServerSideProps = async ({ query }: GetServerSideDefaultProps) => {
   try {
     const filters = await fetchSmokingRoomFilters()
+    const {
+      top_bowls,
+      top_hookah_blocks,
+      top_tobaccos,
+      bowls_count,
+      hookah_blocks_count,
+      tobaccos_count,
+    } = filters
 
     const {
       bowlOptions,
@@ -35,6 +49,12 @@ export const getSmokingRoomPageServerSideProps = async ({ query }: GetServerSide
         subjectiveRateOptions,
         objectiveRateOptions,
         smokersOptions,
+        top_bowls,
+        top_hookah_blocks,
+        top_tobaccos,
+        bowls_count,
+        hookah_blocks_count,
+        tobaccos_count,
       },
     }
   } catch (e) {
@@ -51,6 +71,12 @@ type SmokingRoomPageProps = {
   subjectiveRateOptions: SelectOption[]
   objectiveRateOptions: SelectOption[]
   smokersOptions: SelectOption[]
+  top_bowls: Bowl[]
+  top_hookah_blocks: HookahBlock[]
+  top_tobaccos: Tobacco[]
+  bowls_count: number
+  hookah_blocks_count: number
+  tobaccos_count: number
 }
 
 export default function SmokingRoomPage({
@@ -60,6 +86,12 @@ export default function SmokingRoomPage({
   subjectiveRateOptions,
   objectiveRateOptions,
   smokersOptions,
+  top_bowls,
+  top_hookah_blocks,
+  top_tobaccos,
+  bowls_count,
+  hookah_blocks_count,
+  tobaccos_count,
 }: SmokingRoomPageProps) {
   const router = useRouter()
   const params = useSearchParams()
@@ -155,15 +187,15 @@ export default function SmokingRoomPage({
             Поиск
           </Button>
         </div>
-        {/* {data.length ? (
-          <div className={s.container}>
-            {data.map(filler => (
-              <TobaccoFillerCard key={`filler_${filler.id}`} tobaccoFiller={filler} />
-            ))}
-          </div>
-        ) : (
-          <EmptyNotice text={'По вашему запросу ничего не найдено'} />
-        )} */}
+        <div className={s.container}>
+          {!!top_tobaccos.length && (
+            <TobaccosContainer tobaccos={top_tobaccos} total={tobaccos_count} />
+          )}
+          {!!top_bowls.length && <BowlsContainer bowls={top_bowls} total={bowls_count} />}
+          {!!top_hookah_blocks.length && (
+            <HookahBlocksContainer hookahBlocks={top_hookah_blocks} total={hookah_blocks_count} />
+          )}
+        </div>
       </PageLayout>
     </>
   )

@@ -24,7 +24,7 @@ export const getFilterOptions = (filters: SmokingRoomFilters): GetFilterOptionsT
       value: `${tobacco.slug || tobacco.id}`,
     })) || []
   const hookahBlockOptions =
-    filters.hookah_block?.map(block => ({
+    filters.hookah_blocks?.map(block => ({
       label: block.name,
       value: `${block.slug || block.id}`,
     })) || []

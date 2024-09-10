@@ -21,7 +21,7 @@ const Chips = ({ className, data, onItemClick }: ChipsProps) => {
   return (
     <div className={cn(s.container, className || '')}>
       {data.map(item => {
-        const Wrapper = item.href ? Link : 'div'
+        const Wrapper = item.href ? Link : 'button'
         const onClickHandler = () => (onItemClick ? onItemClick(item) : {})
         const isActive = item.href ? pathname === item.href : false
         return (
