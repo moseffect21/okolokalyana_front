@@ -10,4 +10,5 @@ export type TeamMember = {
   updated_at: string
   vk_url: string | null
   youtube_url: string | null
+  little_role: string
 }

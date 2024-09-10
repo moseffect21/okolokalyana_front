@@ -1,8 +1,18 @@
+.container {
+  width: calc(50% - 1.25rem);
+}
 .title {
   font-size: 1.4rem;
   line-height: 130%;
   font-weight: 400;
   color: #fff;
   padding: 0 1.6rem;
+  margin-top: 0;
   margin-bottom: 1.3rem;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
 }

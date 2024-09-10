@@ -12,8 +12,11 @@ type ProductCardProps = {
 
 const ProductCard = ({ product, className }: ProductCardProps) => {
   const image = product.images ? JSON.parse(product.images)[0] : ''
+
+  const category = product.category ? product.category.slug : 'product'
+
   return (
-    <Link className={cn(s.card, className || '')} href={`/showroom/${product.slug}`}>
+    <Link className={cn(s.card, className || '')} href={`/showroom/${category}/${product.slug}`}>
       <StoredImage src={image} width={600} height={300} className={s.back_img} alt="" />
       <div className={s.gradient} />
       <div className={s.shadow} />

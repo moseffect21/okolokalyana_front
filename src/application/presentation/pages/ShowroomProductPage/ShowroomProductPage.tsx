@@ -6,6 +6,8 @@ import React from 'react'
 import s from './ShowroomProductPage.module.scss'
 import ProductGallery from './components/ProductGallery'
 import ProductContent from './components/ProductContent'
+import { MetaShowroomProductPage } from 'application/presentation/meta/MetaContent'
+import { ProductCategory } from 'application/domain/entities/product/ProductCategory'
 
 export const getShowroomProductPageServerSideProps = async ({
   params,
@@ -18,10 +20,12 @@ export const getShowroomProductPageServerSideProps = async ({
   }
   try {
     const product = await getProduct(productSlug as string)
+    const category = product?.category || null
 
     return {
       props: {
         product,
+        category,
       },
     }
   } catch (e) {
@@ -33,23 +37,29 @@ export const getShowroomProductPageServerSideProps = async ({
 
 type ShowroomProductPageProps = {
   product: Product
+  category: ProductCategory
 }
 
-export default function ShowroomProductPage({ product }: ShowroomProductPageProps) {
+export default function ShowroomProductPage({ product, category }: ShowroomProductPageProps) {
+  const breadCrumbs = [
+    { id: 1, name: 'Шоурум', link: `/showroom` },
+    {
+      id: 2,
+      name: category?.name || 'Все',
+      link: `/showroom${category ? `/${category.slug}` : ''}`,
+    }, // TODO: поправить когда категории подтянем
+    { id: 3, name: product.name },
+  ]
+
   return (
-    <PageLayout
-      title={product.name}
-      withBackButton
-      breadCrumbs={[
-        { id: 1, name: 'Шоурум', link: `/showroom` },
-        { id: 2, name: 'Все', link: `/showroom` }, // TODO: поправить когда категории подтянем
-        { id: 3, name: product.name },
-      ]}
-    >
-      <div className={s.container}>
-        <ProductGallery images={product.images} />
-        <ProductContent product={product} />
-      </div>
-    </PageLayout>
+    <>
+      <MetaShowroomProductPage name={product.name} />
+      <PageLayout title={product.name} withBackButton breadCrumbs={breadCrumbs}>
+        <div className={s.container}>
+          <ProductGallery images={product.images} />
+          <ProductContent product={product} />
+        </div>
+      </PageLayout>
+    </>
   )
 }

@@ -1,6 +1,7 @@
 .container {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 
   .chip {
     font-size: 1.3rem;
@@ -8,8 +9,11 @@
     color: #fff;
     padding: 0.7rem 1rem;
     border-radius: 0.3rem;
+    border: none;
     background-color: #141414;
     margin-right: 1rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
 
     &:hover,
     &.active {

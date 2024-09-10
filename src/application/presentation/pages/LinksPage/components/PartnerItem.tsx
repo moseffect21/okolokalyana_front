@@ -1,16 +1,18 @@
 import React from 'react'
-import Image, { StaticImageData } from 'next/image'
 import s from './PartnerItem.module.scss'
 import Link from 'next/link'
+import { Partner } from 'application/domain/entities/partners/Partner'
+import StoredImage from 'application/presentation/components/uiComponents/StoredImage'
 
 type Props = {
-  data: { id: number; name: string; image: StaticImageData; url: string }
+  partner: Partner
 }
 
-const PartnerItem = ({ data }: Props) => {
+const PartnerItem = ({ partner }: Props) => {
+  const url = `/partners/${partner.id}`
   return (
-    <Link className={s.container} href={data.url}>
-      <Image src={data.image} alt={data.name} />
+    <Link className={s.container} href={url}>
+      <StoredImage src={partner.photo || ''} alt={partner.name} width={300} height={150} />
     </Link>
   )
 }

@@ -1,0 +1,37 @@
+.container {
+  margin-top: 2rem;
+}
+
+.title {
+  font-size: 1.6rem;
+  line-height: 130%;
+  color: #fff;
+  padding: 0 1rem 1rem;
+}
+
+.show_more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  width: fit-content;
+  margin-left: auto;
+  margin-top: 2rem;
+  font-size: 1.6rem;
+  line-height: 130%;
+  color: #ffffff70;
+
+  &:hover {
+    color: #ffffff70;
+    opacity: 0.7;
+  }
+
+  svg {
+    width: 2.2rem;
+    height: auto;
+    padding-left: 0.5rem;
+    path {
+      fill: #ffffff70;
+    }
+  }
+}

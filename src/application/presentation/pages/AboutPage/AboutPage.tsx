@@ -13,7 +13,7 @@ export const getAboutPageServerSideProps = async ({}: GetServerSideDefaultProps)
     const team = await fetchTeam()
     return {
       props: {
-        team: team?.map(item => pickParamsFromObject(item, ['id', 'photo', 'name'])),
+        team: team?.map(item => pickParamsFromObject(item, ['id', 'photo', 'name', 'little_role'])),
       },
     }
   } catch (e) {

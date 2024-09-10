@@ -10,9 +10,16 @@ type Props = {
   breadCrumbs?: BreadCrumb[]
   title?: string
   withBackButton?: boolean
+  rightComponent?: React.ReactNode
 }
 
-const PageLayout: React.FC<Props> = ({ children, breadCrumbs, title, withBackButton }) => {
+const PageLayout: React.FC<Props> = ({
+  children,
+  breadCrumbs,
+  title,
+  withBackButton,
+  rightComponent,
+}) => {
   const router = useRouter()
   return (
     <div className={s.container}>
@@ -22,7 +29,11 @@ const PageLayout: React.FC<Props> = ({ children, breadCrumbs, title, withBackBut
           <BackSvg />
         </button>
       )}
-      {!!title && <h1 className={s.title}>{title}</h1>}
+      <div className={s.title_container}>
+        {!!title && <h1 className={s.title}>{title}</h1>}
+        {!!rightComponent && <div className={s.right_container}>{rightComponent}</div>}
+      </div>
+
       {children}
     </div>
   )

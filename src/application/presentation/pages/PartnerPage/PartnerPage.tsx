@@ -7,10 +7,11 @@ import React from 'react'
 import s from './PartnerPage.module.scss'
 import StoredImage from 'application/presentation/components/uiComponents/StoredImage'
 import PartnerArticles from './components/PartnerArticles'
+import PartnerFillers from './components/PartnerFillers'
 
 export const getPartnerPageServerSideProps = async ({ params }: GetServerSideDefaultProps) => {
   try {
-    const partner = await fetchPartner(parseInt(params?.id as string, 10))
+    const partner = await fetchPartner(params?.slug as string)
     return {
       props: {
         partner,
@@ -55,6 +56,7 @@ export default function PartnerPage({ partner }: PartnersPageProps) {
             {partner.videos && partner.videos.length && (
               <PartnerArticles articles={partner.videos} type="videos" />
             )}
+            {!!partner.fillers?.length && <PartnerFillers fillers={partner.fillers} />}
           </div>
         </div>
       </PageLayout>

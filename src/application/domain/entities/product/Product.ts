@@ -1,3 +1,5 @@
+import { ProductCategory } from './ProductCategory'
+
 export type Product = {
   attributes: string
   categ_id: number
@@ -20,4 +22,5 @@ export type Product = {
   wb_price: string | null
   youtube_link: string | null
   content: string | null
+  category: ProductCategory | null
 }

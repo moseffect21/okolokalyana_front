@@ -2,8 +2,6 @@ import { TeamMember } from 'application/domain/entities/team/TeamMember'
 import { GetServerSideDefaultProps } from 'application/domain/types/ServerSideProps'
 import PageLayout from 'application/presentation/components/Layouts/PageLayout'
 import React from 'react'
-import BlogerSvg from 'images/BLOGER.svg'
-import EditorSvg from 'images/editor.svg'
 import s from './TeamMemberPage.module.scss'
 import StoredImage from 'application/presentation/components/uiComponents/StoredImage'
 import Link from 'next/link'
@@ -35,7 +33,6 @@ type TeamMemberProps = {
 }
 
 export default function TeamMemberPage({ teamMember }: TeamMemberProps) {
-  const roleIcon = teamMember.id === 4 ? <BlogerSvg /> : <EditorSvg />
   return (
     <>
       <MetaTeamMemberPage
@@ -50,41 +47,45 @@ export default function TeamMemberPage({ teamMember }: TeamMemberProps) {
         withBackButton
       >
         <div className={s.container}>
-          <div className={s.image_content}>
-            <StoredImage
-              src={teamMember.photo}
-              className={s.photo}
-              alt=""
-              width={315}
-              height={378}
-            />
-            <div className={s.role}>{roleIcon}</div>
+          <div className={s.left}>
+            <div className={s.image_content}>
+              <StoredImage
+                src={teamMember.photo}
+                className={s.photo}
+                alt=""
+                width={315}
+                height={378}
+              />
+            </div>
+            <div className={s.social}>
+              {!!teamMember.vk_url && (
+                <Link href={teamMember.vk_url}>
+                  <VkSvg />
+                </Link>
+              )}
+              {!!teamMember.tg_url && (
+                <Link href={teamMember.tg_url}>
+                  <TgSvg />
+                </Link>
+              )}
+              {!!teamMember.inst_url && (
+                <Link href={teamMember.inst_url}>
+                  <InstSvg />
+                </Link>
+              )}
+              {!!teamMember.youtube_url && (
+                <Link href={teamMember.youtube_url}>
+                  <YoutubeSvg />
+                </Link>
+              )}
+            </div>
           </div>
-          <div className={s.name}>{teamMember.name}</div>
-          <div className={s.little_desc}>{teamMember.little_desc}</div>
-          {!!teamMember.description && (
-            <div className={s.txt} dangerouslySetInnerHTML={{ __html: teamMember.description }} />
-          )}
-          <div className={s.social}>
-            {!!teamMember.vk_url && (
-              <Link href={teamMember.vk_url}>
-                <VkSvg />
-              </Link>
-            )}
-            {!!teamMember.tg_url && (
-              <Link href={teamMember.tg_url}>
-                <TgSvg />
-              </Link>
-            )}
-            {!!teamMember.inst_url && (
-              <Link href={teamMember.inst_url}>
-                <InstSvg />
-              </Link>
-            )}
-            {!!teamMember.youtube_url && (
-              <Link href={teamMember.youtube_url}>
-                <YoutubeSvg />
-              </Link>
+
+          <div className={s.right}>
+            <div className={s.name}>{teamMember.name}</div>
+            <div className={s.little_desc}>{teamMember.little_desc}</div>
+            {!!teamMember.description && (
+              <div className={s.txt} dangerouslySetInnerHTML={{ __html: teamMember.description }} />
             )}
           </div>
         </div>

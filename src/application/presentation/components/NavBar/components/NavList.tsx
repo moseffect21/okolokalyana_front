@@ -6,7 +6,7 @@ import cn from 'classnames'
 const links = [
   { id: 1, name: 'Статьи', link: '/blog/articles' },
   { id: 2, name: 'Видео', link: '/blog/video' },
-  { id: 3, name: 'Прокурочный цех', link: '/mixes' },
+  { id: 3, name: 'Прокурочный цех', link: '/smokingroom' },
   { id: 4, name: 'Шоурум', link: '/showroom' },
   { id: 6, name: 'Taplink', link: '/links' },
   { id: 7, name: 'О нас', link: '/about' },
