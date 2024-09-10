@@ -1,0 +1,20 @@
+.container {
+    padding: 7rem 0 10rem 26.4rem;
+    .partnersMainInner {
+      padding-left: 13.2rem;
+      padding-right: 13.2rem;
+      .titleText {
+        font-size: 6.4rem;
+        line-height: 7.8rem;
+        color: #fff;
+        font-weight: 700;
+        margin-bottom: 5rem;
+      }
+      .partnersMainContainer {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+    }
+  }
+  

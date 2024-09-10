@@ -110,11 +110,28 @@ body {
 #nprogress .spinner {
   display: none !important;
 }
+//swiper style
+.swiper-wrapper {
+  align-items: center;
+}
+.slider-controler .slider-arrow svg {
+  font-size: 2rem;
+}
+.slider-controler .swiper-button-next {
+  left: 80% !important;
+  transform: translateX(-80%) !important;
+}
+
+.slider-controler .swiper-button-prev {
+  left: 20% !important;
+  transform: translateX(-20%) !important;
+}
 
 .ReactModalPortal {
   position: relative;
   z-index: 100;
 }
+
 .ReactModal__Overlay {
   display: flex;
   align-items: center;

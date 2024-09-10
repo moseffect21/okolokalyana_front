@@ -1,0 +1,113 @@
+.articlesContainer {
+  padding: 7rem 0 7rem 26.4rem;
+  background: #ffffff;
+
+  .articlesInner {
+    width: calc(100% - 32rem);
+    height: auto;
+    max-width: 110rem;
+    position: relative;
+    padding-left: 13.2rem;
+  }
+  .titleText {
+    font-size: 6.4rem;
+    line-height: 7.8rem;
+    color: #000000;
+    font-weight: 700;
+    margin-bottom: 5rem;
+  }
+
+  .article_container {
+    display: flex;
+    flex-direction: column;
+    .row_container {
+      position: relative;
+      width: 100%;
+      padding-top: 70%;
+      margin-bottom: 2rem;
+      .row {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: space-between;
+        .column {
+          display: flex;
+          flex-direction: column;
+          &.long {
+            width: calc(66.6% - 0.6rem);
+          }
+          &.short {
+            width: calc(33.3% - 1.2rem);
+          }
+          .sub_row {
+            width: 100%;
+            height: calc(50% - 1rem);
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+      .short_row {
+        height: calc(50% - 1rem);
+      }
+      .link_container {
+        width: 100%;
+        height: calc(50% - 1rem);
+        margin-top: 2rem;
+        position: relative;
+
+        .show_all {
+          display: flex;
+          align-items: center;
+          width: fit-content;
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          font-size: 1.6rem;
+          line-height: 1.7rem;
+          color: #000000;
+          svg {
+            margin-left: 1rem;
+            width: 2.2rem;
+            height: 2.2rem;
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 6rem 0;
+    // height: 70rem;
+    background: #ffffff;
+
+    .content {
+      width: calc(100% - 12rem);
+      height: auto;
+      position: relative;
+      margin: 0 auto;
+      padding-left: 0;
+    }
+    .back_text {
+      position: unset;
+      transform: rotate(0deg);
+      font-size: 3.6rem;
+      line-height: 4.3rem;
+      top: 0;
+      left: 0;
+      text-align: center;
+    }
+  }
+}

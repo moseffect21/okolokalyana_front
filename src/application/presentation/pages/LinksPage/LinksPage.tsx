@@ -10,7 +10,7 @@ import { fetchLinks } from 'application/data/api/links'
 import { LinksCategory } from 'application/domain/entities/links/LinksCategory'
 import { fetchPartners } from 'application/domain/useCases/partners/getPartners'
 import { Partner } from 'application/domain/entities/partners/Partner'
-import minifyObject from 'application/domain/utils/minifyObject'
+import pickParamsFromObject from 'application/domain/utils/pickParamsFromObject'
 
 export async function getLinksPageServerSideProps() {
   try {
@@ -18,7 +18,9 @@ export async function getLinksPageServerSideProps() {
     const partnersResponse = await fetchPartners()
 
     const links = Object.values(linksResponse)
-    const partners = partnersResponse.map(partner => minifyObject(partner, ['id', 'name', 'photo']))
+    const partners = partnersResponse.map(partner =>
+      pickParamsFromObject(partner, ['id', 'name', 'photo']),
+    )
 
     return {
       props: {
