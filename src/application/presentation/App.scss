@@ -167,7 +167,6 @@ body {
 @media screen and (max-width: 768px) {
   .ReactModal__Overlay {
     .ReactModal__Content {
-      transform: scale(1);
       transition: transform 300ms ease-in-out;
     }
   }

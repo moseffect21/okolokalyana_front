@@ -41,3 +41,15 @@
     overflow: hidden;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .card {
+    width: calc(100% / 2 - 0.5rem);
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+    &:nth-child(2n + 1) {
+      margin-right: 1rem;
+    }
+  }
+}
