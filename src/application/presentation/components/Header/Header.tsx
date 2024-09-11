@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { DesktopContainer, MobileContainer } from '../uiComponents/AdaptiveContainers'
 import cn from 'classnames'
 import Router from 'next/router'
+import SearchField from '../NavBar/components/SearchField'
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState<boolean>()
@@ -49,7 +50,9 @@ const Header = () => {
           <Link className={s.logo} href="/">
             <LogoSvg />
           </Link>
-          <div className={s.headerRight}></div>
+          <div className={s.headerRight}>
+            <SearchField />
+          </div>
         </header>
         <div className={cn(s.mobileMenu, { [s.opened]: showMenu })}>
           <NavBar />

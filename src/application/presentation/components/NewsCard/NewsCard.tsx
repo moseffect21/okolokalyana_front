@@ -1,21 +1,24 @@
 import React from 'react'
 import s from './NewsCard.module.scss'
 import Link from 'next/link'
-import type { News } from 'application/domain/entities/news/News'
+import { Article } from 'application/domain/entities/article/Article'
+import dayjs from 'dayjs'
 
 type NewsCardProps = {
-  item: News
+  item: Article
 }
 
 const NewsCard = ({ item }: NewsCardProps) => {
+  const date = dayjs(item.updated_at).format('DD.MM.YY')
+  const href = `/blog/articles/${item.slug || item.id}`
   return (
-    <Link href={`/news/${item.id}`} className={s.newCard}>
+    <Link href={href} className={s.newCard}>
       <div className={s.newCardDate}>
-        <span>{item.created_at}</span>
+        <span>{date}</span>
       </div>
       <div className={s.newCardDescription}>
         <h4>{item.title}</h4>
-        <p>{item.content}</p>
+        <p>{item.description}</p>
       </div>
     </Link>
   )

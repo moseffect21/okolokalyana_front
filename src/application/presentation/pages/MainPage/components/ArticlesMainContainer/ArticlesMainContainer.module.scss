@@ -1,13 +1,12 @@
 .articlesContainer {
-  padding: 7rem 0 7rem 26.4rem;
+  padding: 5rem 0 7rem 26.4rem;
   background: #ffffff;
 
   .articlesInner {
-    width: calc(100% - 32rem);
     height: auto;
     max-width: 110rem;
     position: relative;
-    padding-left: 13.2rem;
+    padding: 0 7.5rem;
   }
   .titleText {
     font-size: 6.4rem;

@@ -29,17 +29,24 @@ export const getMainPageServerSideProps = async () => {
 
 type MainPageProps = MainData
 
-export default function MainPage({ articles, team, partners }: MainPageProps) {
+export default function MainPage({
+  articles,
+  team,
+  partners,
+  updates,
+  fillers,
+  products,
+}: MainPageProps) {
   return (
     <>
+      <MainPageBlockWithBackground />
       <MetaMainPage />
       <MainContainer />
-      <NewsContainer />
+      <NewsContainer news={updates} />
       <VideoSwiper />
       <ArticlesMainContainer articles={articles} />
-      <MainPageBlockWithBackground />
       <HookahContainer />
-      <ShowroomSwiper />
+      <ShowroomSwiper products={products} />
       <AboutMain team={team} />
       <PartnersMain partners={partners} />
     </>

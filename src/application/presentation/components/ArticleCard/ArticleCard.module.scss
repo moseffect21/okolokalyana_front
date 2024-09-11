@@ -66,6 +66,10 @@
     transition: 0.5s;
     transform: translateY(-100%);
     text-align: center;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   .description {
     text-align: center;

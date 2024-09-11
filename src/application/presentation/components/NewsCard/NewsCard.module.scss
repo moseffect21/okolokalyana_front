@@ -3,13 +3,14 @@
   gap: 1rem;
   cursor: pointer;
   color: #fff;
-  &:hover{
+  &:hover {
     color: #fff;
     opacity: 0.7;
   }
   .newCardDate {
     font-size: 1.6rem;
     font-weight: 400;
+    width: 8rem;
   }
   .newCardDescription {
     width: 100%;

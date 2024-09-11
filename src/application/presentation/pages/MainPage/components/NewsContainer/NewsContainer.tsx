@@ -2,8 +2,13 @@ import React from 'react'
 import s from './NewsContainer.module.scss'
 import { newsTestData } from 'application/presentation/components/NewsCard/newsTestData'
 import NewsCard from 'application/presentation/components/NewsCard'
+import { Article } from 'application/domain/entities/article/Article'
 
-export default function NewsContainer() {
+type NewsContainerProps = {
+  news: Article[]
+}
+
+export default function NewsContainer({ news }: NewsContainerProps) {
   return (
     <section className={s.newsContainer}>
       <div className={s.newsInner}>
@@ -15,11 +20,9 @@ export default function NewsContainer() {
           </h1>
         </div>
         <div className={s.newsBlock}>
-          {
-            newsTestData.map((item) => (
-              <NewsCard key={item.id} item={item}/>
-            ))
-          }
+          {news.map(item => (
+            <NewsCard key={item.id} item={item} />
+          ))}
         </div>
       </div>
     </section>
