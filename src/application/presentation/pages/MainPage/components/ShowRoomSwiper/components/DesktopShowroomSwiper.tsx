@@ -53,7 +53,12 @@ const DesktopShowroomSwiper = ({ products }: DesktopShowroomSwiperProps) => {
           const image = product.images ? JSON.parse(product.images)[0] : ''
           return (
             <SwiperSlide key={`product_${product.id}`} className={s.slide}>
-              <Link href={`/showroom/${product.slug || product.id}`} className={s.product}>
+              <Link
+                href={`/showroom/${product.category?.slug || 'product'}/${
+                  product.slug || product.id
+                }`}
+                className={s.product}
+              >
                 <StoredImage src={image} alt="" width={240} height={240} className={s.img} />
                 <div className={s.product_name}>{product.name}</div>
               </Link>
@@ -61,19 +66,17 @@ const DesktopShowroomSwiper = ({ products }: DesktopShowroomSwiperProps) => {
           )
         })}
       </Swiper>
-      <div className={s.sliderController}>
-        <div
-          className={cn(s.prevBtn, { [s.disabled]: slideIndex === 0 })}
-          onClick={onBtnClick('prev')}
-        >
-          <NextBtn />
-        </div>
-        <div
-          className={cn(s.nextBtn, { [s.disabled]: slideIndex === products.length - 1 })}
-          onClick={onBtnClick('next')}
-        >
-          <NextBtn />
-        </div>
+      <div
+        className={cn(s.prevBtn, { [s.disabled]: slideIndex === 0 })}
+        onClick={onBtnClick('prev')}
+      >
+        <NextBtn />
+      </div>
+      <div
+        className={cn(s.nextBtn, { [s.disabled]: slideIndex === products.length - 1 })}
+        onClick={onBtnClick('next')}
+      >
+        <NextBtn />
       </div>
     </DesktopContainer>
   )

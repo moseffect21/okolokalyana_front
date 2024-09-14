@@ -18,9 +18,10 @@ type Props = {
 }
 const ArticleCard = ({ item, type, categSlug }: Props) => {
   const isVideo = categSlug === 'video'
+  const categorySlug = item.category?.slug || categSlug
   return (
     <Link
-      href={`/blog/${categSlug}/${item.slug}`}
+      href={`/blog/${categorySlug}/${item.slug}`}
       className={cn(s.card, {
         [s.long]: type === 'long',
         [s.short]: type === 'short',

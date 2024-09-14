@@ -18,31 +18,35 @@
     border: none !important;
   }
 }
-.sliderController {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0 7.5rem;
+.prevBtn,
+.nextBtn {
   position: absolute;
+  right: 7.5rem;
   bottom: 16rem;
-  left: 0;
-  z-index: 10;
-
-  .prevBtn,
-  .nextBtn {
-    width: 4.5rem;
-    height: 4.5rem;
-    cursor: pointer;
-  }
-  .prevBtn {
-    transform: rotate(180deg);
-  }
-  .disabled {
+  width: 4.5rem;
+  height: 4.5rem;
+  cursor: pointer;
+  &.disabled {
     pointer-events: none;
     opacity: 0.5;
   }
 }
+.prevBtn {
+  transform: rotate(180deg);
+  left: 7.5rem;
+  right: unset;
+}
+// .sliderController {
+//   display: flex;
+//   justify-content: space-between;
+//   width: 100%;
+//   box-sizing: border-box;
+//   padding: 0 7.5rem;
+//   position: absolute;
+//   bottom: 16rem;
+//   left: 0;
+//   z-index: 10;
+// }
 
 .product {
   display: block;

@@ -1,6 +1,5 @@
 import React from 'react'
 import s from './NewsContainer.module.scss'
-import { newsTestData } from 'application/presentation/components/NewsCard/newsTestData'
 import NewsCard from 'application/presentation/components/NewsCard'
 import { Article } from 'application/domain/entities/article/Article'
 

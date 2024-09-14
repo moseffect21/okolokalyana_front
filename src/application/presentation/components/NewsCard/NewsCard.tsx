@@ -10,7 +10,7 @@ type NewsCardProps = {
 
 const NewsCard = ({ item }: NewsCardProps) => {
   const date = dayjs(item.updated_at).format('DD.MM.YY')
-  const href = `/blog/articles/${item.slug || item.id}`
+  const href = `/blog/${item.category?.slug || 'articles'}/${item.slug || item.id}`
   return (
     <Link href={href} className={s.newCard}>
       <div className={s.newCardDate}>

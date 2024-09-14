@@ -21,7 +21,12 @@ const MobileShowroomSwiper = ({ products }: MobileShowroomSwiperProps) => {
           const image = product.images ? JSON.parse(product.images)[0] : ''
           return (
             <SwiperSlide key={`product_${product.id}`} className={s.slide}>
-              <Link href={`/showroom/${product.slug || product.id}`} className={s.product}>
+              <Link
+                href={`/showroom/${product.category?.slug || 'product'}/${
+                  product.slug || product.id
+                }`}
+                className={s.product}
+              >
                 <StoredImage src={image} alt="" width={240} height={240} className={s.img} />
                 <div className={s.shadow}></div>
                 <div className={s.product_name}>{product.name}</div>
