@@ -5,6 +5,10 @@ import Link from 'next/link'
 import { sortArticles } from 'application/domain/useCases/article/sortArticles'
 import BackArrow from 'images/icons/black_right_arrow.svg'
 import { Articles } from 'application/domain/entities/article/Article'
+import {
+  DesktopContainer,
+  MobileContainer,
+} from 'application/presentation/components/uiComponents/AdaptiveContainers'
 
 type ArticlesMainProps = {
   articles: Articles
@@ -18,42 +22,63 @@ export default function ArticlesMainContainer({ articles }: ArticlesMainProps) {
       <div className={s.articlesInner}>
         <div className={s.titleText}>Статьи</div>
 
-        <div className={s.article_container}>
-          {sortedArticles.map((item: any, i: number) => {
-            if (i === 0) {
-              return (
-                <div key={`article-row-${i}`} className={`${s.row_container}`}>
-                  <div className={s.row}>
-                    <div className={`${s.column} ${s.long}`}>
-                      <div className={s.sub_row}>
-                        {item[0] && <ArticleCard item={item[0]} type="long" categSlug="articles" />}
+        <DesktopContainer>
+          <div className={s.article_container}>
+            {sortedArticles.map((item: any, i: number) => {
+              if (i === 0) {
+                return (
+                  <div key={`article-row-${i}`} className={`${s.row_container}`}>
+                    <div className={s.row}>
+                      <div className={`${s.column} ${s.long}`}>
+                        <div className={s.sub_row}>
+                          {item[0] && (
+                            <ArticleCard item={item[0]} type="long" categSlug="articles" />
+                          )}
+                        </div>
+                        <div className={s.sub_row}>
+                          {item[1] && (
+                            <ArticleCard item={item[1]} type="short" categSlug="articles" />
+                          )}
+                          {item[2] && (
+                            <ArticleCard item={item[2]} type="short" categSlug="articles" />
+                          )}
+                        </div>
                       </div>
-                      <div className={s.sub_row}>
-                        {item[1] && (
-                          <ArticleCard item={item[1]} type="short" categSlug="articles" />
-                        )}
-                        {item[2] && (
-                          <ArticleCard item={item[2]} type="short" categSlug="articles" />
-                        )}
-                      </div>
-                    </div>
-                    <div className={`${s.column} ${s.short}`}>
-                      <div className={s.short_row}>
-                        {item[3] && <ArticleCard item={item[3]} type="long" categSlug="articles" />}
-                      </div>
-                      <div className={s.link_container}>
-                        <Link href="/blog/articles" className={s.show_all}>
-                          <span>Смотреть все</span> <BackArrow />
-                        </Link>
+                      <div className={`${s.column} ${s.short}`}>
+                        <div className={s.short_row}>
+                          {item[3] && (
+                            <ArticleCard item={item[3]} type="long" categSlug="articles" />
+                          )}
+                        </div>
+                        <div className={s.link_container}>
+                          <Link href="/blog/articles" className={s.show_all}>
+                            <span>Смотреть все</span> <BackArrow />
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              )
-            }
-            return null
-          })}
-        </div>
+                )
+              }
+              return null
+            })}
+          </div>
+        </DesktopContainer>
+        <MobileContainer>
+          {articles.map(article => (
+            <ArticleCard
+              key={`mobile_article_${article.id}`}
+              item={article}
+              type="long"
+              categSlug="articles"
+            />
+          ))}
+          <div className={s.link_container}>
+            <Link href="/blog/articles" className={s.show_all}>
+              <span>Смотреть все</span> <BackArrow />
+            </Link>
+          </div>
+        </MobileContainer>
       </div>
     </section>
   )

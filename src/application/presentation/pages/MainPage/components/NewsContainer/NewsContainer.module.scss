@@ -17,3 +17,17 @@
   flex-direction: column;
   gap: 2rem;
 }
+
+@media screen and (max-width: 768px) {
+  .newsContainer {
+    padding: 2rem;
+  }
+  .newsInner {
+    padding: 0 0;
+  }
+  .titleContainer {
+    h1 {
+      font-size: 2.4rem;
+    }
+  }
+}

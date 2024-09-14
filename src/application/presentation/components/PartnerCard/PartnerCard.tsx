@@ -13,7 +13,7 @@ const PartnerCard = ({ partner }: PartnerCardProps) => {
 
   return (
     <Link href={`/partners/${slug || id}`} className={s.card}>
-      <StoredImage src={photo || ''} alt={name} width={600} height={300} />
+      <StoredImage src={photo || ''} alt={name} width={600} height={300} className={s.img} />
     </Link>
   )
 }

@@ -5,7 +5,7 @@ import PageLayout from 'application/presentation/components/Layouts/PageLayout'
 import { MetaPartnersPage } from 'application/presentation/meta/MetaContent'
 import React from 'react'
 import s from './PartnersPage.module.scss'
-import PartnerCard from './components/PartnerCard'
+import PartnerCard from 'application/presentation/components/PartnerCard'
 
 export const getPartnersPageServerSideProps = async ({ params }: GetServerSideDefaultProps) => {
   const partners = await fetchPartners()

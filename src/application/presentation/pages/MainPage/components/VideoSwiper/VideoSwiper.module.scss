@@ -8,7 +8,7 @@
   }
 
   .video_item {
-    height: 64rem;
+    height: 100%;
     position: relative;
   }
   .play_icon {
@@ -71,5 +71,11 @@
       transform: rotate(180deg);
       display: block;
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    height: 27rem;
   }
 }

@@ -1,10 +1,9 @@
 .container {
-  height: 100vh;
   padding: 7rem 0 5rem 26.4rem;
   background: #000000b2;
   .titleText {
     font-size: 6.4rem;
-    line-height: 7.8rem;
+    line-height: 130%;
     color: #fff;
     font-weight: 700;
     margin-bottom: 5rem;
@@ -12,4 +11,23 @@
 }
 .inner {
   padding: 0 7.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 5rem 3rem;
+    .titleText {
+      font-size: 4rem;
+    }
+  }
+  .inner {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 360px) {
+  .container {
+    .titleText {
+      font-size: 3rem;
+    }
+  }
 }

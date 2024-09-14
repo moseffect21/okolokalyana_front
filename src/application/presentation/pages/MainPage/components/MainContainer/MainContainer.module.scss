@@ -10,6 +10,7 @@
   position: relative;
   justify-content: space-between;
   width: 100%;
+  background: #000000;
 }
 .titleContainer {
   display: flex;
@@ -55,5 +56,56 @@
     right: 25rem;
     width: auto;
     height: 70%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .mainContainer {
+    padding: 0;
+    overflow: hidden;
+    height: auto;
+  }
+  .mainInner {
+    flex-direction: column-reverse;
+    padding-top: 4rem;
+  }
+  .titleContainer {
+    padding: 0 3.5rem;
+    margin-top: -2rem;
+    box-sizing: border-box;
+    width: 100%;
+    justify-content: flex-end;
+    svg {
+      width: 100%;
+      margin-bottom: 1rem;
+      max-width: 34rem;
+    }
+    p {
+      flex: unset;
+      max-width: 100%;
+      font-size: 1.6rem;
+      line-height: 130%;
+    }
+  }
+  .mainImgContainer {
+    position: relative;
+    .shadow {
+      width: 60%;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+      right: 0;
+      left: unset;
+    }
+    .mainImg {
+      max-width: 60%;
+      width: 100%;
+      height: auto;
+      margin-left: auto;
+      display: block;
+    }
+    .tattooImg {
+      bottom: unset;
+      top: -6rem;
+      right: 35%;
+    }
   }
 }

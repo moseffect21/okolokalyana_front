@@ -6,12 +6,14 @@ import StoredImage from '../uiComponents/StoredImage'
 import Rating from '../uiComponents/Rating'
 import EmptyPhoto from '../uiComponents/EmptyPhoto'
 import Link from 'next/link'
+import cn from 'classnames'
 
 type TobaccoFillerCardProps = {
   tobaccoFiller: TobaccoFiller
+  containerClassName?: string
 }
 
-const TobaccoFillerCard = ({ tobaccoFiller }: TobaccoFillerCardProps) => {
+const TobaccoFillerCard = ({ tobaccoFiller, containerClassName }: TobaccoFillerCardProps) => {
   const {
     id,
     slug,
@@ -37,7 +39,7 @@ const TobaccoFillerCard = ({ tobaccoFiller }: TobaccoFillerCardProps) => {
   } = tobaccoFiller
 
   return (
-    <Link className={s.container} href={`/smokingroom/${slug || id}`}>
+    <Link className={cn(s.container, containerClassName)} href={`/smokingroom/${slug || id}`}>
       {!!name && <div className={s.title}>{name}</div>}
 
       <div className={s.inner}>

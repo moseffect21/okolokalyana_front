@@ -25,7 +25,7 @@ const AboutMain = ({ team }: AboutMainProps) => {
             />
           ))}
         </div>
-        <ShowMoreLink href='/about' color='white'/>
+        <ShowMoreLink href="/about" color="white" className={s.more} />
       </div>
     </section>
   )

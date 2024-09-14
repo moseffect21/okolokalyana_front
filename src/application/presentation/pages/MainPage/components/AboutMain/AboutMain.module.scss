@@ -18,3 +18,24 @@
     }
   }
 }
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 5rem 3rem;
+    .aboutInner {
+      padding: 0 0;
+      .titleText {
+        font-size: 4rem;
+        line-height: 130%;
+        margin-bottom: 4rem;
+      }
+    }
+    .more {
+      margin-top: 4rem;
+      width: fit-content;
+      margin-left: auto;
+      a {
+        position: unset;
+      }
+    }
+  }
+}

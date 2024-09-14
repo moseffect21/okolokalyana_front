@@ -1,0 +1,59 @@
+.swiper {
+  position: relative;
+  margin: 0 6rem;
+  padding-bottom: 6rem;
+}
+.slide {
+  width: 24rem;
+  height: 24rem;
+}
+.img {
+  border: 1px solid #000;
+  border-radius: 1.6rem;
+  overflow: hidden;
+  width: 100%;
+  height: 100% !important;
+  object-fit: cover !important;
+  img {
+    border: none !important;
+  }
+}
+.sliderController {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 7.5rem;
+  position: absolute;
+  bottom: 16rem;
+  left: 0;
+  z-index: 10;
+
+  .prevBtn,
+  .nextBtn {
+    width: 4.5rem;
+    height: 4.5rem;
+    cursor: pointer;
+  }
+  .prevBtn {
+    transform: rotate(180deg);
+  }
+  .disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
+
+.product {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.product_name {
+  font-size: 1.4rem;
+  color: #000;
+  line-height: 130%;
+  text-align: center;
+  margin-top: 2.5rem;
+}

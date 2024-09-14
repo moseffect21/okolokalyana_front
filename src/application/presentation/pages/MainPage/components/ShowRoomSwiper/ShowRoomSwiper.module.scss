@@ -2,70 +2,38 @@
   padding: 7rem 0 5rem 26.4rem;
   background-color: #fff;
 
-  .showRoomSwiperInner {
+  .inner {
     padding: 0 7.5rem;
     position: relative;
-    .black_text {
-      font-size: 6.4rem;
-      line-height: 7.8rem;
-      color: #000000;
-      font-weight: 700;
-      margin-bottom: 4rem;
+  }
+}
+.title {
+  font-size: 6.4rem;
+  line-height: 7.8rem;
+  color: #000000;
+  font-weight: 700;
+  margin-bottom: 4rem;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 5rem 0;
+    .inner {
+      padding: 0 0;
     }
-
-    .swiper_container {
-      position: relative;
-      margin: 0 6rem;
-      padding-bottom: 6rem;
-
-      .swiperSlide {
-        width: 24rem;
-        height: 24rem;
-        .img {
-          border: 1px solid #000;
-          border-radius: 1.6rem;
-          overflow: hidden;
-          width: 100%;
-          height: 100% !important;
-          object-fit: cover !important;
-          img {
-            border: none !important;
-          }
-        }
+    .more {
+      padding: 0 3rem;
+      margin-top: 2rem;
+      width: fit-content;
+      margin-left: auto;
+      a {
+        position: unset;
       }
     }
   }
-}
-
-.sliderController {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0 7.5rem;
-  position: absolute;
-  bottom: 16rem;
-  left: 0;
-  z-index: 10;
-
-  .prevBtn,
-  .nextBtn {
-    width: 4.5rem;
-    height: 4.5rem;
-    cursor: pointer;
+  .title {
+    font-size: 4rem;
+    line-height: 130%;
+    padding: 0 3rem;
   }
-}
-
-.product {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.product_name {
-  font-size: 1.4rem;
-  color: #000;
-  line-height: 130%;
-  text-align: center;
-  margin-top: 2.5rem;
 }

@@ -11,13 +11,20 @@ import { MainData } from 'application/domain/entities/main/MainData'
 import MainPageBlockWithBackground from './components/MainPageBlockWithBackground/MainPageBlockWithBackground'
 import AboutMain from './components/AboutMain'
 import PartnersMain from './components/PartnersMain'
+import { fetchSmokingRoomFilters } from 'application/domain/useCases/smokingroom/getSmokingRoom'
+import { getFilterOptions } from 'application/domain/useCases/smokingroom/smokingRoomFilterUtils'
+import { SelectOption } from 'application/presentation/components/uiComponents/InputComponents/Selector/Selector'
 
 export const getMainPageServerSideProps = async () => {
   try {
     const mainData = await fetchMainRequest()
+    const filters = await fetchSmokingRoomFilters()
+
+    const filterOptions = getFilterOptions(filters)
     return {
       props: {
         ...mainData,
+        filterOptions,
       },
     }
   } catch (e) {
@@ -27,7 +34,16 @@ export const getMainPageServerSideProps = async () => {
   }
 }
 
-type MainPageProps = MainData
+type MainPageProps = MainData & {
+  filterOptions: {
+    bowlOptions: SelectOption[]
+    tobaccoOptions: SelectOption[]
+    hookahBlockOptions: SelectOption[]
+    subjectiveRateOptions: SelectOption[]
+    objectiveRateOptions: SelectOption[]
+    smokersOptions: SelectOption[]
+  }
+}
 
 export default function MainPage({
   articles,
@@ -36,6 +52,7 @@ export default function MainPage({
   updates,
   fillers,
   products,
+  filterOptions,
 }: MainPageProps) {
   return (
     <>
@@ -45,7 +62,7 @@ export default function MainPage({
       <NewsContainer news={updates} />
       <VideoSwiper />
       <ArticlesMainContainer articles={articles} />
-      <HookahContainer />
+      <HookahContainer {...filterOptions} fillers={fillers} />
       <ShowroomSwiper products={products} />
       <AboutMain team={team} />
       <PartnersMain partners={partners} />
