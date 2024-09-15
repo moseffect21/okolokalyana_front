@@ -13,6 +13,7 @@ import UserRate from './components/UserRate'
 import dayjs from 'dayjs'
 import 'dayjs/locale/ru'
 import { MetaTobaccoFillerPage } from 'application/presentation/meta/MetaContent'
+import DetailsMW from 'application/presentation/components/ModalWindows/DetailsMW'
 
 dayjs.locale('ru')
 
@@ -83,10 +84,22 @@ export default function TobaccoFillerPage({ tobaccoFiller }: TobaccoFillerPagePr
           <div className={s.info}>
             <div className={s.left}>
               {!!brand && (
-                <div className={s.row}>
-                  <div className={s.label}>Брэнд</div>
-                  <div className={s.value}>{brand.name}</div>
-                </div>
+                <>
+                  <Link href="#brand" className={s.row}>
+                    <div className={s.label}>Брэнд</div>
+                    <div className={s.value}>{brand.name}</div>
+                  </Link>
+                  <DetailsMW
+                    hash="brand"
+                    data={{
+                      title: brand.name,
+                      description: brand.description,
+                      content: brand.content,
+                      photo: brand.photo,
+                      video_url: brand.video_url,
+                    }}
+                  />
+                </>
               )}
               {!!tobacco_line && (
                 <div className={s.row}>
@@ -113,28 +126,66 @@ export default function TobaccoFillerPage({ tobaccoFiller }: TobaccoFillerPagePr
                 </div>
               )}
               {!!bowl && (
-                <div className={s.row}>
-                  <div className={s.label}>Чаша</div>
-                  <div className={s.value}>{bowl.name}</div>
-                </div>
+                <>
+                  <div className={s.row}>
+                    <div className={s.label}>Чаша</div>
+                    <div className={s.value}>{bowl.name}</div>
+                  </div>
+                </>
               )}
               {!!hookah_block && (
-                <div className={s.row}>
-                  <div className={s.label}>Коллауд</div>
-                  <div className={s.value}>{hookah_block.name}</div>
-                </div>
+                <>
+                  <Link href="#collaud" className={s.row}>
+                    <div className={s.label}>Коллауд</div>
+                    <div className={s.value}>{hookah_block.name}</div>
+                  </Link>
+                  <DetailsMW
+                    hash="collaud"
+                    data={{
+                      title: hookah_block.name,
+                      description: hookah_block.description,
+                      content: hookah_block.content,
+                      photo: hookah_block.photo,
+                      video_url: hookah_block.video_url,
+                    }}
+                  />
+                </>
               )}
               {!!coal && (
-                <div className={s.row}>
-                  <div className={s.label}>Угли</div>
-                  <div className={s.value}>{coal.name}</div>
-                </div>
+                <>
+                  <Link href="#coal" className={s.row}>
+                    <div className={s.label}>Угли</div>
+                    <div className={s.value}>{coal.name}</div>
+                  </Link>
+                  <DetailsMW
+                    hash="coal"
+                    data={{
+                      title: coal.name,
+                      description: coal.description,
+                      content: coal.content,
+                      photo: coal.photo,
+                      video_url: coal.video_url,
+                    }}
+                  />
+                </>
               )}
               {!!coal_placement && (
-                <div className={s.row}>
-                  <div className={s.label}>Расстановка углей</div>
-                  <div className={s.value}>{coal_placement.name}</div>
-                </div>
+                <>
+                  <Link href="#coal_placement" className={s.row}>
+                    <div className={s.label}>Расстановка углей</div>
+                    <div className={s.value}>{coal_placement.name}</div>
+                  </Link>
+                  <DetailsMW
+                    hash="coal_placement"
+                    data={{
+                      title: coal_placement.name,
+                      description: coal_placement.description,
+                      content: coal_placement.content,
+                      photo: coal_placement.photo,
+                      video_url: coal_placement.video_url,
+                    }}
+                  />
+                </>
               )}
               {!!warming_time && (
                 <div className={s.row}>
@@ -144,10 +195,22 @@ export default function TobaccoFillerPage({ tobaccoFiller }: TobaccoFillerPagePr
               )}
 
               {!!hookah && (
-                <div className={s.row}>
-                  <div className={s.label}>Кальян</div>
-                  <div className={s.value}>{hookah.name}</div>
-                </div>
+                <>
+                  <Link href="#hookah" className={s.row}>
+                    <div className={s.label}>Кальян</div>
+                    <div className={s.value}>{hookah.name}</div>
+                  </Link>
+                  <DetailsMW
+                    hash="hookah"
+                    data={{
+                      title: hookah.name,
+                      description: hookah.description,
+                      content: hookah.content,
+                      photo: hookah.photo,
+                      video_url: hookah.video_url,
+                    }}
+                  />
+                </>
               )}
               {!!smoker && (
                 <div className={s.row}>

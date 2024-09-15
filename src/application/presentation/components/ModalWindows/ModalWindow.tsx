@@ -12,6 +12,7 @@ type ModalWindowProps = {
   notFull?: boolean
   withoutCloseBtn?: boolean
   onRequestClose?: () => void
+  modalClassName?: string
 }
 
 const ModalWindow = ({
@@ -22,6 +23,7 @@ const ModalWindow = ({
   onRequestClose,
   withoutCloseBtn,
   isLarge,
+  modalClassName,
 }: ModalWindowProps) => {
   const closeMW = () => setOpened(false)
   return (
@@ -30,7 +32,7 @@ const ModalWindow = ({
       isOpen={opened}
       onRequestClose={onRequestClose}
       overlayClassName={s.overlay}
-      className={cn(s.modal_window, { [s.not_full]: notFull, [s.large]: isLarge })}
+      className={cn(s.modal_window, { [s.not_full]: notFull, [s.large]: isLarge }, modalClassName)}
     >
       <>
         {!withoutCloseBtn && (
