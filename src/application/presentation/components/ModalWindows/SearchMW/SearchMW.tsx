@@ -7,6 +7,7 @@ import SearchItem from './components/SearchItem'
 import { Article } from 'application/domain/entities/article/Article'
 import { Router } from 'next/router'
 import cn from 'classnames'
+import useOutsideClick from 'application/domain/utils/useOutsideClick'
 
 type SearchMWProps = {
   opened: boolean
@@ -16,6 +17,8 @@ type SearchMWProps = {
 export default function SearchMW({ opened, setOpened }: SearchMWProps) {
   const inputRef = useRef<any>()
   const delayTimer = useRef<any>()
+  const containerRef = useRef<any>()
+  useOutsideClick(containerRef, setOpened)
   const [value, setValue] = useState<string>('')
   const [searchIsLoading, setSearchIsLoading] = useState<boolean>(false)
   const [searchResult, setSearchResult] = useState<Article[]>([])
@@ -62,7 +65,7 @@ export default function SearchMW({ opened, setOpened }: SearchMWProps) {
   }, [])
 
   return (
-    <div className={cn(s.container, { [s.opened]: opened })}>
+    <div className={cn(s.container, { [s.opened]: opened })} ref={containerRef}>
       <button className={s.close_btn} onClick={closeMW}>
         <CloseSvg />
       </button>
