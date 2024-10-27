@@ -15,7 +15,7 @@ const HookahBlocksContainer = ({ hookahBlocks, total }: HookahBlocksContainerPro
   return (
     <div className={s.container}>
       <div className={s.title}>Калауд</div>
-      <Cards data={hookahBlocks} cardLinkPrefix="/smokingroom/list?hookah_block=" />
+      <Cards data={hookahBlocks} cardLinkPrefix="/smokingroom/list?hookahBlock=" />
       <Link className={s.show_more} href="/smokingroom#hookah_blocks">
         Показать еще {totalCount || null}
         <LinkSvg />

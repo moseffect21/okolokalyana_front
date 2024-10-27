@@ -22,7 +22,7 @@ export default function HookahBlockListMW({ hookahBlocks }: HookahBlockListMWPro
   return (
     <ModalWindow opened={opened} setOpened={onClose} onRequestClose={onClose} isLarge>
       <div className={s.title}>Калауды</div>
-      <Cards data={hookahBlocks} cardLinkPrefix="/smokingroom/list?hookah_block=" />
+      <Cards data={hookahBlocks} cardLinkPrefix="/smokingroom/list?hookahBlock=" />
     </ModalWindow>
   )
 }
