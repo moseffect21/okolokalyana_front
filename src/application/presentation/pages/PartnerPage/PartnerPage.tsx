@@ -40,12 +40,13 @@ export default function PartnerPage({ partner }: PartnersPageProps) {
         ]}
       >
         <div className={s.container}>
-          <div className={s.image}>
+          <div className={s.image_container}>
             <StoredImage
               src={partner.photo || ''}
               alt={`Логотип ${partner.name}`}
               width={600}
               height={300}
+              className={s.image}
             />
           </div>
           <div className={s.text} dangerouslySetInnerHTML={{ __html: partner.description || '' }} />

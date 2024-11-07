@@ -63,7 +63,7 @@ export default function MainPage({
       <VideoSwiper />
       <ArticlesMainContainer articles={articles} />
       <HookahContainer {...filterOptions} fillers={fillers} />
-      <ShowroomSwiper products={products} />
+      {products?.length > 3 && <ShowroomSwiper products={products} />}
       <AboutMain team={team} />
       <PartnersMain partners={partners} />
     </>

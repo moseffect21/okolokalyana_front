@@ -10,7 +10,7 @@ const links = [
   { id: 6, name: 'Taplink', link: '/links' },
   { id: 7, name: 'О нас', link: '/about' },
   { id: 8, name: 'Партнеры', link: '/partners' },
-  { id: 9, name: 'Новости', link: '/news' },
+  // { id: 9, name: 'Новости', link: '/news' },
 ]
 
 export default function NavList() {

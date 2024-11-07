@@ -15,7 +15,13 @@ const ArticleItem = ({ article }: ArticleItemProps) => {
   return (
     <Link className={s.item} href={url}>
       <div className={s.img}>
-        <StoredImage src={article.preview_img} alt="" width={300} height={150} />
+        <StoredImage
+          src={article.preview_img}
+          alt=""
+          width={300}
+          height={150}
+          className={s.image}
+        />
         <div className={s.shadow} />
       </div>
       <div className={s.name}>{article.title}</div>
