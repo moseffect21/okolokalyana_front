@@ -63,7 +63,7 @@ export default function ArticlePage({ article, category }: ArticlePageProps) {
               />
             ) : (
               <StoredImage
-                сlassName={s.stored_img}
+                className={s.stored_img}
                 src={article.preview_img}
                 alt=""
                 width={600}
