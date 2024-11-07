@@ -62,7 +62,13 @@ export default function ArticlePage({ article, category }: ArticlePageProps) {
                 allowFullScreen
               />
             ) : (
-              <StoredImage src={article.preview_img} alt="" width={600} height={300} />
+              <StoredImage
+                сlassName={s.stored_img}
+                src={article.preview_img}
+                alt=""
+                width={600}
+                height={300}
+              />
             )}
           </div>
           <div className={s.inner_container}>
