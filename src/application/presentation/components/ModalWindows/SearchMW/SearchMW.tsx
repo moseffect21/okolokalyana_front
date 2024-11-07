@@ -14,6 +14,8 @@ type SearchMWProps = {
   setOpened: (val: boolean) => void
 }
 
+const controller = new AbortController()
+
 export default function SearchMW({ opened, setOpened }: SearchMWProps) {
   const inputRef = useRef<any>()
   const delayTimer = useRef<any>()
@@ -40,9 +42,10 @@ export default function SearchMW({ opened, setOpened }: SearchMWProps) {
     }
     if (value) {
       setSearchIsLoading(true)
+      controller.abort()
       delayTimer.current = setTimeout(async () => {
         try {
-          const searchData = await fetchSearch(value)
+          const searchData = await fetchSearch(value, controller)
           setSearchResult(Array.isArray(searchData) ? searchData : [])
         } catch (e) {
           setSearchResult([])

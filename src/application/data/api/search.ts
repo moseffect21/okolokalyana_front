@@ -1,12 +1,12 @@
 import { Article } from 'application/domain/entities/article/Article'
 import apiClient from '../apiClient'
 
-const controller = new AbortController()
-
-export const fetchSearchRequest = async (value: string): Promise<Article[]> => {
-  controller.abort()
+export const fetchSearchRequest = async (
+  value: string,
+  abortController?: AbortController,
+): Promise<Article[]> => {
   const { data } = await apiClient.get(`/api/v1/search?text=${value}`, {
-    signal: controller.signal,
+    signal: abortController?.signal,
   })
   return data
 }
