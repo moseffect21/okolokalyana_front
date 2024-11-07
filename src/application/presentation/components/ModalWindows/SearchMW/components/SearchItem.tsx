@@ -14,8 +14,8 @@ export default function SearchItem({ data }: SearchItemProps) {
 
   return (
     <Link className={s.container} href={href}>
-      <div className={s.img}>
-        <StoredImage src={data.preview_img} alt="" width={100} height={100} />
+      <div className={s.img_container}>
+        <StoredImage src={data.preview_img} alt="" width={100} height={100} className={s.img} />
       </div>
       <div className={s.text}>
         <div className={s.type}>{type}</div>

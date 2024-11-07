@@ -43,7 +43,7 @@ export default function SearchMW({ opened, setOpened }: SearchMWProps) {
       delayTimer.current = setTimeout(async () => {
         try {
           const searchData = await fetchSearch(value)
-          setSearchResult(searchData)
+          setSearchResult(Array.isArray(searchData) ? searchData : [])
         } catch (e) {
           setSearchResult([])
         }
@@ -82,7 +82,7 @@ export default function SearchMW({ opened, setOpened }: SearchMWProps) {
         !!value && (
           <div className={s.result}>
             <div className={s.title}>Результаты поиска:</div>
-            {searchResult.length ? (
+            {searchResult && searchResult.length ? (
               searchResult.map(item => <SearchItem key={`search_item_${item.id}`} data={item} />)
             ) : (
               <div className={s.not_found}>Ничего не найдено</div>
