@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Image, { ImageProps } from 'next/image'
-import apiClient from 'application/data/apiClient'
 import cn from 'classnames'
 import s from './StoredImage.module.scss'
+import generateImageUrl from 'application/domain/utils/generateImageUrl'
 
 type StoredImageProps = ImageProps & {
   src: string
@@ -13,10 +13,7 @@ type StoredImageProps = ImageProps & {
 
 const StoredImage: React.FC<StoredImageProps> = ({ src, alt, className, ...props }) => {
   const [status, setStatus] = useState<string>('loading')
-  const { baseURL } = apiClient.defaults
-  const imageUrl = baseURL?.endsWith('/')
-    ? `${apiClient.defaults.baseURL}storage/${src}`
-    : `${apiClient.defaults.baseURL}/storage/${src}`
+  const imageUrl = generateImageUrl(src)
 
   const isLoaded = status === 'completed'
   const isError = status === 'error'

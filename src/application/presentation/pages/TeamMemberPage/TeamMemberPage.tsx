@@ -38,6 +38,7 @@ export default function TeamMemberPage({ teamMember }: TeamMemberProps) {
       <MetaTeamMemberPage
         name={teamMember.name}
         desc={`${teamMember.little_desc} ${teamMember.description}`}
+        image={teamMember.photo}
       />
       <PageLayout
         breadCrumbs={[

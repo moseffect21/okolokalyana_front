@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { Partner } from 'application/domain/entities/partners/Partner'
 import { ArticleCategory } from 'application/domain/entities/article/ArticleCategory'
 import { Article } from 'application/domain/entities/article/Article'
+import generateImageUrl from 'application/domain/utils/generateImageUrl'
 
 const MetaAppContent = () => {
   return (
@@ -22,7 +23,7 @@ type MetaDataProps = {
   title: string
   desc: string
   keywords?: string
-  image?: string
+  image?: string | null
   indexable?: boolean
 }
 
@@ -35,6 +36,7 @@ export const MetaData = ({ title, desc, image, keywords, indexable }: MetaDataPr
       <meta property="og:description" content={desc}></meta>
       {indexable === false ? <meta name="robots" content="noindex"></meta> : <></>}
       {keywords ? <meta name="keywords" content={keywords}></meta> : null}
+      {!!image && <meta name="og:image" content={generateImageUrl(image)} />}
     </Head>
   )
 }
@@ -55,10 +57,19 @@ export const MetaAboutPage = () => (
   />
 )
 
-export const MetaTeamMemberPage = ({ name, desc }: { name: string; desc: string }) => (
+export const MetaTeamMemberPage = ({
+  name,
+  desc,
+  image,
+}: {
+  name: string
+  desc: string
+  image: string
+}) => (
   <MetaData
     title={`${name} - Околокальяна`}
     desc={desc}
+    image={image}
     keywords="блогер, кальян, табак, чаша, чашка, смесь, кальянщик, россия, рф, ру, околокальяна, около кальяна, туториал, обучение, забить, забивка, купить, заказать, обзор"
   />
 )
@@ -75,6 +86,7 @@ export const MetaPartnerPage = ({ partner }: { partner: Partner }) => (
   <MetaData
     title={`${partner.name} - Околокальяна`}
     desc={`${partner.short_desc} ${partner.description}`}
+    image={partner.photo}
     keywords="бренд, производитель, табак, чаша, чашка, смесь, чай, уголь, кальян, купить, россия, рф, ру, околокальяна, около кальяна, туториал, обучение, забить, забивка, купить, заказать, обзор"
   />
 )
@@ -105,6 +117,7 @@ export const MetaArticlePage = ({ article }: { article: Article }) => (
       article.seo_keywords ||
       'бренд, производитель, табак, чаша, чашка, смесь, чай, уголь, кальян, купить, россия, рф, ру, околокальяна, около кальяна, туториал, обучение, забить, забивка, купить, заказать, обзор'
     }
+    image={article.preview_img || ''}
   />
 )
 
