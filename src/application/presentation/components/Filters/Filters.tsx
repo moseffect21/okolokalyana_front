@@ -73,8 +73,8 @@ const Filters = ({
       />
       <Selector
         options={hookahBlockOptions}
-        placeholder="Выберите коллауд"
-        title="Коллауд"
+        placeholder="Выберите калауд"
+        title="Калауд"
         onChange={handleFilterChange('hookahBlock')}
         value={filterState.hookahBlock}
         containerClassName={s.selector}

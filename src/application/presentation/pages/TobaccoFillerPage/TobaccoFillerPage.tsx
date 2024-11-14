@@ -136,7 +136,7 @@ export default function TobaccoFillerPage({ tobaccoFiller }: TobaccoFillerPagePr
               {!!hookah_block && (
                 <>
                   <Link href="#collaud" className={s.row}>
-                    <div className={s.label}>Коллауд</div>
+                    <div className={s.label}>Калауд</div>
                     <div className={s.value}>{hookah_block.name}</div>
                   </Link>
                   <DetailsMW

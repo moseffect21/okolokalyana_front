@@ -65,7 +65,7 @@ const TobaccoFillerCard = ({ tobaccoFiller, containerClassName }: TobaccoFillerC
           )}
           {!!hookah_block && (
             <div className={s.row}>
-              <div className={s.label}>Коллауд</div>
+              <div className={s.label}>Калауд</div>
               <div className={s.value}>{hookah_block.name}</div>
             </div>
           )}
