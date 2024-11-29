@@ -39,7 +39,7 @@ const HookahContainer = ({
             objectiveRateOptions,
           }}
         />
-        <DesktopContainer>
+        <DesktopContainer className={s.fillers}>
           <Fillers fillers={fillers} />
         </DesktopContainer>
       </div>
