@@ -1,3 +1,4 @@
 import replaceImage from './replaceImage'
+const formatters = [replaceImage]
 
-export default [replaceImage]
+export default formatters
