@@ -26,9 +26,10 @@ export const getSmokingRoomListPageServerSideProps = async ({
       bowl: query.bowl as string,
       tobacco: query.tobacco as string,
       hookah_block: query.hookahBlock as string,
-      subjective_rating: query.subjective_rating as string,
-      objective_rating: query.objective_rating as string,
+      subjective_rating: query.subjectiveRating as string,
+      objective_rating: query.objectiveRating as string,
       smoker: query.smoker as string,
+      with_video: query.withVideo as string,
       page,
     })
 

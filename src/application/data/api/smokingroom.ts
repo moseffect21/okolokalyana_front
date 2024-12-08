@@ -20,6 +20,7 @@ export const fetchSmokingRoomRequest = async (params: {
   coal_placement?: string
   coal?: string
   page?: number
+  with_video?: string
   per_page?: string
 }): Promise<Pagination<TobaccoFiller[]>> => {
   const page = params?.page || 1
