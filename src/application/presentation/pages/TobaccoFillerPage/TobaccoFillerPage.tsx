@@ -69,8 +69,6 @@ export default function TobaccoFillerPage({ tobaccoFiller }: TobaccoFillerPagePr
     updated_at,
   } = tobaccoFiller
 
-  console.log(tobaccoFiller)
-
   return (
     <>
       <MetaTobaccoFillerPage name={name} />
