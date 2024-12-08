@@ -69,13 +69,16 @@ export default function TobaccoFillerPage({ tobaccoFiller }: TobaccoFillerPagePr
     updated_at,
   } = tobaccoFiller
 
+  console.log(tobaccoFiller)
+
   return (
     <>
       <MetaTobaccoFillerPage name={name} />
       <PageLayout
         breadCrumbs={[
-          { id: 1, name: 'Прокурочный цех', link: '/smokingroom' },
-          { id: 2, name: name },
+          { id: 1, name: 'Главная', link: '/' },
+          { id: 2, name: 'Прокурочный цех', link: '/smokingroom' },
+          { id: 3, name: name },
         ]}
         title={name}
         withBackButton
@@ -83,60 +86,55 @@ export default function TobaccoFillerPage({ tobaccoFiller }: TobaccoFillerPagePr
         <div className={s.container}>
           <div className={s.info}>
             <div className={s.left}>
-              {!!brand && (
-                <>
-                  <Link href="#brand" className={s.row}>
-                    <div className={s.label}>Брэнд</div>
-                    <div className={s.value}>{brand.name}</div>
-                  </Link>
-                  <DetailsMW
-                    hash="brand"
-                    data={{
-                      title: brand.name,
-                      description: brand.description,
-                      content: brand.content,
-                      photo: brand.photo,
-                      video_url: brand.video_url,
-                    }}
-                  />
-                </>
-              )}
-              {!!tobacco_line && (
-                <div className={s.row}>
-                  <div className={s.label}>Линейка</div>
-                  <div className={s.value}>{tobacco_line}</div>
-                </div>
-              )}
               {!!tobacco && (
                 <div className={s.row}>
-                  <div className={s.label}>Табак</div>
+                  <div className={s.label}>Смесь/линейка</div>
                   <div className={s.value}>{tobacco.name}</div>
                 </div>
               )}
               {!!aroma && (
                 <div className={s.row}>
-                  <div className={s.label}>Вкус</div>
+                  <div className={s.label}>Аромат</div>
                   <div className={s.value}>{aroma}</div>
-                </div>
-              )}
-              {!!gram && (
-                <div className={s.row}>
-                  <div className={s.label}>Кол-во</div>
-                  <div className={s.value}>{gram} г.</div>
                 </div>
               )}
               {!!bowl && (
                 <>
-                  <div className={s.row}>
+                  <Link href="#bowl" className={s.row}>
                     <div className={s.label}>Чаша</div>
                     <div className={s.value}>{bowl.name}</div>
-                  </div>
+                  </Link>
+                  <DetailsMW
+                    hash="bowl"
+                    data={{
+                      title: bowl.name,
+                      photo: bowl.photo,
+                    }}
+                  />
+                </>
+              )}
+              {!!hookah && (
+                <>
+                  <Link href="#hookah" className={s.row}>
+                    <div className={s.label}>Кальян</div>
+                    <div className={s.value}>{hookah.name}</div>
+                  </Link>
+                  <DetailsMW
+                    hash="hookah"
+                    data={{
+                      title: hookah.name,
+                      description: hookah.description,
+                      content: hookah.content,
+                      photo: hookah.photo,
+                      video_url: hookah.video_url,
+                    }}
+                  />
                 </>
               )}
               {!!hookah_block && (
                 <>
                   <Link href="#collaud" className={s.row}>
-                    <div className={s.label}>Калауд</div>
+                    <div className={s.label}>Контроллер жара</div>
                     <div className={s.value}>{hookah_block.name}</div>
                   </Link>
                   <DetailsMW
@@ -187,45 +185,50 @@ export default function TobaccoFillerPage({ tobaccoFiller }: TobaccoFillerPagePr
                   />
                 </>
               )}
+              {!!gram && (
+                <div className={s.row}>
+                  <div className={s.label}>Кол-во</div>
+                  <div className={s.value}>{gram} г.</div>
+                </div>
+              )}
               {!!warming_time && (
                 <div className={s.row}>
                   <div className={s.label}>Время прогрева</div>
                   <div className={s.value}>{warming_time} мин.</div>
                 </div>
               )}
-
-              {!!hookah && (
-                <>
-                  <Link href="#hookah" className={s.row}>
-                    <div className={s.label}>Кальян</div>
-                    <div className={s.value}>{hookah.name}</div>
-                  </Link>
-                  <DetailsMW
-                    hash="hookah"
-                    data={{
-                      title: hookah.name,
-                      description: hookah.description,
-                      content: hookah.content,
-                      photo: hookah.photo,
-                      video_url: hookah.video_url,
-                    }}
-                  />
-                </>
-              )}
-              {!!smoker && (
-                <div className={s.row}>
-                  <div className={s.label}>Прокурщик</div>
-                  <div className={s.value}>{smoker.name}</div>
-                </div>
-              )}
               {!!aroma_rating && (
                 <div className={s.row}>
-                  <div className={s.label}>Оценка вкуса</div>
+                  <div className={s.label}>Попадание</div>
                   <div className={s.value}>
                     <Rating value={aroma_rating} containerClassName={s.stars_container} />
                   </div>
                 </div>
               )}
+              {/* {!!brand && (
+                <>
+                  <Link href="#brand" className={s.row}>
+                    <div className={s.label}>Брэнд</div>
+                    <div className={s.value}>{brand.name}</div>
+                  </Link>
+                  <DetailsMW
+                    hash="brand"
+                    data={{
+                      title: brand.name,
+                      description: brand.description,
+                      content: brand.content,
+                      photo: brand.photo,
+                      video_url: brand.video_url,
+                    }}
+                  />
+                </>
+              )} */}
+              {/* {!!tobacco_line && (
+                <div className={s.row}>
+                  <div className={s.label}>Линейка</div>
+                  <div className={s.value}>{tobacco_line}</div>
+                </div>
+              )} */}
               {!!subjective_rating && (
                 <div className={s.row}>
                   <div className={s.label}>Субъективная оценка</div>
@@ -248,6 +251,12 @@ export default function TobaccoFillerPage({ tobaccoFiller }: TobaccoFillerPagePr
                   <div className={s.value}>
                     <Rating value={users_rating} containerClassName={s.stars_container} />
                   </div>
+                </div>
+              )}
+              {!!smoker && (
+                <div className={s.row}>
+                  <div className={s.label}>Прокурщик</div>
+                  <div className={s.value}>{smoker.name}</div>
                 </div>
               )}
               {!!video_url && (

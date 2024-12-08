@@ -20,7 +20,7 @@ export default function ArticlesMainContainer({ articles }: ArticlesMainProps) {
   return (
     <section className={s.articlesContainer}>
       <div className={s.articlesInner}>
-        <div className={s.titleText}>Статьи</div>
+        <div className={s.titleText}>Последние статьи</div>
 
         <DesktopContainer>
           <div className={s.article_container}>
@@ -52,7 +52,7 @@ export default function ArticlesMainContainer({ articles }: ArticlesMainProps) {
                         </div>
                         <div className={s.link_container}>
                           <Link href="/blog/articles" className={s.show_all}>
-                            <span>Смотреть все</span> <BackArrow />
+                            <span>Перейти к разделу</span> <BackArrow />
                           </Link>
                         </div>
                       </div>
@@ -75,7 +75,7 @@ export default function ArticlesMainContainer({ articles }: ArticlesMainProps) {
           ))}
           <div className={s.link_container}>
             <Link href="/blog/articles" className={s.show_all}>
-              <span>Смотреть все</span> <BackArrow />
+              <span>Перейти к разделу</span> <BackArrow />
             </Link>
           </div>
         </MobileContainer>

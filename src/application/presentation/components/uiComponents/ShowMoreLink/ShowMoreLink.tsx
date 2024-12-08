@@ -5,23 +5,16 @@ import s from './ShowMoreLink.module.scss'
 import cn from 'classnames'
 
 type ShowMoreLinkProps = {
-  href?: string;
-  color?: string;
-  className?: string;
+  href?: string
+  color?: string
+  className?: string
 }
 
-const ShowMoreLink: React.FC<ShowMoreLinkProps> = ({ 
-  href = '#', 
-  color = 'black', 
-  className 
-}) => {
+const ShowMoreLink: React.FC<ShowMoreLinkProps> = ({ href = '#', color = 'black', className }) => {
   return (
     <div className={cn(s.link_container, className)}>
-      <Link 
-        href={href} 
-        className={cn(s.show_all, s[color])}
-      >
-        <span>Смотреть все</span>
+      <Link href={href} className={cn(s.show_all, s[color])}>
+        <span>Перейти к разделу</span>
         <BackArrow className={s.arrow} />
       </Link>
     </div>
@@ -29,4 +22,3 @@ const ShowMoreLink: React.FC<ShowMoreLinkProps> = ({
 }
 
 export default ShowMoreLink
-

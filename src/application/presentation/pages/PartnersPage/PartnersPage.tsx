@@ -24,7 +24,13 @@ export default function PartnersPage({ partners }: PartnersPageProps) {
   return (
     <>
       <MetaPartnersPage />
-      <PageLayout title="Партнеры" breadCrumbs={[{ id: 1, name: 'Партнеры' }]}>
+      <PageLayout
+        title="Партнеры"
+        breadCrumbs={[
+          { id: 1, name: 'Главная', link: '/' },
+          { id: 2, name: 'Партнеры' },
+        ]}
+      >
         <div className={s.container}>
           {partners.map(item => (
             <PartnerCard key={`partner_item_${item.id}`} partner={item} />

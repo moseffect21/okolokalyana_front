@@ -42,8 +42,9 @@ export default function TeamMemberPage({ teamMember }: TeamMemberProps) {
       />
       <PageLayout
         breadCrumbs={[
-          { id: 1, name: 'О нас', link: '/about' },
-          { id: 2, name: teamMember.name },
+          { id: 1, name: 'Главная', link: '/' },
+          { id: 2, name: 'О нас', link: '/about' },
+          { id: 3, name: teamMember.name },
         ]}
         withBackButton
       >

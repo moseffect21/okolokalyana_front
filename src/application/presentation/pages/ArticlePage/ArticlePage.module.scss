@@ -74,11 +74,13 @@
   h5 {
     font-size: 2rem;
   }
-
   img {
     max-width: 100%;
     object-fit: contain;
     height: auto;
+    float: left;
+    margin-right: 2rem;
+    margin-bottom: 1.2rem;
   }
 }
 

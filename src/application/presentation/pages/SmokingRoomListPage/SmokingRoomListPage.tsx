@@ -94,10 +94,14 @@ export default function SmokingRoomListPage({
   page,
   total,
 }: SmokingRoomPageProps) {
+  const breadcrumbs = [
+    { id: 1, name: 'Главная', link: '/' },
+    { id: 2, name: 'Прокурочный цех' },
+  ]
   return (
     <>
       <MetaSmokingRoomPage />
-      <PageLayout title="Прокурочный цех">
+      <PageLayout title="Прокурочный цех" breadCrumbs={breadcrumbs}>
         <Filters
           {...{
             bowlOptions,
@@ -113,13 +117,17 @@ export default function SmokingRoomListPage({
             <div className={s.title}>Результаты поиска</div>
             <Pagination page={page} total={total} />
           </div>
+
           {data.length ? (
-            data.map(filler => (
-              <TobaccoFillerCard key={`filler_${filler.id}`} tobaccoFiller={filler} />
-            ))
+            <div className={s.fillers}>
+              {data.map(filler => (
+                <TobaccoFillerCard key={`filler_${filler.id}`} tobaccoFiller={filler} />
+              ))}
+            </div>
           ) : (
             <EmptyNotice text={'По вашему запросу ничего не найдено'} />
           )}
+          <Pagination page={page} total={total} className={s.bottom_pagination} />
         </div>
       </PageLayout>
     </>

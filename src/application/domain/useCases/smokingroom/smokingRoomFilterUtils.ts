@@ -60,6 +60,7 @@ export type FilterStateType = {
   subjectiveRating: SelectOption | null
   objectiveRating: SelectOption | null
   smoker: SelectOption | null
+  withVideo: boolean
 }
 export const getInitFilterState = (
   params: ReadonlyURLSearchParams,
@@ -83,5 +84,6 @@ export const getInitFilterState = (
     objectiveRating:
       objectiveRateOptions.find(item => item.value === params.get('objectiveRating')) || null,
     smoker: smokersOptions.find(smoker => smoker.value === params.get('smoker')) || null,
+    withVideo: params.get('withVideo') === 'true',
   }
 }

@@ -34,6 +34,9 @@
   line-height: 130%;
   color: #fff;
 }
+.bottom_pagination {
+  margin-top: 3rem;
+}
 
 @media screen and (max-width: 768px) {
   .filters_container {
@@ -51,5 +54,15 @@
   .search_btn_container {
     grid-column-start: 1;
     grid-column-end: 1;
+  }
+}
+@media screen and (min-width: 769px) {
+  .fillers {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    > a {
+      width: calc(50% - 1.25rem);
+    }
   }
 }

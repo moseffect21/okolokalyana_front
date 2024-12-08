@@ -43,7 +43,7 @@ const TobaccoFillerCard = ({ tobaccoFiller, containerClassName }: TobaccoFillerC
       {!!name && <div className={s.title}>{name}</div>}
 
       <div className={s.inner}>
-        <div className={s.left}>
+        {/* <div className={s.left}>
           {tobaccoFiller.photo ? (
             <StoredImage
               src={tobaccoFiller.photo || ''}
@@ -55,24 +55,24 @@ const TobaccoFillerCard = ({ tobaccoFiller, containerClassName }: TobaccoFillerC
           ) : (
             <EmptyPhoto />
           )}
-        </div>
+        </div> */}
         <div className={s.right}>
-          {!!hookah && (
-            <div className={s.row}>
-              <div className={s.label}>Кальян</div>
-              <div className={s.value}>{hookah.name}</div>
-            </div>
-          )}
-          {!!hookah_block && (
-            <div className={s.row}>
-              <div className={s.label}>Калауд</div>
-              <div className={s.value}>{hookah_block.name}</div>
-            </div>
-          )}
           {!!bowl && (
             <div className={s.row}>
               <div className={s.label}>Чаша</div>
               <div className={s.value}>{bowl.name}</div>
+            </div>
+          )}
+          {!!hookah_block && (
+            <div className={s.row}>
+              <div className={s.label}>Контроллер жара</div>
+              <div className={s.value}>{hookah_block.name}</div>
+            </div>
+          )}
+          {/* {!!hookah && (
+            <div className={s.row}>
+              <div className={s.label}>Кальян</div>
+              <div className={s.value}>{hookah.name}</div>
             </div>
           )}
           {!!brand && (
@@ -97,6 +97,14 @@ const TobaccoFillerCard = ({ tobaccoFiller, containerClassName }: TobaccoFillerC
             <div className={s.row}>
               <div className={s.label}>Вкус</div>
               <div className={s.value}>{aroma}</div>
+            </div>
+          )} */}
+          {!!aroma_rating && (
+            <div className={s.row}>
+              <div className={s.label}>Попадание</div>
+              <div className={s.value}>
+                <Rating value={aroma_rating} containerClassName={s.stars_container} />
+              </div>
             </div>
           )}
           {!!subjective_rating && (

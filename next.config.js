@@ -9,6 +9,10 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'xn--80aa2aaecocbb1nmb.xn--p1ai',
+      },
+      {
+        protocol: 'https',
         hostname: 'staging2.okolokalyana.ru',
       },
       {

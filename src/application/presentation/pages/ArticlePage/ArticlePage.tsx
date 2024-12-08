@@ -4,10 +4,12 @@ import { fetchArticle } from 'application/domain/useCases/article/getArticle'
 import getCategoryName from 'application/domain/useCases/category/getCategoryName'
 import PageLayout from 'application/presentation/components/Layouts/PageLayout'
 import { MetaArticlePage } from 'application/presentation/meta/MetaContent'
-import React from 'react'
+import React, { useMemo } from 'react'
 import StoredImage from 'application/presentation/components/uiComponents/StoredImage'
 import cn from 'classnames'
 import s from './ArticlePage.module.scss'
+import { HTMLReactReplacer } from 'application/presentation/utils/htmlReactReplacer'
+import formatters from './formatters'
 
 export const getArticlePageServerSideProps = async ({ params }: GetServerSideDefaultProps) => {
   if (!params?.slug) {
@@ -38,6 +40,8 @@ type ArticlePageProps = {
 export default function ArticlePage({ article, category }: ArticlePageProps) {
   const categoryTitle = getCategoryName(category)
 
+  const parsedHTML = useMemo(() => HTMLReactReplacer(article.content, formatters), [article])
+
   return (
     <>
       <MetaArticlePage article={article} />
@@ -45,8 +49,9 @@ export default function ArticlePage({ article, category }: ArticlePageProps) {
         title={article.title}
         withBackButton
         breadCrumbs={[
-          { id: 1, name: categoryTitle, link: `/blog/${category}` },
-          { id: 2, name: article.title },
+          { id: 1, name: 'Главная', link: '/' },
+          { id: 2, name: categoryTitle, link: `/blog/${category}` },
+          { id: 3, name: article.title },
         ]}
       >
         <div className={s.container}>
@@ -66,13 +71,13 @@ export default function ArticlePage({ article, category }: ArticlePageProps) {
                 className={s.stored_img}
                 src={article.preview_img}
                 alt=""
-                width={600}
-                height={300}
+                width={1600}
+                height={800}
               />
             )}
           </div>
           <div className={s.inner_container}>
-            <div className={s.text} dangerouslySetInnerHTML={{ __html: article.content }} />
+            <div className={s.text}>{parsedHTML}</div>
           </div>
         </div>
       </PageLayout>

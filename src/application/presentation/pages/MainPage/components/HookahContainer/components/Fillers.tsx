@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectCards, Navigation } from 'swiper/modules'
-import 'swiper/css/effect-cards'
+import 'swiper/css'
 import s from './Fillers.module.scss'
 import { TobaccoFiller } from 'application/domain/entities/tobaccoFiller/TobaccoFiller'
 import TobaccoFillerCard from 'application/presentation/components/TobaccoFillerCard'
@@ -24,10 +24,11 @@ const Fillers = ({ fillers }: FillersProps) => {
   }
   return (
     <Swiper
-      effect={'cards'}
-      modules={[EffectCards, Navigation]}
+      modules={[Navigation]}
       className={s.swiper}
       speed={300}
+      slidesPerView={1}
+      spaceBetween={90}
       onSwiper={swiper => (swiperRef.current = swiper)}
       onSlideChangeTransitionEnd={swiper => setSlideIndex(swiper.activeIndex)}
       navigation={{

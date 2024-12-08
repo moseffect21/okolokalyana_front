@@ -1,6 +1,7 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectCards } from 'swiper/modules'
+import 'swiper/css'
 import 'swiper/css/effect-cards'
 import 'swiper/css/effect-cards'
 import s from './ShowroomSwiper.module.scss'

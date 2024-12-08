@@ -1,7 +1,6 @@
 import { MetaMainPage } from 'application/presentation/meta/MetaContent'
 import React from 'react'
 import MainContainer from './components/MainContainer/MainContainer'
-import VideoSwiper from './components/VideoSwiper/VideoSwiper'
 import NewsContainer from './components/NewsContainer'
 import ArticlesMainContainer from './components/ArticlesMainContainer/ArticlesMainContainer'
 import { fetchMainRequest } from 'application/data/api/main'
@@ -14,17 +13,22 @@ import PartnersMain from './components/PartnersMain'
 import { fetchSmokingRoomFilters } from 'application/domain/useCases/smokingroom/getSmokingRoom'
 import { getFilterOptions } from 'application/domain/useCases/smokingroom/smokingRoomFilterUtils'
 import { SelectOption } from 'application/presentation/components/uiComponents/InputComponents/Selector/Selector'
+import { fetchLinks } from 'application/data/api/links'
+import { LinksCategory } from 'application/domain/entities/links/LinksCategory'
+import LinksContainer from './components/LinksContainer'
 
 export const getMainPageServerSideProps = async () => {
   try {
     const mainData = await fetchMainRequest()
     const filters = await fetchSmokingRoomFilters()
+    const linksResponse = await fetchLinks()
 
     const filterOptions = getFilterOptions(filters)
     return {
       props: {
         ...mainData,
         filterOptions,
+        links: linksResponse,
       },
     }
   } catch (e) {
@@ -43,6 +47,7 @@ type MainPageProps = MainData & {
     objectiveRateOptions: SelectOption[]
     smokersOptions: SelectOption[]
   }
+  links: LinksCategory[]
 }
 
 export default function MainPage({
@@ -53,18 +58,20 @@ export default function MainPage({
   fillers,
   products,
   filterOptions,
+  links,
 }: MainPageProps) {
   return (
     <>
-      <MainPageBlockWithBackground />
       <MetaMainPage />
+      <MainPageBlockWithBackground />
       <MainContainer />
       <NewsContainer news={updates} />
-      <VideoSwiper />
+      {/* <VideoSwiper /> */}
       <ArticlesMainContainer articles={articles} />
       <HookahContainer {...filterOptions} fillers={fillers} />
       {products?.length > 3 && <ShowroomSwiper products={products} />}
       <AboutMain team={team} />
+      <LinksContainer links={links} />
       <PartnersMain partners={partners} />
     </>
   )

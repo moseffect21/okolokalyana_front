@@ -3,10 +3,11 @@ import s from './NavList.module.scss'
 import ActiveLink from '../../uiComponents/ActiveLink'
 
 const links = [
-  { id: 1, name: 'Статьи', link: '/blog/articles' },
-  { id: 2, name: 'Видео', link: '/blog/video' },
-  { id: 3, name: 'Прокурочный цех', link: '/smokingroom' },
-  { id: 4, name: 'Шоурум', link: '/showroom' },
+  { id: 1, name: 'Главная', link: '/' },
+  { id: 2, name: 'Статьи', link: '/blog/articles' },
+  // { id: 3, name: 'Видео', link: '/blog/video' },
+  { id: 4, name: 'Прокурочный цех', link: '/smokingroom' },
+  // { id: 5, name: 'Шоурум', link: '/showroom' },
   { id: 6, name: 'Taplink', link: '/links' },
   { id: 7, name: 'О нас', link: '/about' },
   { id: 8, name: 'Партнеры', link: '/partners' },

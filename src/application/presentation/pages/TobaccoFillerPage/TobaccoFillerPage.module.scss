@@ -4,6 +4,11 @@
   padding: 2rem;
   margin-top: 2rem;
   position: relative;
+  .empty_photo {
+    width: 22rem;
+    height: 22rem;
+    font-size: 2rem;
+  }
 }
 .info {
   display: flex;
@@ -26,11 +31,6 @@
   object-fit: contain;
   border-radius: 0.4rem;
   display: block;
-}
-.empty_photo {
-  width: 22rem;
-  height: 22rem;
-  font-size: 2rem;
 }
 a.row {
   div:first-child {

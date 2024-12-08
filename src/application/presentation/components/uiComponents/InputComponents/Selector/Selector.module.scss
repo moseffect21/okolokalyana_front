@@ -10,4 +10,12 @@
   color: #fff;
   line-height: 130%;
   margin-bottom: 0.7rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  &:hover {
+    -webkit-line-clamp: 5;
+  }
 }

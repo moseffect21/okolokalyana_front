@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/css'
 
 import s from './VideoSwiper.module.scss'
 

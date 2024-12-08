@@ -13,6 +13,11 @@
   padding: 0 7.5rem;
 }
 
+.filter_container {
+  position: relative;
+  z-index: 2;
+}
+
 .fillers {
   overflow: hidden;
 }

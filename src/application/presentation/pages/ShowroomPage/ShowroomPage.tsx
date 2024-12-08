@@ -94,8 +94,9 @@ export default function ShowroomPage({
     })),
   ]
   const breadCrumbs = [
-    { id: 1, name: 'Шоурум', link: `/showroom` },
-    { id: 2, name: category?.name || 'Все' },
+    { id: 1, name: 'Главная', link: '/' },
+    { id: 2, name: 'Шоурум', link: `/showroom` },
+    { id: 3, name: category?.name || 'Все' },
   ]
   const pageTitle = category?.name || 'Шоурум'
 
@@ -113,6 +114,7 @@ export default function ShowroomPage({
             <ProductCard key={`product_${product.id}`} product={product} className={s.product} />
           ))}
         </div>
+        <Pagination page={page} total={total} />
       </PageLayout>
     </>
   )

@@ -35,6 +35,10 @@ type SmokingRoomPageProps = {
 }
 
 export default function SmokingRoomPage({ filters }: SmokingRoomPageProps) {
+  const breadcrumbs = [
+    { id: 1, name: 'Главная', link: '/' },
+    { id: 2, name: 'Прокурочный цех' },
+  ]
   const {
     top_bowls,
     top_hookah_blocks,
@@ -59,7 +63,7 @@ export default function SmokingRoomPage({ filters }: SmokingRoomPageProps) {
   return (
     <>
       <MetaSmokingRoomPage />
-      <PageLayout title="Прокурочный цех">
+      <PageLayout title="Прокурочный цех" breadCrumbs={breadcrumbs}>
         <Filters
           {...{
             bowlOptions,

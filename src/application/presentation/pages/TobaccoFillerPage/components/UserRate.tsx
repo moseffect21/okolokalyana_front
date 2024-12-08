@@ -3,7 +3,10 @@ import s from './UserRate.module.scss'
 import Rating from 'application/presentation/components/uiComponents/Rating'
 import Button from 'application/presentation/components/uiComponents/Button'
 import { rateTobaccoFiller } from 'application/domain/useCases/smokingroom/getSmokingRoom'
-import { checkIfTobaccoFillerRated } from 'application/domain/useCases/smokingroom/smokingRoomUtils'
+import {
+  checkIfTobaccoFillerRated,
+  getTobaccoFillerRate,
+} from 'application/domain/useCases/smokingroom/smokingRoomUtils'
 
 type UserRateProps = {
   tobaccoFillerId: number
@@ -11,7 +14,7 @@ type UserRateProps = {
 
 const UserRate = ({ tobaccoFillerId }: UserRateProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [value, setValue] = useState<number>(0)
+  const [value, setValue] = useState<number>(getTobaccoFillerRate(tobaccoFillerId))
   const [rated, setRated] = useState<boolean>(checkIfTobaccoFillerRated(tobaccoFillerId))
   const handleRateClick = () => {
     if (!value || rated) {

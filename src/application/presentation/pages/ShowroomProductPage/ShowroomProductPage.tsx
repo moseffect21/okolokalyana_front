@@ -42,13 +42,14 @@ type ShowroomProductPageProps = {
 
 export default function ShowroomProductPage({ product, category }: ShowroomProductPageProps) {
   const breadCrumbs = [
-    { id: 1, name: 'Шоурум', link: `/showroom` },
+    { id: 1, name: 'Главная', link: '/' },
+    { id: 2, name: 'Шоурум', link: `/showroom` },
     {
-      id: 2,
+      id: 3,
       name: category?.name || 'Все',
       link: `/showroom${category ? `/${category.slug}` : ''}`,
     }, // TODO: поправить когда категории подтянем
-    { id: 3, name: product.name },
+    { id: 4, name: product.name },
   ]
 
   return (

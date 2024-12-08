@@ -28,7 +28,10 @@ type AboutPageProps = {
 }
 
 export default function AboutPage({ team }: AboutPageProps) {
-  const breadCrumbs = [{ id: 1, name: 'О нас', link: '/about' }]
+  const breadCrumbs = [
+    { id: 1, name: 'Главная', link: '/' },
+    { id: 2, name: 'О нас', link: '/about' },
+  ]
   const [hovered, setHovered] = useState<boolean>(false)
   return (
     <>

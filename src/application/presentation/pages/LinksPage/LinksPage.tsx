@@ -2,15 +2,15 @@ import React from 'react'
 import s from './LinksPage.module.scss'
 import Image from 'next/image'
 import vladPng from 'images/Vlad.png'
-import LinksContainer from './components/LinksContainer'
 import PartnerItem from './components/PartnerItem'
 import { MetaData } from 'application/presentation/meta/MetaContent'
 import PageLayout from 'application/presentation/components/Layouts/PageLayout'
 import { fetchLinks } from 'application/data/api/links'
-import { LinksCategory } from 'application/domain/entities/links/LinksCategory'
+import { LinksCategory as LinksCategoryType } from 'application/domain/entities/links/LinksCategory'
 import { fetchPartners } from 'application/domain/useCases/partners/getPartners'
 import { Partner } from 'application/domain/entities/partners/Partner'
 import pickParamsFromObject from 'application/domain/utils/pickParamsFromObject'
+import LinksCategory from 'application/presentation/components/TapLinkCategory'
 
 export async function getLinksPageServerSideProps() {
   try {
@@ -36,11 +36,15 @@ export async function getLinksPageServerSideProps() {
 }
 
 type LinksPageProps = {
-  links: LinksCategory[]
+  links: LinksCategoryType[]
   partners: Partner[]
 }
 
 export default function LinksPage({ links, partners }: LinksPageProps) {
+  const breadcrumbs = [
+    { id: 1, name: 'Главная', link: '/' },
+    { id: 2, name: 'Taplink' },
+  ]
   return (
     <>
       <MetaData
@@ -48,7 +52,7 @@ export default function LinksPage({ links, partners }: LinksPageProps) {
         desc="Тут вы найдёте все блоги, страницы, соц сети Влада Носачёва и проекта ОКОЛОКАЛЬЯНА."
         keywords="влад носачёв, околокальяна, соц сети, сайт, инстаграм, телеграм, ютуб, лайв, вконтакте, тик ток, твич, донат, вайлберис, озон, стрим, прямой эфир, онлайн, написать, связаться, контакты, инста, instagram, тг, telegram, телега, youtube, ютюб, вк, vkontakte, страница, группа, паблик, tik tok, тт, twitch, donations, вб, wildberries, ozon, менеджер, связь"
       />
-      <PageLayout>
+      <PageLayout breadCrumbs={breadcrumbs}>
         <div className={s.container}>
           <div className={s.heading}>
             <div className={s.img_container}>
@@ -64,7 +68,7 @@ export default function LinksPage({ links, partners }: LinksPageProps) {
           <div className={s.links_container}>
             {links.map(linkCategory => (
               <React.Fragment key={`link_category_${linkCategory.id}`}>
-                <LinksContainer title={linkCategory.name} data={linkCategory.links} />
+                <LinksCategory title={linkCategory.name} data={linkCategory.links} />
                 <div className={s.separator}></div>
               </React.Fragment>
             ))}

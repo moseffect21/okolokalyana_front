@@ -8,6 +8,7 @@ import StoredImage from 'application/presentation/components/uiComponents/Stored
 import cn from 'classnames'
 import s from './DesktopShowroomSwiper.module.scss'
 import { Product } from 'application/domain/entities/product/Product'
+import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/effect-coverflow'
 

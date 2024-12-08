@@ -35,8 +35,9 @@ export default function PartnerPage({ partner }: PartnersPageProps) {
       <PageLayout
         withBackButton
         breadCrumbs={[
-          { id: 1, name: 'Партнеры', link: '/partners' },
-          { id: 2, name: partner.name },
+          { id: 1, name: 'Главная', link: '/' },
+          { id: 2, name: 'Партнеры', link: '/partners' },
+          { id: 3, name: partner.name },
         ]}
       >
         <div className={s.container}>

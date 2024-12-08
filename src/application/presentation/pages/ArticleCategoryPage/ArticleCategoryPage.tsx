@@ -100,7 +100,10 @@ export default function ArticleCategoryPage({
       <MetaArticleCategoryPage articleCategory={articleCategory} />
       <PageLayout
         title={title}
-        breadCrumbs={[{ id: 1, name: title }]}
+        breadCrumbs={[
+          { id: 1, name: 'Главная', link: '/' },
+          { id: 2, name: title },
+        ]}
         rightComponent={
           <Selector options={sortOptions} onChange={onSortChange} placeholder="Сортировка" />
         }
@@ -118,6 +121,7 @@ export default function ArticleCategoryPage({
             ) : (
               <ArticlesContainer articleCategory={articleCategory} />
             )}
+            <Pagination page={page} total={total} />
           </>
         )}
       </PageLayout>

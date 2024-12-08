@@ -8,9 +8,10 @@ type PaginationProps = {
   page: number
   total: number
   perPage?: number
+  className?: string
 }
 
-const Pagination = ({ page, total, perPage = 15 }: PaginationProps) => {
+const Pagination = ({ page, total, perPage = 15, className }: PaginationProps) => {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const pagesCount = Math.ceil(total / perPage)
@@ -38,7 +39,7 @@ const Pagination = ({ page, total, perPage = 15 }: PaginationProps) => {
   }, [page, pagesCount, pathname, searchParams])
 
   return (
-    <div className={s.container}>
+    <div className={cn(s.container, className)}>
       {pages.map(link => {
         const isActive = page === parseInt(link.name, 10)
         return (
