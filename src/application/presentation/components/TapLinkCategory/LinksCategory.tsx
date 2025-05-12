@@ -7,13 +7,14 @@ import cn from 'classnames'
 type Props = {
   title: string
   data: Links
+  isTitleHidden?: boolean
   className?: string
 }
 
-const LinksCategory = ({ title, data, className }: Props) => {
+const LinksCategory = ({ title, data, className, isTitleHidden }: Props) => {
   return (
     <div className={cn(s.container, className)}>
-      <h2 className={s.title}>{title}</h2>
+      {!isTitleHidden && <h2 className={s.title}>{title}</h2>}
       {data.map(item => (
         <LinkItem key={item.id} data={item} />
       ))}

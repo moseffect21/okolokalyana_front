@@ -11,21 +11,28 @@ import { fetchPartners } from 'application/domain/useCases/partners/getPartners'
 import { Partner } from 'application/domain/entities/partners/Partner'
 import pickParamsFromObject from 'application/domain/utils/pickParamsFromObject'
 import LinksCategory from 'application/presentation/components/TapLinkCategory'
+import { GetServerSideDefaultProps } from 'application/domain/types/ServerSideProps'
 
-export async function getLinksPageServerSideProps() {
+const QR_CATEGORY_ID = 6
+
+export async function getLinksPageServerSideProps({ resolvedUrl }: GetServerSideDefaultProps) {
+  const isQrLinks = resolvedUrl === '/links/qr'
   try {
     const linksResponse = await fetchLinks()
     const partnersResponse = await fetchPartners()
 
-    const links = Object.values(linksResponse)
-    const partners = partnersResponse.map(partner =>
-      pickParamsFromObject(partner, ['id', 'name', 'photo']),
+    let links = Object.values(linksResponse).filter(linksCategory =>
+      isQrLinks ? linksCategory.id === QR_CATEGORY_ID : linksCategory.id !== QR_CATEGORY_ID,
     )
+    const partners = isQrLinks
+      ? []
+      : partnersResponse.map(partner => pickParamsFromObject(partner, ['id', 'name', 'photo']))
 
     return {
       props: {
         links,
         partners,
+        isQrLinks,
       },
     }
   } catch (e) {
@@ -38,9 +45,10 @@ export async function getLinksPageServerSideProps() {
 type LinksPageProps = {
   links: LinksCategoryType[]
   partners: Partner[]
+  isQrLinks: boolean
 }
 
-export default function LinksPage({ links, partners }: LinksPageProps) {
+export default function LinksPage({ links, partners, isQrLinks }: LinksPageProps) {
   const breadcrumbs = [
     { id: 1, name: 'Главная', link: '/' },
     { id: 2, name: 'Taplink' },
@@ -68,20 +76,26 @@ export default function LinksPage({ links, partners }: LinksPageProps) {
           <div className={s.links_container}>
             {links.map(linkCategory => (
               <React.Fragment key={`link_category_${linkCategory.id}`}>
-                <LinksCategory title={linkCategory.name} data={linkCategory.links} />
+                <LinksCategory
+                  title={linkCategory.name}
+                  data={linkCategory.links}
+                  isTitleHidden={isQrLinks}
+                />
                 <div className={s.separator}></div>
               </React.Fragment>
             ))}
           </div>
 
-          <div className={s.partners_block}>
-            <div className={s.title}>Партнеры проекта</div>
-            <div className={s.partners_container}>
-              {partners.map(partner => (
-                <PartnerItem key={`partner_${partner.id}`} partner={partner} />
-              ))}
+          {!!partners.length && (
+            <div className={s.partners_block}>
+              <div className={s.title}>Партнеры проекта</div>
+              <div className={s.partners_container}>
+                {partners.map(partner => (
+                  <PartnerItem key={`partner_${partner.id}`} partner={partner} />
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </PageLayout>
     </>
