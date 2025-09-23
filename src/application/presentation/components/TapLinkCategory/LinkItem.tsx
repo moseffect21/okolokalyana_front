@@ -11,6 +11,7 @@ import TwitchSvg from 'images/linksIcons/twitch.svg'
 import DonationalertSvg from 'images/linksIcons/donationalerts.svg'
 import VkSvg from 'images/linksIcons/vk.svg'
 import TgSvg from 'images/linksIcons/telegram.svg'
+import YmSvg from 'images/linksIcons/yandex_market.svg'
 
 type Props = {
   data: LinkProps
@@ -34,6 +35,8 @@ const LinkIcon = ({ type }: { type: LinkType }) => {
       return <WbSvg />
     case 'youtube':
       return <YoutubeSvg />
+    case 'yandex_market':
+      return <YmSvg />
     default:
       return <BrowserSvg />
   }

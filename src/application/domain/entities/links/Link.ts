@@ -15,5 +15,6 @@ export type LinkType =
   | 'donationalert'
   | 'wildberries'
   | 'ozon'
+  | 'yandex_market'
 
 export type Links = Link[]
