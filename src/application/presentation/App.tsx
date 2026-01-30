@@ -10,6 +10,7 @@ import AppView from './AppView'
 import Head from 'next/head'
 import Script from 'next/script'
 import { METRIKA_ID } from './constants/config'
+import YandexMetrika from './components/YandexMetrika'
 
 Modal.setAppElement('#__next')
 
@@ -58,6 +59,7 @@ const App = ({ Component, ...rest }: AppProps) => {
       <QueryClientProvider client={client}>
         <AppView Component={Component} {...rest} />
       </QueryClientProvider>
+      <YandexMetrika />
     </>
   )
 }

@@ -7,9 +7,10 @@ export default function YandexMetrika() {
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    const url = `${pathname}?${searchParams}`
+    const url = `${pathname}${searchParams ? `?${searchParams}` : ''}`
     //@ts-ignore
-    ym(METRIKA_ID, 'hit', url) //TODO: вынести в константу
+    ym(METRIKA_ID, 'hit', url)
+    console.log(url)
   }, [pathname, searchParams])
 
   return null
